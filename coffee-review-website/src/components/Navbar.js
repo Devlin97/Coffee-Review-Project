@@ -2,6 +2,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCoffee, faHome, faPerson } from "@fortawesome/free-solid-svg-icons"
+import logo from '../images/logo.png'
 
 function Navbar() {
     return (
@@ -10,7 +11,7 @@ function Navbar() {
                 <div className='navbar-container'>
                     <Link to="/" className="navbar-image">
                         {/*This will be replaced with a logo later but placeholder text and icon for now*/}
-                        COFFEE RECIPES
+                        <img src={logo} alt='not found' width={100} height={100} />
                     </Link>
                     <Link to="/" className="navbar-image">
                         Home <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>

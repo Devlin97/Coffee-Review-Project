@@ -9,6 +9,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' exact />
+        <Route path='/recipes' exact />
+        <Route path='/profile' exact />
       </Routes>
     </Router>
     </>

@@ -9,19 +9,27 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <div className='navbar-container'>
-                    <Link to="/" className="navbar-image">
-                        {/*This will be replaced with a logo later but placeholder text and icon for now*/}
-                        <img src={logo} alt='not found' width={100} height={100} />
-                    </Link>
-                    <Link to="/" className="navbar-image">
-                        Home <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
-                    </Link>
-                    <Link to="/recipes" className="navbar-image">
-                        Recipes <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
-                    </Link>
-                    <Link to="/profile" className="navbar-image">
-                        Profile <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
-                    </Link>
+                    <ul>
+                        <Link to="/" className="navbar-image">
+                            {/*This will be replaced with a logo later but placeholder text and icon for now*/}
+                            <img src={logo} alt='not found' />
+                        </Link>
+                        <li>
+                            <Link to="/" className="navbar-item">
+                                Home <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/recipes" className="navbar-item">
+                                Recipes <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/profile" className="navbar-item">
+                                Profile <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </>

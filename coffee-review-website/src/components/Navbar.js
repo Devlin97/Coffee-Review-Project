@@ -1,8 +1,7 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCoffee, faHome, faPerson } from "@fortawesome/free-solid-svg-icons"
-import logo from '../images/logo.png'
+import { faCoffee, faHome, faPerson, faSignIn } from "@fortawesome/free-solid-svg-icons"
 
 function Navbar() {
     return (
@@ -10,25 +9,27 @@ function Navbar() {
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <ul>
-                        <Link to="/" className="navbar-image">
-                            {/*This will be replaced with a logo later but placeholder text and icon for now*/}
-                            <img src={logo} alt='not found' />
-                        </Link>
                         <li>
                             <Link to="/" className="navbar-item">
-                                Home <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
                             </Link>
                         </li>
                         <li>
                             <Link to="/recipes" className="navbar-item">
-                                Recipes <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
                             </Link>
                         </li>
                         <li>
                             <Link to="/profile" className="navbar-item">
-                                Profile <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/signIn" className="navbar-item navbar-item-right">
+                                <FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>
+                            </Link>
+                        </li>
+                        {/* Once user authentication is included make it so IF user is signed in, the signIn icon will change to signOut */}
                     </ul>
                 </div>
             </nav>

@@ -1,13 +1,13 @@
 import '../../App.css';
 
-function Home() {
+function Profile() {
     return (
         <>
             <h1>
-                TEST HOME
+                TEST PROFILE
             </h1>
         </>
     )
 }
 
-export default Home;
+export default Profile;

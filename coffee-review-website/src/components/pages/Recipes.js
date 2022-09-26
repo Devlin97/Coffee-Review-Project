@@ -1,13 +1,13 @@
 import '../../App.css';
 
-function Home() {
+function Recipes() {
     return (
         <>
             <h1>
-                TEST HOME
+                TEST RECIPES
             </h1>
         </>
     )
 }
 
-export default Home;
+export default Recipes;

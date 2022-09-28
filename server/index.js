@@ -6,13 +6,12 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-import postRoutes from './routes/routes-post.js';
-
 const app = express();
 
-//Prefixes all end points with /post
+//Can put something in the '' to prefix all end points with /post
 //in routes-post.js if end point is '/' end point is actually '/post'
-app.use('/post', postRoutes);
+import postRoutes from './routes/routes.js';
+app.use('', postRoutes);
 
 app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));

@@ -1,3 +1,9 @@
 export const getPosts = (req, res) => {
-    res.send('TEST');
+    const testData = {
+        name: 'test name',
+        number: 1234
+    };
+
+
+    res.send(testData);
 }

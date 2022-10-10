@@ -3,10 +3,17 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
+import mysql from 'mysql2';
 
 dotenv.config();
 
 const app = express();
+
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: process.env.DATABASEPASSWORD,
+});
 
 //Can put something in the '' to prefix all end points with /post
 //in routes-post.js if end point is '/' end point is actually '/post'

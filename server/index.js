@@ -13,6 +13,7 @@ const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: process.env.DATABASEPASSWORD,
+    database: 'coffeereview_db'
 });
 
 //Can put something in the '' to prefix all end points with /post

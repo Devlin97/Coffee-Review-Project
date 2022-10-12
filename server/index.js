@@ -4,17 +4,31 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import mysql from 'mysql2';
+import Sequelize from 'sequelize';
 
 dotenv.config();
 
 const app = express();
 
+//Unsure which connection is needed as of yet or if both are needed
+//=======================================================
+const sequelize = new Sequelize(
+    process.env.DATABASENAME,
+    process.env.DATABASEUSERNAME,
+    process.env.DATABASEPASSWORD,
+    {
+        host: 'localhost',
+        dialect: 'mysql'
+    }
+);
+
 const db = mysql.createPool({
     host: 'localhost',
-    user: 'root',
+    user: process.env.DATABASEUSERNAME,
     password: process.env.DATABASEPASSWORD,
     database: process.env.DATABASENAME
 });
+//========================================================
 
 //Can put something in the '' to prefix all end points with /post
 //in routes-post.js if end point is '/' end point is actually '/post'

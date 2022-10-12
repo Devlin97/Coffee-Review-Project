@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import mysql from 'mysql2';
-import Sequelize from 'sequelize';
 
 dotenv.config();
 
@@ -12,15 +11,7 @@ const app = express();
 
 //Unsure which connection is needed as of yet or if both are needed
 //=======================================================
-const sequelize = new Sequelize(
-    process.env.DATABASENAME,
-    process.env.DATABASEUSERNAME,
-    process.env.DATABASEPASSWORD,
-    {
-        host: 'localhost',
-        dialect: 'mysql'
-    }
-);
+
 
 const db = mysql.createPool({
     host: 'localhost',

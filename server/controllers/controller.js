@@ -7,3 +7,19 @@ export const getPosts = (req, res) => {
 
     res.send(testData);
 }
+
+export const testData = (req, res) => {
+    const testingThis = {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 50,
+        adress: {
+            city: 'Denver',
+            state: 'Colorado',
+            country: 'USA',
+            planet: 'Earth'
+        }
+    };
+
+    res.send(testingThis);
+}

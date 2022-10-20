@@ -32,14 +32,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 //This might not be needed, but will keep it in for now as still unsure which database if best to use 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => app.listen(process.env.PORT, () => console.log(`Server running on port: ${process.env.PORT}`)))
-    .catch((error) => console.log(error.message));
+//mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+//    .then(() => app.listen(process.env.PORT, () => console.log(`Server running on port: ${process.env.PORT}`)))
+//    .catch((error) => console.log(error.message));
 
-
-try{
-    await sequelize.authenticate();
-    console.log("Connection established");
-} catch (error) {
-    console.error('Nope lol ', error);
-}
+//Runs the app
+//awaits for the database to authenticate before running the app, makes sure we are connected to the database before we are up and running
+await sequelize.authenticate()
+.then(() => app.listen(process.env.PORT, () => console.log(`MYSQL Authenticated, Server running on port: ${process.env.PORT}`)))
+.catch((error) => console.log(error.message));

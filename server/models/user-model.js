@@ -9,25 +9,38 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema); */
 
 import { Sequelize, DataTypes } from 'sequelize';
-import { sequelize } from "../database/db";
+import { sequelize } from '../database/db.js';
 
 const User = sequelize.define(
-    'user',
+    'User',
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        firstName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        lastName: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        age: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        recipeId: {
+            //FK in recipe
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            required: true
         }
-    }
-)
+    });
 
 export default User;

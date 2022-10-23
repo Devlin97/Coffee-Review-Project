@@ -5,6 +5,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import mysql from 'mysql2';
 import { sequelize } from './database/db.js';
+import { User, Recipe } from './models/index.js';
 
 dotenv.config();
 
@@ -39,5 +40,9 @@ app.use(cors());
 //Runs the app
 //awaits for the database to authenticate before running the app, makes sure we are connected to the database before we are up and running
 await sequelize.authenticate()
+.then(sequelize.sync())
 .then(() => app.listen(process.env.PORT, () => console.log(`MYSQL Authenticated, Server running on port: ${process.env.PORT}`)))
 .catch((error) => console.log(error.message));
+
+//await User.sync();
+//console.log("User table has been (re)created");

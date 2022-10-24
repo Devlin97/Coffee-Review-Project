@@ -40,9 +40,15 @@ export const testAddUser = async (req, res) => {
         res.send(theUser)
     );
 
-    
+}
 
+export const testFetch = (req, res) => {
     
+    res.json(
+        {
+            name: 'test',
+            number: 1234
+        }
+    )
 
-    
 }

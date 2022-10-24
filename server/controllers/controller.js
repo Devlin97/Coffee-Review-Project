@@ -18,12 +18,31 @@ export const testAddUser = async (req, res) => {
         password: '12345',
         age: 35
     });
-    
-    console.log(testUser instanceof User);
-    console.log(testUser.name);
-    
-    await testUser.save()
-    .then(console.log('saved'));
 
-    res.send(testUser);
+    var theUser = await User.findByPk(1);
+
+    console.log(theUser);
+
+    let testRecipe = Recipe.build({
+        title: 'Test Recipe 3',
+        brewMethod: 'Pour-over',
+        coffeeWeight: 15.0,
+        waterWeight: 250.0,
+        brewer: 'v60',
+        totalTime: 120.0,
+        UserId: theUser.id
+    })
+        
+    await testUser.save()
+    .then(await testRecipe.save())
+    .then(console.log('saved'))
+    .then(
+        res.send(theUser)
+    );
+
+    
+
+    
+
+    
 }

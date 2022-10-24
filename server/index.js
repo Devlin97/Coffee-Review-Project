@@ -40,7 +40,8 @@ app.use(cors());
 //Runs the app
 //awaits for the database to authenticate before running the app, makes sure we are connected to the database before we are up and running
 await sequelize.authenticate()
-.then(sequelize.sync())
+.then(User.sync())
+.then(Recipe.sync())
 .then(() => app.listen(process.env.PORT, () => console.log(`MYSQL Authenticated, Server running on port: ${process.env.PORT}`)))
 .catch((error) => console.log(error.message));
 

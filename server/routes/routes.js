@@ -1,11 +1,11 @@
 import express from 'express';
 
-import { getPosts, testData } from '../controllers/controller.js';
+import { getPosts, testAddUser } from '../controllers/controller.js';
 
 const router = express.Router();
 
 router.get('/', getPosts);
 
-router.get('/home', testData);
+router.get('/home', testAddUser);
 
 export default router;

@@ -1,3 +1,5 @@
+import { User, Recipe } from '../models/index.js';
+
 export const getPosts = (req, res) => {
     const testData = {
         name: 'test name',
@@ -8,18 +10,20 @@ export const getPosts = (req, res) => {
     res.send(testData);
 }
 
-export const testData = (req, res) => {
-    const testingThis = {
-        firstName: 'John',
-        lastName: 'Doe',
-        age: 50,
-        adress: {
-            city: 'Denver',
-            state: 'Colorado',
-            country: 'USA',
-            planet: 'Earth'
-        }
-    };
+export const testAddUser = async (req, res) => {
+    
+    const testUser = User.build({
+        name: 'test3',
+        email: 'test3@test3.com',
+        password: '12345',
+        age: 35
+    });
+    
+    console.log(testUser instanceof User);
+    console.log(testUser.name);
+    
+    await testUser.save()
+    .then(console.log('saved'));
 
-    res.send(testingThis);
+    res.send(testUser);
 }

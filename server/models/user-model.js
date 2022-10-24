@@ -34,12 +34,6 @@ const User = sequelize.define(
         age: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        recipeId: {
-            //FK in recipe
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            required: true
         }
     });
 

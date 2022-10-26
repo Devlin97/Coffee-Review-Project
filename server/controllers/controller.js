@@ -24,12 +24,12 @@ export const testAddUser = async (req, res) => {
     console.log(theUser);
 
     let testRecipe = Recipe.build({
-        title: 'Test Recipe 3',
-        brewMethod: 'Pour-over',
-        coffeeWeight: 15.0,
-        waterWeight: 250.0,
-        brewer: 'v60',
-        totalTime: 120.0,
+        title: 'Test Recipe 4',
+        brewMethod: 'Immersion',
+        coffeeWeight: 50.0,
+        waterWeight: 650.0,
+        brewer: 'clever dripper',
+        totalTime: 600.0,
         UserId: theUser.id
     })
         
@@ -51,4 +51,10 @@ export const testFetch = (req, res) => {
         }
     )
 
+}
+
+export const allRecipes = async (req, res) => {
+    let recipes = await Recipe.findAll();
+
+    res.json(recipes);
 }

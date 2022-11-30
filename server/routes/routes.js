@@ -1,17 +1,17 @@
 import express from 'express';
 
-import { getPosts, testAddUser, testFetch, allRecipes, login } from '../controllers/controller.js';
+import * as controls from '../controllers/controller.js';
 
 const router = express.Router();
 
-router.get('/', getPosts);
+router.get('/', controls.getPosts);
 
-router.get('/home', testAddUser);
+router.get('/home', controls.testAddUser);
 
-router.get('/testing', testFetch);
+router.get('/testing', controls.testFetch);
 
-router.get('/allrecipes', allRecipes);
+router.get('/allrecipes', controls.allRecipes);
 
-router.post('/login', login);
+router.post('/login', controls.login);
 
 export default router;

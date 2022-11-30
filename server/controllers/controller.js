@@ -1,4 +1,6 @@
 import { User, Recipe } from '../models/index.js';
+import bcrypt from 'bcrypt';
+const saltRounds = 10;
 
 export const getPosts = (req, res) => {
     const testData = {
@@ -64,4 +66,24 @@ export const login = async (req, res) => {
     console.log(req.body.username);
     
     //const theUser = await User.findOne({ where: { name: username }});
+}
+
+export const register = async (req, res) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    const age = req.body.age;
+    const password = req.body.password;
+
+    const hashed = await bcrypt.hash(password, saltRounds); 
+
+    const theUser = User.build({
+        name: username,
+        email: email,
+        age: age,
+        password: hashed
+    });
+
+    await theUser.save()
+    .then(console.log('saved'));
+
 }

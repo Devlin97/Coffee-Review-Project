@@ -13,5 +13,6 @@ router.get('/testing', controls.testFetch);
 router.get('/allrecipes', controls.allRecipes);
 
 router.post('/login', controls.login);
+router.post('/register', controls.register);
 
 export default router;

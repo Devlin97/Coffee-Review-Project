@@ -64,8 +64,16 @@ export const allRecipes = async (req, res) => {
 export const login = async (req, res) => {
     console.log('here');
     console.log(req.body.username);
+    const username = req.body.username;
+    const password = req.body.password;
     
-    //const theUser = await User.findOne({ where: { name: username }});
+    const theUser = await User.findOne({ where: { name: username }});
+    
+    console.log(theUser.dataValues.password);
+
+    const compared = await bcrypt.compare(password, theUser.dataValues.password);
+
+    console.log(compared);
 }
 
 export const register = async (req, res) => {

@@ -23,14 +23,16 @@ const db = mysql.createPool({
 });
 //========================================================
 
+app.use(bodyParser.json({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
+
 //Can put something in the '' to prefix all end points with /post
 //in routes-post.js if end point is '/' end point is actually '/post'
 import postRoutes from './routes/routes.js';
 app.use('', postRoutes);
 
-app.use(bodyParser.json({extended: true}));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+
 
 //This might not be needed, but will keep it in for now as still unsure which database if best to use 
 //mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
 
+async function loginUser(creds) {
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(creds),
+    })
+}
+
 const Login = () => {
   
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
     const handleSubmit = async (e) => {
-        
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username, password})
-        }
-        
-        fetch('/login', options)
-        .then(data => data.json())
+        e.preventDefault();
+
+        console.log(username, password);
+        await loginUser({
+            username,
+            password
+        });
+        console.log('done');
     }
   
     return (

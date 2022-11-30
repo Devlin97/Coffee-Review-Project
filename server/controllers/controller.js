@@ -58,3 +58,10 @@ export const allRecipes = async (req, res) => {
 
     res.json(recipes);
 }
+
+export const login = async (req, res) => {
+    console.log('here');
+    console.log(req.body.username);
+    
+    //const theUser = await User.findOne({ where: { name: username }});
+}

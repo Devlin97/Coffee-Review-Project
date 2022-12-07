@@ -29,7 +29,19 @@ const Recipe = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        totalTime: {
+        grinder: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        grindSize: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        totalTimeMinutes: {
             type: DataTypes.DECIMAL,
             allowNull: false
         }

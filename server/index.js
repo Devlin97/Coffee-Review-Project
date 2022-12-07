@@ -47,6 +47,3 @@ await sequelize.authenticate()
 .then(Comment.sync())
 .then(() => app.listen(process.env.PORT, () => console.log(`MYSQL Authenticated, Server running on port: ${process.env.PORT}`)))
 .catch((error) => console.log(error.message));
-
-//await User.sync();
-//console.log("User table has been (re)created");

@@ -1,4 +1,4 @@
-import { User, Recipe } from '../models/index.js';
+import { User, Recipe, Comment } from '../models/index.js';
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 

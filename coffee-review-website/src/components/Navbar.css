@@ -2,7 +2,7 @@
     --coffee: #6F4e37;
 }
 
-ul {
+.navbar-container > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ ul {
     display: flex;
 }
 
-li {
+.navbar-container > ul > li {
     display: inline;
     cursor: pointer;
 }

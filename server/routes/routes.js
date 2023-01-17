@@ -15,4 +15,6 @@ router.get('/allrecipes', controls.allRecipes);
 router.post('/login', controls.login);
 router.post('/register', controls.register);
 
+router.post('/addRecipe', controls.addRecipe);
+
 export default router;

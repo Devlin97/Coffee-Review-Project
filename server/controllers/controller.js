@@ -95,3 +95,35 @@ export const register = async (req, res) => {
     .then(console.log('saved'));
 
 }
+
+export const addRecipe = async (req, res) => {
+    const title = req.body.title;
+    const brewMethod = req.body.brewMethod;
+    const coffeeWeight = req.body.coffeeWeight;
+    const waterWeight = req.body.waterWeight;
+    const brewer = req.body.brewer;
+    const grinder = req.body.grinder;
+    const grindSize = req.body.grindSize;
+    const description = req.body.description;
+    const totalTime = req.body.totalTime;
+    const userId = req.body.userId;
+
+    const theRecipe = Recipe.build({
+        title: title,
+        brewMethod: brewMethod,
+        coffeeWeight: coffeeWeight,
+        waterWeight: waterWeight,
+        brewer: brewer,
+        grinder: grinder,
+        grindSize: grindSize,
+        description: description,
+        totalTimeMinutes: totalTime,
+        UserId: userId
+    });
+
+    await theRecipe.save()
+    .then(console.log('Recipe saved'))
+    .then(res.send(
+        {msg: 'success'}
+    ));
+}

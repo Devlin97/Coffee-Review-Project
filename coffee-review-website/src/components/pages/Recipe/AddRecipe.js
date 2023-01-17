@@ -60,6 +60,32 @@ const AddRecipe = () => {
             </Select>
         </FormControl>
 
+        <FormControl sx={{ m:1, minWidth: 150 }}>
+            <InputLabel id='select-label-brew-method'>Brewer</InputLabel>
+            <Select
+                labelId='select-label-brewer'
+                id='select-brewer'
+                value={brewer}
+                label='Brewer'
+                onChange={(e) => setBrewer(e.target.value)}
+                MenuProps={{
+                    anchorOrigin: {
+                        vertical:'bottom',
+                        horizontal: 'left'
+                    },
+                    transformOrigin: {
+                        vertical: 'top',
+                        horizontal: 'left'
+                    },
+                    getContentAnchorEl: null
+                }}
+            >
+                <MenuItem value={'V60'}>V60</MenuItem>
+                <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
+                <MenuItem value={'Clever Dripper'}>Drip</MenuItem>
+            </Select>
+        </FormControl>
+
 
         <label>Title</label>
         <input type='text' placeholder='Enter Title...' onChange={(e) => setTitle(e.target.value)} />  

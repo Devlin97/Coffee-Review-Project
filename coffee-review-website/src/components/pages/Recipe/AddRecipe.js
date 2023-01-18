@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
+import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 
 async function RecipeApp(creds) {
@@ -40,13 +41,31 @@ const AddRecipe = () => {
         description,
         totalTime,
     }
+
+    setTitle('');
+    setBrewMethod('');
+    setCoffeeWeight('');
+    setWaterWeight('');
+    setBrewer('');
+    setGrinder('');
+    setGrindSize('');
+    setDescription('');
+    setTotalTime('');
     console.log(recipe);
+    alert('Thank you for submitting your recipe!');
   }
   
   
     return (
     <form onSubmit={handleSubmit}>
-        <TextField id='title-text' label='Title' variant='standard' onChange={(e) => setTitle(e.target.value)} />
+
+        <TextField 
+        id='title-text' 
+        label='Title' 
+        variant='standard' 
+        onChange={(e) => setTitle(e.target.value)} 
+        value={title}
+        />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
             <InputLabel id='select-label-brew-method'>Brew Method</InputLabel>
@@ -106,7 +125,8 @@ const AddRecipe = () => {
             id='coffee-weight-text' 
             label='Coffee Weight (g)'  
             type='number' 
-            onChange={(e) => setCoffeeWeight(e.target.value)} 
+            onChange={(e) => setCoffeeWeight(parseInt(e.target.value))}
+            value={coffeeWeight} 
             InputProps={{ inputProps: { step: 'any' } }}
         />
         
@@ -114,7 +134,8 @@ const AddRecipe = () => {
             id='water-weight-text' 
             label='Water Weight (g)'  
             type='number' 
-            onChange={(e) => setWaterWeight(e.target.value)}
+            onChange={(e) => setWaterWeight(parseInt(e.target.value))}
+            value={waterWeight}
             InputProps={{ inputProps: { step: 'any' } }} 
         />
 
@@ -155,7 +176,8 @@ const AddRecipe = () => {
             id='grind-size-text' 
             label='Grind Size (clicks)'  
             type='number' 
-            onChange={(e) => setGrindSize(e.target.value)}
+            onChange={(e) => setGrindSize(parseInt(e.target.value))}
+            value={grindSize}
             InputProps={{ inputProps: { step: 'any' } }} 
         />
 
@@ -163,7 +185,8 @@ const AddRecipe = () => {
             id='total-time-text' 
             label='Total time (min)'  
             type='number' 
-            onChange={(e) => setTotalTime(e.target.value)}
+            onChange={(e) => setTotalTime(parseInt(e.target.value))}
+            value={totalTime}
             InputProps={{ inputProps: { step: 'any' } }} 
         />
 
@@ -173,11 +196,12 @@ const AddRecipe = () => {
             multiline
             rows={4}
             placeholder='Description...'
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
         />
 
 
-        <button type='submit' />
+        <button type='submit'>Submit</button>
     </form>
   )
 }

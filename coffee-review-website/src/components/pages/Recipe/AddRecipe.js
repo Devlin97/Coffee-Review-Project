@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 
-async function RecipeApp(creds) {
+async function recipeAdd(creds) {
     fetch('/addRecipe', {
         method: 'POST',
         headers: {
@@ -40,7 +40,10 @@ const AddRecipe = () => {
         grindSize,
         description,
         totalTime,
+        userId: 1
     }
+
+    await recipeAdd(recipe);
 
     setTitle('');
     setBrewMethod('');

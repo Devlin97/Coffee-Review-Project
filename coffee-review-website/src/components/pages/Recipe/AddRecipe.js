@@ -4,6 +4,8 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 
@@ -61,6 +63,12 @@ const AddRecipe = () => {
   
     return (
     <form onSubmit={handleSubmit}>
+
+        <Stack 
+            spacing={2}
+            direction='column'
+            alignItems='center' 
+        >
 
         <TextField 
         id='title-text' 
@@ -204,7 +212,9 @@ const AddRecipe = () => {
         />
 
 
-        <button type='submit'>Submit</button>
+        <Button type='submit' variant='contained' color='success'>Submit</Button>
+
+        </Stack>
     </form>
   )
 }

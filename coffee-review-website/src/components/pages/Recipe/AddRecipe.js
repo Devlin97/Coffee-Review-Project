@@ -64,6 +64,8 @@ const AddRecipe = () => {
     return (
     <form onSubmit={handleSubmit}>
 
+        <Box>
+
         <Stack 
             spacing={2}
             direction='column'
@@ -73,9 +75,10 @@ const AddRecipe = () => {
         <TextField 
         id='title-text' 
         label='Title' 
-        variant='standard' 
+        variant='outlined' 
         onChange={(e) => setTitle(e.target.value)} 
         value={title}
+        sx={{ width: '250px' }}
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
@@ -215,6 +218,8 @@ const AddRecipe = () => {
         <Button type='submit' variant='contained' color='success'>Submit</Button>
 
         </Stack>
+
+        </Box>
     </form>
   )
 }

@@ -12,7 +12,7 @@ const RecipesSearch = ({recipesIn}) => {
 
   return (
     <>
-      <Box sx={{ bgcolor: '#6F4e37', color: 'whitesmoke', width: 400 }}>
+      <Box sx={{ bgcolor: 'lightslategrey', color: 'whitesmoke', width: 400, marginTop: '10px', marginLeft: '5px' }}>
         <TextField 
           id='recipe-search' 
           label='Search' 

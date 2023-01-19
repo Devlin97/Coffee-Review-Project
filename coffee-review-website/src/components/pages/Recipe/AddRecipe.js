@@ -9,6 +9,8 @@ import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 
+const textColor = '#F9F6EE';
+
 async function recipeAdd(creds) {
     fetch('/addRecipe', {
         method: 'POST',
@@ -64,13 +66,16 @@ const AddRecipe = () => {
     return (
     <form onSubmit={handleSubmit}>
 
-        <Box>
+        <Box sx={{ width: '100%', maxWidth: 400, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
 
         <Stack 
             spacing={2}
             direction='column'
-            alignItems='center' 
+            alignItems='stretch'
+            width='100%' 
         >
+
+        <h1 className='create-recipe-h1'>Create a Recipe</h1>
 
         <TextField 
         id='title-text' 
@@ -78,10 +83,12 @@ const AddRecipe = () => {
         variant='outlined' 
         onChange={(e) => setTitle(e.target.value)} 
         value={title}
-        sx={{ width: '250px' }}
+        color='primary'
+        sx={{ input: { color: '#F9F6EE' } }}
+        InputLabelProps= {{ style: { color: textColor } }}
         />
 
-        <FormControl sx={{ m:1, minWidth: 150 }}>
+        <FormControl sx={{ m:1, minWidth: 200 }}>
             <InputLabel id='select-label-brew-method'>Brew Method</InputLabel>
             <Select
                 labelId='select-label-brew-method'
@@ -212,6 +219,7 @@ const AddRecipe = () => {
             placeholder='Description...'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            inputProps={{ style: { color: '#F9F6EE' } }}
         />
 
 

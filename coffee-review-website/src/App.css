@@ -5,3 +5,8 @@
 body {
   background-color: var(--police-blue);
 }
+
+.create-recipe-h1 {
+  color: #F9F6EE;
+  text-align: center;
+}

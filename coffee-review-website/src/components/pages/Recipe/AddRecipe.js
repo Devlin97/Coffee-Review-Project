@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 
-const textColor = '#F9F6EE';
+const textColor = '#CBCCCD';
 
 async function recipeAdd(creds) {
     fetch('/addRecipe', {
@@ -84,12 +84,12 @@ const AddRecipe = () => {
         onChange={(e) => setTitle(e.target.value)} 
         value={title}
         color='primary'
-        sx={{ input: { color: '#F9F6EE' } }}
+        sx={{ input: { color: textColor } }}
         InputLabelProps= {{ style: { color: textColor } }}
         />
 
         <FormControl sx={{ m:1, minWidth: 200 }}>
-            <InputLabel id='select-label-brew-method'>Brew Method</InputLabel>
+            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brew Method</InputLabel>
             <Select
                 labelId='select-label-brew-method'
                 id='select-brew-method'
@@ -97,6 +97,7 @@ const AddRecipe = () => {
                 label='Brew Method'
                 onChange={(e) => setBrewMethod(e.target.value)}
                 defaultValue=""
+                style={{ color: textColor }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -116,7 +117,7 @@ const AddRecipe = () => {
         </FormControl>
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
-            <InputLabel id='select-label-brew-method'>Brewer</InputLabel>
+            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brewer</InputLabel>
             <Select
                 labelId='select-label-brewer'
                 id='select-brewer'
@@ -124,6 +125,7 @@ const AddRecipe = () => {
                 label='Brewer'
                 onChange={(e) => setBrewer(e.target.value)}
                 defaultValue=""
+                style={{ color: textColor }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -149,6 +151,7 @@ const AddRecipe = () => {
             onChange={(e) => setCoffeeWeight(parseInt(e.target.value))}
             value={coffeeWeight} 
             InputProps={{ inputProps: { step: 'any' } }}
+            InputLabelProps= {{ style: { color: textColor } }}
         />
         
         <TextField
@@ -157,11 +160,12 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setWaterWeight(parseInt(e.target.value))}
             value={waterWeight}
-            InputProps={{ inputProps: { step: 'any' } }} 
+            InputProps={{ inputProps: { step: 'any' } }}
+            InputLabelProps= {{ style: { color: textColor } }} 
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
-            <InputLabel id='select-label-brew-method'>Grinder</InputLabel>
+            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Grinder</InputLabel>
             <Select
                 labelId='select-grinder'
                 id='select-grinder'
@@ -169,6 +173,7 @@ const AddRecipe = () => {
                 label='Grinder'
                 onChange={(e) => setGrinder(e.target.value)}
                 defaultValue=""
+                style={{ color: textColor }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -180,7 +185,7 @@ const AddRecipe = () => {
                     },
                     getContentAnchorEl: null
                 }}
-        >
+            >
                 <MenuItem value={'C40'}>Commandante C40</MenuItem>
                 <MenuItem value={'C2'}>Timemore C2</MenuItem>
                 <MenuItem value={'M47'}>Kinu M47</MenuItem>
@@ -199,7 +204,8 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setGrindSize(parseInt(e.target.value))}
             value={grindSize}
-            InputProps={{ inputProps: { step: 'any' } }} 
+            InputProps={{ inputProps: { step: 'any' } }}
+            InputLabelProps= {{ style: { color: textColor } }} 
         />
 
         <TextField
@@ -208,7 +214,8 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setTotalTime(parseInt(e.target.value))}
             value={totalTime}
-            InputProps={{ inputProps: { step: 'any' } }} 
+            InputProps={{ inputProps: { step: 'any' } }}
+            InputLabelProps= {{ style: { color: textColor } }} 
         />
 
         <TextField
@@ -220,8 +227,8 @@ const AddRecipe = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             inputProps={{ style: { color: '#F9F6EE' } }}
+            InputLabelProps= {{ style: { color: textColor } }}
         />
-
 
         <Button type='submit' variant='contained' color='success'>Submit</Button>
 

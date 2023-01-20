@@ -12,7 +12,14 @@ const RecipesSearch = ({recipesIn}) => {
 
   return (
     <>
-      <Box sx={{ bgcolor: 'lightslategrey', color: 'whitesmoke', width: 400, marginTop: '10px', marginLeft: '5px' }}>
+      <Box sx={{ 
+        bgcolor: 'lightslategrey', 
+        width: 400, 
+        marginTop: '10px', 
+        marginLeft: '5px', 
+        background: 'linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% )' 
+        }}>
+
         <TextField 
           id='recipe-search' 
           label='Search' 
@@ -21,17 +28,19 @@ const RecipesSearch = ({recipesIn}) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
-                <Search />
+                <Search style={{ color: '#CBCCCD' }} />
               </InputAdornment>
             )
           }}
-          sx={{ width: '100%' }}
+          sx={{ width: '100%', input: { color: 'white' } }}
+          InputLabelProps={{ style: { color: '#CBCCCD' } }}
         />
+
         <List>
         {recipesIn.map(rec => (
           <ListItem>
             <ListItemButton>
-              <ListItemText primary={rec.title} />
+              <ListItemText primary={rec.title} sx={{ color: '#CBCCCD' }} />
             </ListItemButton>
           </ListItem>
         ))}

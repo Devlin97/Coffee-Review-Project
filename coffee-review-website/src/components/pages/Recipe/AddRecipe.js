@@ -84,7 +84,7 @@ const AddRecipe = () => {
         onChange={(e) => setTitle(e.target.value)} 
         value={title}
         color='primary'
-        sx={{ input: { color: textColor } }}
+        sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
         InputLabelProps= {{ style: { color: textColor } }}
         />
 
@@ -98,6 +98,7 @@ const AddRecipe = () => {
                 onChange={(e) => setBrewMethod(e.target.value)}
                 defaultValue=""
                 style={{ color: textColor }}
+                sx={{ fieldset: { borderColor: textColor } }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -126,6 +127,7 @@ const AddRecipe = () => {
                 onChange={(e) => setBrewer(e.target.value)}
                 defaultValue=""
                 style={{ color: textColor }}
+                sx={{ fieldset: { borderColor: textColor } }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -152,6 +154,7 @@ const AddRecipe = () => {
             value={coffeeWeight} 
             InputProps={{ inputProps: { step: 'any' } }}
             InputLabelProps= {{ style: { color: textColor } }}
+            sx={{ fieldset: { borderColor: textColor } }}
         />
         
         <TextField
@@ -161,7 +164,8 @@ const AddRecipe = () => {
             onChange={(e) => setWaterWeight(parseInt(e.target.value))}
             value={waterWeight}
             InputProps={{ inputProps: { step: 'any' } }}
-            InputLabelProps= {{ style: { color: textColor } }} 
+            InputLabelProps= {{ style: { color: textColor } }}
+            sx={{ fieldset: { borderColor: textColor } }} 
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
@@ -174,6 +178,7 @@ const AddRecipe = () => {
                 onChange={(e) => setGrinder(e.target.value)}
                 defaultValue=""
                 style={{ color: textColor }}
+                sx={{ fieldset: { borderColor: textColor } }}
                 MenuProps={{
                     anchorOrigin: {
                         vertical:'bottom',
@@ -205,7 +210,8 @@ const AddRecipe = () => {
             onChange={(e) => setGrindSize(parseInt(e.target.value))}
             value={grindSize}
             InputProps={{ inputProps: { step: 'any' } }}
-            InputLabelProps= {{ style: { color: textColor } }} 
+            InputLabelProps= {{ style: { color: textColor } }}
+            sx={{ fieldset: { borderColor: textColor } }} 
         />
 
         <TextField
@@ -215,7 +221,8 @@ const AddRecipe = () => {
             onChange={(e) => setTotalTime(parseInt(e.target.value))}
             value={totalTime}
             InputProps={{ inputProps: { step: 'any' } }}
-            InputLabelProps= {{ style: { color: textColor } }} 
+            InputLabelProps= {{ style: { color: textColor } }}
+            sx={{ fieldset: { borderColor: textColor } }} 
         />
 
         <TextField
@@ -228,6 +235,7 @@ const AddRecipe = () => {
             onChange={(e) => setDescription(e.target.value)}
             inputProps={{ style: { color: '#F9F6EE' } }}
             InputLabelProps= {{ style: { color: textColor } }}
+            sx={{ fieldset: { borderColor: textColor } }}
         />
 
         <Button type='submit' variant='contained' color='success'>Submit</Button>

@@ -34,6 +34,7 @@ const AddRecipe = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    
     const recipe = {
         title,
         brewMethod,
@@ -142,7 +143,8 @@ const AddRecipe = () => {
             >
                 <MenuItem value={'V60'}>V60</MenuItem>
                 <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
-                <MenuItem value={'Clever Dripper'}>Drip</MenuItem>
+                <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
+                <MenuItem value={'Drip'}>Drip</MenuItem>
             </Select>
         </FormControl>
 
@@ -150,22 +152,22 @@ const AddRecipe = () => {
             id='coffee-weight-text' 
             label='Coffee Weight (g)'  
             type='number' 
-            onChange={(e) => setCoffeeWeight(parseInt(e.target.value))}
+            onChange={(e) => setCoffeeWeight(parseFloat(e.target.value))}
             value={coffeeWeight} 
-            InputProps={{ inputProps: { step: 'any' } }}
+            InputProps={{ inputProps: { step: '.1' } }}
             InputLabelProps= {{ style: { color: textColor } }}
-            sx={{ fieldset: { borderColor: textColor } }}
+            sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }}
         />
         
         <TextField
             id='water-weight-text' 
             label='Water Weight (g)'  
             type='number' 
-            onChange={(e) => setWaterWeight(parseInt(e.target.value))}
+            onChange={(e) => setWaterWeight(parseFloat(e.target.value))}
             value={waterWeight}
             InputProps={{ inputProps: { step: 'any' } }}
             InputLabelProps= {{ style: { color: textColor } }}
-            sx={{ fieldset: { borderColor: textColor } }} 
+            sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
@@ -209,20 +211,19 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setGrindSize(parseInt(e.target.value))}
             value={grindSize}
-            InputProps={{ inputProps: { step: 'any' } }}
             InputLabelProps= {{ style: { color: textColor } }}
-            sx={{ fieldset: { borderColor: textColor } }} 
+            sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
 
         <TextField
             id='total-time-text' 
             label='Total time (min)'  
             type='number' 
-            onChange={(e) => setTotalTime(parseInt(e.target.value))}
+            onChange={(e) => setTotalTime(parseFloat(e.target.value))}
             value={totalTime}
             InputProps={{ inputProps: { step: 'any' } }}
             InputLabelProps= {{ style: { color: textColor } }}
-            sx={{ fieldset: { borderColor: textColor } }} 
+            sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
 
         <TextField
@@ -233,7 +234,7 @@ const AddRecipe = () => {
             placeholder='Description...'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            inputProps={{ style: { color: '#F9F6EE' } }}
+            inputProps={{ style: { color: textColor } }}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor } }}
         />

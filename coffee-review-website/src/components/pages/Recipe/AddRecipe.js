@@ -110,8 +110,8 @@ const AddRecipe = () => {
                         horizontal: 'left'
                     },
                     getContentAnchorEl: null
-                }}
-            >
+                }}>
+            
                 <MenuItem value={'Immersion'}>Immersion</MenuItem>
                 <MenuItem value={'Pourover'}>Pourover</MenuItem>
                 <MenuItem value={'Drip'}>Drip</MenuItem>
@@ -139,8 +139,8 @@ const AddRecipe = () => {
                         horizontal: 'left'
                     },
                     getContentAnchorEl: null
-                }}
-            >
+                }}>
+            
                 <MenuItem value={'V60'}>V60</MenuItem>
                 <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
                 <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
@@ -191,8 +191,8 @@ const AddRecipe = () => {
                         horizontal: 'left'
                     },
                     getContentAnchorEl: null
-                }}
-            >
+                }}>
+            
                 <MenuItem value={'C40'}>Commandante C40</MenuItem>
                 <MenuItem value={'C2'}>Timemore C2</MenuItem>
                 <MenuItem value={'M47'}>Kinu M47</MenuItem>

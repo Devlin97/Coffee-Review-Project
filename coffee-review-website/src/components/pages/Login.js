@@ -43,10 +43,15 @@ const Login = () => {
                 alignItems='center'
                 sx={{ 
                     background: 'linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% )', 
-                    padding: '100px', 
+                    paddingLeft: '100px',
+                    paddingRight: '100px',
+                    paddingBottom: '50px',
+                    paddingTop: '50px', 
                     borderRadius: '25px' 
-                }}
-            >
+                }}>
+
+                <h2 className='sign-in-header'>SIGN IN</h2>
+            
 
                 <TextField 
                     id='username-text' 

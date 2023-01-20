@@ -17,7 +17,7 @@ const RecipesSearch = ({recipesIn}) => {
         width: 400, 
         marginTop: '10px', 
         marginLeft: '5px', 
-        background: 'linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% )' 
+        background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.5) 11.4%, rgba(63,76,119,0.5) 70.2% )' 
         }}>
 
         <TextField 

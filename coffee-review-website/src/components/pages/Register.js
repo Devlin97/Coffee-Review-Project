@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { TextField, Stack, Box, Button } from '@mui/material';
+
+const textColor = '#CBCCCD';
 
 async function registerUser(creds) {
   fetch('/register', {
@@ -31,15 +34,76 @@ const Register = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-        <label>Name (username)</label>
-        <input type='text' placeholder='Enter name...' onChange={(e) => setUsername(e.target.value)} />
-        <label>Email</label>
-        <input type='text' placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} />
-        <label>Age</label>
-        <input type='number' onChange={(e) => setAge(e.target.value)} />
-        <label>Password</label>
-        <input type='password' placeholder='Enter Password...' onChange={(e) => setPassword(e.target.value)} />
-        <button type='submit'>Submit</button>
+
+      <Box sx={{ width: '100%', height: 600 , justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+
+        <Stack
+          spacing={4}
+          direction='column'
+          alignItems='center'
+          sx={{ 
+              background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
+              paddingLeft: '100px',
+              paddingRight: '100px',
+              paddingBottom: '50px',
+              paddingTop: '50px', 
+              borderRadius: '25px' 
+          }}>
+
+          <h2 className='sign-in-header'>REGISTER</h2>
+
+          <TextField 
+            id='username-text' 
+            label='Username' 
+            variant='standard' 
+            onChange={(e) => setUsername(e.target.value)} 
+            value={username}
+            color='primary'
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            InputLabelProps= {{ style: { color: textColor } }}
+          />
+
+          <TextField 
+            id='email-text' 
+            label='Email' 
+            variant='standard' 
+            onChange={(e) => setEmail(e.target.value)} 
+            value={email}
+            color='primary'
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            InputLabelProps= {{ style: { color: textColor } }}
+          />
+
+          <TextField 
+            id='age-text' 
+            label='Age' 
+            variant='standard' 
+            onChange={(e) => setAge(e.target.value)} 
+            value={age}
+            color='primary'
+            type='number'
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            InputLabelProps= {{ style: { color: textColor } }}
+          />
+
+          <TextField 
+            id='password-text' 
+            label='Password' 
+            variant='standard' 
+            onChange={(e) => setPassword(e.target.value)} 
+            value={password}
+            color='primary'
+            type='password'
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            InputLabelProps= {{ style: { color: textColor } }}
+          />
+
+          <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>Register</Button>
+
+        </Stack>
+
+      </Box>
+
     </form>
   )
 }

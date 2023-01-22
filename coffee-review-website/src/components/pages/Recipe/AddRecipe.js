@@ -67,14 +67,22 @@ const AddRecipe = () => {
     return (
     <form onSubmit={handleSubmit}>
 
-        <Box sx={{ width: '100%', maxWidth: 400, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
+        <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
 
         <Stack 
             spacing={2}
             direction='column'
             alignItems='stretch'
-            width='100%' 
-        >
+            width='100%'
+            sx={{ 
+                background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
+                paddingLeft: '15px',
+                paddingRight: '15px',
+                paddingBottom: '50px',
+                paddingTop: '50px', 
+                borderRadius: '25px',
+                marginTop: '15px' 
+            }}>
 
         <h1 className='create-recipe-h1'>Create a Recipe</h1>
 
@@ -141,6 +149,7 @@ const AddRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
+                <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
                 <MenuItem value={'V60'}>V60</MenuItem>
                 <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
                 <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>

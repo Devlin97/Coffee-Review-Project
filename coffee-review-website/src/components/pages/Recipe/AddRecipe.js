@@ -127,7 +127,7 @@ const AddRecipe = () => {
         </FormControl>
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
-            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brewer</InputLabel>
+            <InputLabel id='select-label-brewer' style={{ color: textColor }}>Brewer</InputLabel>
             <Select
                 labelId='select-label-brewer'
                 id='select-brewer'
@@ -180,7 +180,7 @@ const AddRecipe = () => {
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
-            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Grinder</InputLabel>
+            <InputLabel id='select-label-grinder' style={{ color: textColor }}>Grinder</InputLabel>
             <Select
                 labelId='select-grinder'
                 id='select-grinder'

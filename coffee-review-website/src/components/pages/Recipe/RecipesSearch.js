@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -7,8 +7,11 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
 import Search from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment';
+import RecipeDetails from './RecipeDetails';
 
 const RecipesSearch = ({recipesIn}) => {
+  const [theRecipe, setTheRecipe] = useState();
+
 
   return (
     <>
@@ -38,14 +41,15 @@ const RecipesSearch = ({recipesIn}) => {
 
         <List>
         {recipesIn.map(rec => (
-          <ListItem>
-            <ListItemButton>
+          <ListItem key={rec.id}>
+            <ListItemButton onClick={() => setTheRecipe(rec)}>
               <ListItemText primary={rec.title} sx={{ color: '#CBCCCD' }} />
             </ListItemButton>
           </ListItem>
         ))}
         </List>
       </Box>
+      <RecipeDetails recipeIn={theRecipe} />
     </>
   )
 }

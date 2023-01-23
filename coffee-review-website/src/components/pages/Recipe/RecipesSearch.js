@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -9,6 +10,7 @@ import Search from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment';
 import RecipeDetails from './RecipeDetails';
 import Grid from '@mui/material/Unstable_Grid2'
+import Button from '@mui/material/Button'
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
@@ -53,8 +55,18 @@ const RecipesSearch = ({recipesIn}) => {
             </List>
           </Box>
         </Grid>
-        <Grid xs={12} md={8}>
+        <Grid xs={12} md={4}>
           <RecipeDetails recipeIn={theRecipe} />
+        </Grid>
+        <Grid xs={12} md={4} display='flex' height='50px' justifyContent='center' marginTop='10px'>
+          <Link to='/addRecipe' >
+            <Button 
+              variant='contained' 
+              color='success'
+            >
+              Create your own Recipe!
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </>

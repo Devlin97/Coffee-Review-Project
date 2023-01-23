@@ -29,7 +29,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
               marginTop: '15px' 
           }}>
 
-      <h1 className='create-recipe-h1'>Create a Recipe</h1>
+      <h1 className='create-recipe-h1'>Recipe Details</h1>
 
       <TextField 
         id='title-read-only' 
@@ -41,6 +41,11 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         InputLabelProps= {{ style: { color: textColor } }}
         InputProps= {{ readOnly: true }}
       />
+
+      <Stack 
+        direction='row'
+        spacing={2}
+      >
 
       <TextField 
         id='brew-method-read-only' 
@@ -63,6 +68,8 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         InputLabelProps= {{ style: { color: textColor } }}
         InputProps= {{ readOnly: true }}
       />
+
+      </Stack>
 
       <TextField 
         id='coffee-weight-read-only' 

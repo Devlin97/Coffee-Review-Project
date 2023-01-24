@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import Comment from '../../Comment';
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -58,17 +59,18 @@ const RecipesSearch = ({recipesIn}) => {
         <Grid xs={12} md={4}>
           <RecipeDetails recipeIn={theRecipe} />
         </Grid>
-        <Grid xs={12} md={4} display='flex' height='50px' justifyContent='center' marginTop='10px'>
-          <Link to='/addRecipe' >
-            <Button 
-              variant='contained' 
-              color='success'
-            >
-              Create your own Recipe!
-            </Button>
-          </Link>
+        <Grid xs={12} md={4}>
+          <Comment postIdIn={theRecipe?.id} />
         </Grid>
       </Grid>
+      <Link to='/addRecipe' >
+        <Button 
+          variant='contained' 
+          color='success'
+        >
+          Create your own Recipe!
+        </Button>
+      </Link>
     </>
   )
 }

@@ -17,4 +17,6 @@ router.post('/register', controls.register);
 
 router.post('/addRecipe', controls.addRecipe);
 
+router.post('/getComments', controls.getComments);
+
 export default router;

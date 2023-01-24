@@ -44,21 +44,52 @@ export const testAddUser = async (req, res) => {
 
 }
 
-export const testFetch = (req, res) => {
-    
-    res.json(
-        {
-            name: 'test',
-            number: 1234
-        }
-    )
+export const testFetch = async (req, res) => {
+    const theComment = Comment.build({
+        text: 'Amazing!',
+        UserId: 1,
+        RecipeId: 1
+    })
 
+    await theComment.save()
+    .then(console.log('saved'));
 }
 
 export const allRecipes = async (req, res) => {
     let recipes = await Recipe.findAll();
 
     res.json(recipes);
+}
+
+export const getComments = async (req, res) => {
+    const postId = req.body.postId;
+
+    const commentsHolder = await Comment.findAll({
+        where: {
+            RecipeId: postId
+        }
+    });
+
+    let comments = [];
+    
+    for(const coms of commentsHolder) {
+        let userHold = await User.findOne({
+            where: {
+                id: coms.UserId
+            }
+        });
+        
+        let holder = {
+            id: coms.id,
+            text: coms.text,
+            name: userHold.name
+        }
+
+        console.log('Holder: ', holder);
+
+        comments.push(holder);
+    }
+    res.json(comments);
 }
 
 export const login = async (req, res) => {

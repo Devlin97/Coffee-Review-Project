@@ -6,16 +6,6 @@ import Button from '@mui/material/Button'
 
 const textColor = '#CBCCCD';
 
-async function loginUser(creds) {
-    fetch('/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(creds),
-    })
-}
-
 const Login = () => {
   
     const [username, setUsername] = useState('');
@@ -30,6 +20,33 @@ const Login = () => {
             password
         });
         console.log('done');
+    }
+
+    async function loginUser(creds) {
+        const loginSuccess = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(creds),
+        })
+    
+        const jsonSuccess = await loginSuccess.json();
+    
+        console.log('Login Success: ', jsonSuccess);
+    
+        if(jsonSuccess.success) {
+            localStorage.setItem('loginID', jsonSuccess.theId);
+
+            setUsername('');
+            setPassword('');
+    
+            alert('Login Successful!');
+        }
+    
+        if(!jsonSuccess.success) {
+            alert('Invalid Username / Password Combination.');
+        }
     }
   
     return (

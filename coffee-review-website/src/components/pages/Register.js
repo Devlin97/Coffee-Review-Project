@@ -3,16 +3,6 @@ import { TextField, Stack, Box, Button } from '@mui/material';
 
 const textColor = '#CBCCCD';
 
-async function registerUser(creds) {
-  fetch('/register', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(creds),
-  })
-}
-
 const Register = () => {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
@@ -30,7 +20,31 @@ const Register = () => {
           age
       });
       console.log('done');
-  }
+    }
+
+    async function registerUser(creds) {
+      const successRegister = await fetch('/register', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(creds),
+      })
+    
+      const jsonRegister = await successRegister.json();
+    
+      console.log('Register Success: ', jsonRegister);
+    
+      if(jsonRegister.success) {
+        alert('Thank you for registering!');
+
+        setUsername('');
+        setEmail('');
+        setAge('');
+        setPassword('');
+      }
+    
+    }
 
   return (
     <form onSubmit={handleSubmit}>

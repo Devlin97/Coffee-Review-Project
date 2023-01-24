@@ -74,6 +74,19 @@ export const login = async (req, res) => {
     const compared = await bcrypt.compare(password, theUser.dataValues.password);
 
     console.log(compared);
+
+    if(compared) {
+        res.json({
+            theId: theUser.id,
+            success: true
+        });
+    }
+    else {
+        res.json({
+            success: false
+        })
+    }
+
 }
 
 export const register = async (req, res) => {
@@ -92,7 +105,10 @@ export const register = async (req, res) => {
     });
 
     await theUser.save()
-    .then(console.log('saved'));
+    .then(console.log('saved'))
+    .then(res.json({
+        success: true
+    }));
 
 }
 

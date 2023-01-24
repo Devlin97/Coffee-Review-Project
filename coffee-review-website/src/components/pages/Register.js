@@ -43,6 +43,10 @@ const Register = () => {
         setAge('');
         setPassword('');
       }
+
+      if(!jsonRegister.success) {
+        alert('Username Taken');
+      }
     
     }
 

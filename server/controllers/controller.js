@@ -95,20 +95,29 @@ export const register = async (req, res) => {
     const age = req.body.age;
     const password = req.body.password;
 
-    const hashed = await bcrypt.hash(password, saltRounds); 
+    const nameCheck = await User.findOne({ where: { name: username }});
 
-    const theUser = User.build({
-        name: username,
-        email: email,
-        age: age,
-        password: hashed
-    });
+    if(nameCheck) {
+        res.json({
+            success: false
+        });
+    }
+    else {
+        const hashed = await bcrypt.hash(password, saltRounds); 
 
-    await theUser.save()
-    .then(console.log('saved'))
-    .then(res.json({
-        success: true
-    }));
+        const theUser = User.build({
+            name: username,
+            email: email,
+            age: age,
+            password: hashed
+        });
+
+        await theUser.save()
+        .then(console.log('saved'))
+        .then(res.json({
+            success: true
+        }));
+    }
 
 }
 

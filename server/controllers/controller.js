@@ -70,6 +70,11 @@ export const getComments = async (req, res) => {
         }
     });
 
+    //Sorts the list so most recent comments display first
+    commentsHolder.sort((a, b) => { 
+        return b.createdAt - a.createdAt
+    })
+
     let comments = [];
     
     for(const coms of commentsHolder) {
@@ -112,6 +117,11 @@ export const leaveComment = async (req, res) => {
             RecipeId: postId
         }
     });
+
+    //Sorts the list so most recent comments display first
+    commentsHolder.sort((a, b) => { 
+        return b.createdAt - a.createdAt
+    })
 
     let comments = [];
     

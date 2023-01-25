@@ -55,13 +55,17 @@ const Comment = ({ postIdIn }) => {
 
       console.log(creds);
 
-      fetch('/leaveComment', {
+      const data = await fetch('/leaveComment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(creds),
       });
+
+      const jsonComments = await data.json();
+
+      setComments(jsonComments);
 
       setTheComment('');
     }

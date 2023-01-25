@@ -105,7 +105,34 @@ export const leaveComment = async (req, res) => {
 
     await theComment.save()
     .then(console.log('saved'));
+    
+    //Rerender comments
+    const commentsHolder = await Comment.findAll({
+        where: {
+            RecipeId: postId
+        }
+    });
 
+    let comments = [];
+    
+    for(const coms of commentsHolder) {
+        let userHold = await User.findOne({
+            where: {
+                id: coms.UserId
+            }
+        });
+        
+        let holder = {
+            id: coms.id,
+            text: coms.text,
+            name: userHold.name
+        }
+
+        console.log('Holder: ', holder);
+
+        comments.push(holder);
+    }
+    res.json(comments);
 }
 
 export const login = async (req, res) => {

@@ -92,6 +92,22 @@ export const getComments = async (req, res) => {
     res.json(comments);
 }
 
+export const leaveComment = async (req, res) => {
+    const postId = req.body.postId;
+    const userId = req.body.userId;
+    const commentText = req.body.text;
+
+    const theComment = Comment.build({
+        text: commentText,
+        UserId: userId,
+        RecipeId: postId
+    });
+
+    await theComment.save()
+    .then(console.log('saved'));
+
+}
+
 export const login = async (req, res) => {
     console.log('here');
     console.log(req.body.username);

@@ -42,23 +42,29 @@ const Comment = ({ postIdIn }) => {
   }, [postIdIn]);
 
   const handleCommentSubmit = async () => {
-    const creds = {
-      postId: postIdIn,
-      userId: 1,
-      text: theComment
+    
+    if(localStorage.getItem('loginID') === null) {
+      alert('You must be logged in to leave comments!');
     }
+    else {
+      const creds = {
+        postId: postIdIn,
+        userId: JSON.parse(localStorage.getItem('loginID')),
+        text: theComment
+      }
 
-    console.log(creds);
+      console.log(creds);
 
-    fetch('/leaveComment', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(creds),
-    });
+      fetch('/leaveComment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(creds),
+      });
 
-    setTheComment('');
+      setTheComment('');
+    }
   }
 
   return (
@@ -99,7 +105,7 @@ const Comment = ({ postIdIn }) => {
             <Box sx={{ minWidth: '250px' }} key={com.id}>
               <Card variant='outline' sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )'}}>
                 <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color={textColor} gutterBottom>
+                    <Typography sx={{ fontSize: 15 }} color={textColor} gutterBottom>
                         {com.name}
                     </Typography>
                     <Typography variant="h5" component="div" color={textColor}>

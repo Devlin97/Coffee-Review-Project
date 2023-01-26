@@ -20,6 +20,7 @@ const Login = () => {
 
     const handleLogOut = () => {
         localStorage.removeItem('loginID');
+        localStorage.removeItem('loginUsername');
         setIsLoggedIn(false);
     }
 
@@ -49,6 +50,7 @@ const Login = () => {
     
         if(jsonSuccess.success) {
             localStorage.setItem('loginID', jsonSuccess.theId);
+            localStorage.setItem('loginUsername', jsonSuccess.username);
             setIsLoggedIn(true);
 
             setUsername('');

@@ -4,10 +4,11 @@ import PostHistory from './PostHistory';
 
 function Profile() {
 
+    console.log(localStorage.getItem('loginUsername'));
     return (
         <>
             <h1>
-                TEST PROFILE
+                {localStorage.getItem('loginUsername')}
             </h1>
             <PostHistory />
         </>

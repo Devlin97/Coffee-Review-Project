@@ -183,6 +183,7 @@ export const login = async (req, res) => {
     if(compared) {
         res.json({
             theId: theUser.id,
+            username: theUser.name,
             success: true
         });
     }

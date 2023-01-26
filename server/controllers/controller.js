@@ -112,8 +112,6 @@ export const getComments = async (req, res) => {
             userId: coms.UserId
         }
 
-        console.log('Holder: ', holder);
-
         comments.push(holder);
     }
     res.json(comments);
@@ -161,8 +159,6 @@ export const leaveComment = async (req, res) => {
             userId: coms.UserId
         }
 
-        console.log('Holder: ', holder);
-
         comments.push(holder);
     }
     res.json(comments);
@@ -207,8 +203,6 @@ export const deleteComment = async (req, res) => {
             name: userHold.name,
             userId: coms.UserId
         }
-
-        console.log('Holder: ', holder);
 
         comments.push(holder);
     }

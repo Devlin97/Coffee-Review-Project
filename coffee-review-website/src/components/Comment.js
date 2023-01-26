@@ -18,8 +18,6 @@ const Comment = ({ postIdIn }) => {
   const fetchComments = async() => {
     const creds = { postId: postIdIn };
 
-    console.log(creds);
-
     const data = await fetch('/getComments', {
       method: 'POST',
       headers: {
@@ -29,8 +27,6 @@ const Comment = ({ postIdIn }) => {
     });
 
     const jsonComments = await data.json();
-
-    console.log('The Comments: ', jsonComments);
 
     setComments(jsonComments);
   }
@@ -52,8 +48,6 @@ const Comment = ({ postIdIn }) => {
         userId: JSON.parse(localStorage.getItem('loginID')),
         text: theComment
       }
-
-      console.log(creds);
 
       const data = await fetch('/leaveComment', {
         method: 'POST',

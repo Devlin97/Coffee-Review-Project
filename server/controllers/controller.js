@@ -78,7 +78,43 @@ export const userRecipes = async (req, res) => {
         res.json(recipes);
     }
     else {
-        res.end();
+        res.json({});
+    }
+}
+
+export const deleteRecipe = async (req, res) => {
+    const userId = req.body.userId;
+    const postId = req.body.postId;
+
+    await Comment.destroy({
+        where: {
+            RecipeId: postId
+        }
+    });
+    
+    const thePost = await Recipe.findOne({
+        where: {
+            id: postId
+        }
+    });
+
+    await thePost.destroy();
+
+    const recipes = await Recipe.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+    
+    if(recipes.length > 0) {
+        recipes.sort((a, b) => {
+            return b.createdAt - a.createdAt
+        });
+
+        res.json(recipes);
+    }
+    else {
+        res.json({});
     }
 }
 

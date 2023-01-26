@@ -17,6 +17,7 @@ router.post('/login', controls.login);
 router.post('/register', controls.register);
 
 router.post('/addRecipe', controls.addRecipe);
+router.post('/deleteRecipe', controls.deleteRecipe);
 
 router.post('/getComments', controls.getComments);
 router.post('/leaveComment', controls.leaveComment);

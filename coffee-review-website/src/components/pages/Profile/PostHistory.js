@@ -43,6 +43,11 @@ const PostHistory = () => {
                         </TableCell>
                         <TableCell>
                             <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                Created
+                            </Typography>
+                        </TableCell>
+                        <TableCell>
+                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
                                 Edit
                             </Typography>
                         </TableCell>
@@ -57,6 +62,7 @@ const PostHistory = () => {
                     {recipes.map(rec => (
                         <TableRow key={rec.id}>
                             <TableCell>{rec.title}</TableCell>
+                            <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>
                             <TableCell>Edit</TableCell>
                             <TableCell>Delete</TableCell>
                         </TableRow>

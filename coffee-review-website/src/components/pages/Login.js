@@ -55,8 +55,6 @@ const Login = () => {
 
             setUsername('');
             setPassword('');
-    
-            alert('Login Successful!');
         }
     
         if(!jsonSuccess.success) {

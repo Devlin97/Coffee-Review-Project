@@ -45,7 +45,7 @@ const AddRecipe = () => {
         grindSize,
         description,
         totalTime,
-        userId: 1
+        userId: JSON.parse(localStorage.getItem('loginID'))
     }
 
     await recipeAdd(recipe);
@@ -202,15 +202,15 @@ const AddRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
-                <MenuItem value={'C40'}>Commandante C40</MenuItem>
-                <MenuItem value={'C2'}>Timemore C2</MenuItem>
-                <MenuItem value={'M47'}>Kinu M47</MenuItem>
-                <MenuItem value={'JX'}>1Zpresso JX</MenuItem>
-                <MenuItem value={'JX Pro'}>1Zpresso JX Pro</MenuItem>
-                <MenuItem value={'G1'}>Timemore Chestnut G1</MenuItem>
-                <MenuItem value={'Chestnut X'}>Timemore Chestnut X</MenuItem>
-                <MenuItem value={'K-Max'}>1Zpresso K-Max</MenuItem>
-                <MenuItem value={'K-Plus'}>1Zpresso K-Plus</MenuItem>
+                <MenuItem value={'Commandante C40'}>Commandante C40</MenuItem>
+                <MenuItem value={'Timemore C2'}>Timemore C2</MenuItem>
+                <MenuItem value={'Kinu M47'}>Kinu M47</MenuItem>
+                <MenuItem value={'1Zpresso JX'}>1Zpresso JX</MenuItem>
+                <MenuItem value={'1Zpresso JX Pro'}>1Zpresso JX Pro</MenuItem>
+                <MenuItem value={'Timemore Chestnut G1'}>Timemore Chestnut G1</MenuItem>
+                <MenuItem value={'Timemore Chestnut X'}>Timemore Chestnut X</MenuItem>
+                <MenuItem value={'1Zpresso K-Max'}>1Zpresso K-Max</MenuItem>
+                <MenuItem value={'1Zpresso K-Plus'}>1Zpresso K-Plus</MenuItem>
             </Select>
         </FormControl>
 

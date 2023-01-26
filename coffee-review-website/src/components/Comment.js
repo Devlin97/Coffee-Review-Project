@@ -71,6 +71,25 @@ const Comment = ({ postIdIn }) => {
     }
   }
 
+  const handleCommentDelete = async (idIn) => {
+    const creds = {
+      comId: idIn,
+      postId: postIdIn
+    };
+
+    const data = await fetch('/deleteComment', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds),
+    });
+
+    const jsonData = await data.json();
+
+    setComments(jsonData);
+  }
+
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0', marginTop: '10px' }}>
       <Stack
@@ -115,6 +134,9 @@ const Comment = ({ postIdIn }) => {
                     <Typography variant="h5" component="div" color={textColor}>
                         {com.text}
                     </Typography>
+                    {JSON.parse(localStorage.getItem('loginID')) === com.userId &&
+                      <Button onClick={() => handleCommentDelete(com.id)}>Delete</Button>
+                    }
                 </CardContent>
               </Card>
             </Box>

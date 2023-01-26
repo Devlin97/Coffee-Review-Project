@@ -108,7 +108,8 @@ export const getComments = async (req, res) => {
         let holder = {
             id: coms.id,
             text: coms.text,
-            name: userHold.name
+            name: userHold.name,
+            userId: coms.UserId
         }
 
         console.log('Holder: ', holder);
@@ -156,7 +157,55 @@ export const leaveComment = async (req, res) => {
         let holder = {
             id: coms.id,
             text: coms.text,
-            name: userHold.name
+            name: userHold.name,
+            userId: coms.UserId
+        }
+
+        console.log('Holder: ', holder);
+
+        comments.push(holder);
+    }
+    res.json(comments);
+}
+
+export const deleteComment = async (req, res) => {
+    const commentID = req.body.comId;
+    const postId = req.body.postId;
+
+    const theComment = await Comment.findOne({
+        where: {
+            id: commentID
+        }
+    });
+
+    await theComment.destroy();
+
+    //Rerender comments
+    const commentsHolder = await Comment.findAll({
+        where: {
+            RecipeId: postId
+        }
+    });
+
+    //Sorts the list so most recent comments display first
+    commentsHolder.sort((a, b) => { 
+        return b.createdAt - a.createdAt
+    })
+
+    let comments = [];
+    
+    for(const coms of commentsHolder) {
+        let userHold = await User.findOne({
+            where: {
+                id: coms.UserId
+            }
+        });
+        
+        let holder = {
+            id: coms.id,
+            text: coms.text,
+            name: userHold.name,
+            userId: coms.UserId
         }
 
         console.log('Holder: ', holder);

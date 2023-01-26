@@ -20,5 +20,6 @@ router.post('/addRecipe', controls.addRecipe);
 
 router.post('/getComments', controls.getComments);
 router.post('/leaveComment', controls.leaveComment);
+router.post('/deleteComment', controls.deleteComment);
 
 export default router;

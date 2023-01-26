@@ -61,6 +61,27 @@ export const allRecipes = async (req, res) => {
     res.json(recipes);
 }
 
+export const userRecipes = async (req, res) => {
+    const userId = req.body.userId;
+
+    const recipes = await Recipe.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+    
+    if(recipes.length > 0) {
+        recipes.sort((a, b) => {
+            return b.createdAt - a.createdAt
+        });
+
+        res.json(recipes);
+    }
+    else {
+        res.end();
+    }
+}
+
 export const getComments = async (req, res) => {
     const postId = req.body.postId;
 

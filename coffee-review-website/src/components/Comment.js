@@ -127,16 +127,17 @@ const Comment = ({ postIdIn }) => {
           {comments.map(com => (
             <Box sx={{ minWidth: '250px' }} key={com.id}>
               <Card variant='outline' sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )'}}>
-                <CardContent>
+                <CardContent sx={{ position: 'relative' }}>
                     <Typography sx={{ fontSize: 15 }} color={textColor} gutterBottom>
                         {com.name}
+                        {JSON.parse(localStorage.getItem('loginID')) === com.userId &&
+                          <Button color='error' size='small' onClick={() => handleCommentDelete(com.id)} sx={{ position: 'absolute', top: '0', right: '0' }}>Delete</Button>
+                        }
                     </Typography>
                     <Typography variant="h5" component="div" color={textColor}>
                         {com.text}
                     </Typography>
-                    {JSON.parse(localStorage.getItem('loginID')) === com.userId &&
-                      <Button onClick={() => handleCommentDelete(com.id)}>Delete</Button>
-                    }
+                    
                 </CardContent>
               </Card>
             </Box>

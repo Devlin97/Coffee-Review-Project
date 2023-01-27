@@ -35,7 +35,29 @@ const EditRecipe = ({ recipeIn }) => {
     }
   }, [recipeIn]);
 
-  console.log(recipeIn);
+  const handleUpdate = async () => {
+    const creds = {
+      postId: recipeIn.id,
+      title,
+      brewMethod,
+      coffeeWeight,
+      waterWeight,
+      brewer,
+      grinder,
+      grindSize,
+      description,
+      totalTime,
+      userId: JSON.parse(localStorage.getItem('loginID'))
+    };
+
+    fetch('/updateRecipe', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds),
+    });
+  }
 
   if(recipeIn) {
   return (
@@ -219,7 +241,7 @@ const EditRecipe = ({ recipeIn }) => {
         sx={{ fieldset: { borderColor: textColor } }}
       />
 
-      <Button type='submit' variant='contained' color='success'>Submit</Button>
+      <Button type='submit' variant='contained' color='success' onClick={() => handleUpdate()}>Update</Button>
 
       </Stack>
 

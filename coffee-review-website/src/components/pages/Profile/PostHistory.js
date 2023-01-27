@@ -11,6 +11,7 @@ import Button from '@mui/material/Button'
 import EditRecipe from './EditRecipe'
 
 const PostHistory = () => {
+    //================================= Recipes Table =================================
     const [recipes, setRecipes] = useState([]);
     const [recipeOut, setRecipeOut] = useState();
 
@@ -52,6 +53,11 @@ const PostHistory = () => {
 
         setRecipes(jsonData);
     }
+
+    //================================= Recipes Table =================================
+    //================================= Edit Recipe =================================
+    
+    //================================= Edit Recipe =================================
   
     if(recipes.length > 0) {
     return (
@@ -102,7 +108,7 @@ const PostHistory = () => {
                     </TableBody>    
                 </Table> 
             </TableContainer>
-            <EditRecipe recipeIn={recipeOut} />
+            
         </>
   )}
   else {

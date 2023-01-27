@@ -337,3 +337,36 @@ export const addRecipe = async (req, res) => {
         {msg: 'success'}
     ));
 }
+
+export const updateRecipe = async (req, res) => {
+    const title = req.body.title;
+    const brewMethod = req.body.brewMethod;
+    const coffeeWeight = req.body.coffeeWeight;
+    const waterWeight = req.body.waterWeight;
+    const brewer = req.body.brewer;
+    const grinder = req.body.grinder;
+    const grindSize = req.body.grindSize;
+    const description = req.body.description;
+    const totalTime = req.body.totalTime;
+    const postId = req.body.postId;
+
+    const theRecipe = await Recipe.findOne({
+        where: {
+            id: postId
+        }
+    });
+
+    theRecipe.set({
+        title: title,
+        brewMethod: brewMethod,
+        coffeeWeight: coffeeWeight,
+        waterWeight: waterWeight,
+        brewer: brewer,
+        grinder: grinder,
+        grindSize: grindSize,
+        description: description,
+        totalTimeMinutes: totalTime
+    });
+
+    await theRecipe.save();
+}

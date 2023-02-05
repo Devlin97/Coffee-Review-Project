@@ -42,6 +42,9 @@ const Comment = ({ postIdIn }) => {
     if(localStorage.getItem('loginID') === null) {
       alert('You must be logged in to leave comments!');
     }
+    if(theComment.length > 150) {
+      alert('Please make sure the comment length is under 150 charachters!');
+    }
     else {
       const creds = {
         postId: postIdIn,

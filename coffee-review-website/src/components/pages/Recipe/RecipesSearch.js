@@ -12,10 +12,16 @@ import InputAdornment from '@mui/material/InputAdornment';
 import RecipeDetails from './RecipeDetails';
 import Grid from '@mui/material/Unstable_Grid2'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider';
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
+  const [filter, setFilter] = useState("");
 
+  const filteredList = recipesIn.filter((entry) => {
+    return entry.title.toLowerCase().includes(filter.toLowerCase()) ||
+    entry.brewer.toLowerCase().includes(filter.toLowerCase())
+  })
 
   return (
     <>
@@ -34,6 +40,7 @@ const RecipesSearch = ({recipesIn}) => {
               label='Search' 
               variant='standard'
               placeholder='Search by Title or Brew Device...'
+              onChange={(e) => setFilter(e.target.value)}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -46,12 +53,15 @@ const RecipesSearch = ({recipesIn}) => {
             />
 
             <List>
-            {recipesIn.map(rec => (
-              <ListItem key={rec.id}>
-                <ListItemButton onClick={() => setTheRecipe(rec)}>
-                  <ListItemText primary={rec.title} sx={{ color: '#CBCCCD' }} />
-                </ListItemButton>
-              </ListItem>
+            {filteredList.map(rec => (
+              <>
+                <ListItem key={rec.id}>
+                  <ListItemButton onClick={() => setTheRecipe(rec)}>
+                    <ListItemText primary={rec.title} secondary={rec.brewer} secondaryTypographyProps={{ style: { color: '#CBCCCD' } }} sx={{ color: '#CBCCCD' }} />
+                  </ListItemButton>
+                </ListItem>
+                <Divider component='li' sx={{ backgroundColor: '#CBCCCD' }} />
+              </>
             ))}
             </List>
           </Box>

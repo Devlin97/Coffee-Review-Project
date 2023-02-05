@@ -108,7 +108,7 @@ const PostHistory = () => {
                     </TableBody>    
                 </Table> 
             </TableContainer>
-            
+            <EditRecipe recipeIn={recipeOut} />
         </>
   )}
   else {

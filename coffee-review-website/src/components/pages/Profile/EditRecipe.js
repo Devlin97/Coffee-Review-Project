@@ -89,6 +89,7 @@ const EditRecipe = ({ recipeIn }) => {
         color='primary'
         sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
         InputLabelProps= {{ style: { color: textColor } }}
+        InputProps= {{ readOnly: true }}
       />
 
       <FormControl sx={{ m:1, minWidth: 200 }}>

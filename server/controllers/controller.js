@@ -277,7 +277,6 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
-    const age = req.body.age;
     const password = req.body.password;
 
     const nameCheck = await User.findOne({ where: { name: username }});
@@ -293,7 +292,6 @@ export const register = async (req, res) => {
         const theUser = User.build({
             name: username,
             email: email,
-            age: age,
             password: hashed
         });
 
@@ -316,6 +314,7 @@ export const addRecipe = async (req, res) => {
     const grindSize = req.body.grindSize;
     const description = req.body.description;
     const totalTime = req.body.totalTime;
+    const coffeeOrigin = req.body.coffeeOrigin;
     const userId = req.body.userId;
 
     const theRecipe = Recipe.build({
@@ -327,6 +326,7 @@ export const addRecipe = async (req, res) => {
         grinder: grinder,
         grindSize: grindSize,
         description: description,
+        coffeeOrigin: coffeeOrigin,
         totalTimeMinutes: totalTime,
         UserId: userId
     });
@@ -348,6 +348,7 @@ export const updateRecipe = async (req, res) => {
     const grindSize = req.body.grindSize;
     const description = req.body.description;
     const totalTime = req.body.totalTime;
+    const coffeeOrigin = req.body.coffeeOrigin;
     const postId = req.body.postId;
 
     const theRecipe = await Recipe.findOne({
@@ -365,7 +366,8 @@ export const updateRecipe = async (req, res) => {
         grinder: grinder,
         grindSize: grindSize,
         description: description,
-        totalTimeMinutes: totalTime
+        totalTimeMinutes: totalTime,
+        coffeeOrigin: coffeeOrigin
     });
 
     await theRecipe.save();

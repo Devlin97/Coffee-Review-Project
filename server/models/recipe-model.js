@@ -37,6 +37,10 @@ const Recipe = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        coffeeOrigin: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         description: {
             type: DataTypes.STRING,
             allowNull: false

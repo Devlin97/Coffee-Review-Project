@@ -97,6 +97,7 @@ const RecipesSearch = ({recipesIn}) => {
               <FormLabel id='brew-method-radio-group-label' style={{ color: '#CBCCCD' }}>Brew Method</FormLabel>
               <RadioGroup
                 row
+                sx={{ marginLeft: '10px' }}
               >
                 <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
                 <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />

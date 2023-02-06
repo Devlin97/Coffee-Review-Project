@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import pouroverIcon from '../../../images/v60.svg'
+import immersionIcon from '../../../images/immersion.svg'
+import aeropressIcon from '../../../images/aeropress.svg'
 import Comment from '../../Comment';
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
+import ListItemIcon from '@mui/material/ListItemIcon'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
 import Search from '@mui/icons-material/Search'
@@ -58,6 +62,17 @@ const RecipesSearch = ({recipesIn}) => {
               <>
                 <ListItem key={rec.id}>
                   <ListItemButton onClick={() => setTheRecipe(rec)}>
+                    <ListItemIcon>
+                      {rec.brewMethod === 'Pourover' &&
+                        <img src={pouroverIcon} alt='Icon of a pourover brewer'/>
+                      }
+                      {rec.brewMethod === 'Immersion' &&
+                        <img src={immersionIcon} alt='Icon of a immersion brewer'/>
+                      }
+                      {rec.brewMethod === 'Aeropress' &&
+                        <img src={aeropressIcon} alt='Icon of a aeropress brewer' />
+                      }
+                    </ListItemIcon>
                     <ListItemText primary={rec.title} secondary={`${rec.brewer} | ${rec.coffeeOrigin}`} secondaryTypographyProps={{ style: { color: '#CBCCCD' } }} sx={{ color: '#CBCCCD' }} />
                   </ListItemButton>
                 </ListItem>

@@ -131,7 +131,7 @@ const Comment = ({ postIdIn }) => {
         <> 
           {comments.map(com => (
             <Box sx={{ minWidth: '250px', marginBottom: '10px' }} key={com.id}>
-              <Card variant='outline' sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )'}}>
+              <Card variant='outline' sx={{ background: 'rgba(63,76,119,0.6)' }}>
                 <CardContent sx={{ position: 'relative' }}>
                     <Typography sx={{ fontSize: 15 }} color={textColor} gutterBottom>
                         {com.name}

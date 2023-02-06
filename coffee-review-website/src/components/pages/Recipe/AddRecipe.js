@@ -124,7 +124,7 @@ const AddRecipe = () => {
             
                 <MenuItem value={'Immersion'}>Immersion</MenuItem>
                 <MenuItem value={'Pourover'}>Pourover</MenuItem>
-                <MenuItem value={'Drip'}>Drip</MenuItem>
+                <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
             </Select>
         </FormControl>
 

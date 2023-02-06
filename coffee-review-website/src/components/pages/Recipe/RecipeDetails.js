@@ -123,7 +123,20 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         />
       </Grid>
 
-      <Grid xs={12}>
+      <Grid xs={6}>
+        <TextField 
+          id='coffee-origin-read-only' 
+          label='Coffee Origin' 
+          variant='outlined' 
+          value={recipeIn.coffeeOrigin ? recipeIn.coffeeOrigin : ''}
+          color='primary'
+          sx={{ input: { color: textColor }, fieldset: { borderColor: textColor }, width: '100%' }}
+          InputLabelProps= {{ style: { color: textColor } }}
+          InputProps= {{ readOnly: true }}
+        />
+      </Grid>
+
+      <Grid xs={6}>
         <TextField 
           id='total-time-read-only' 
           label='Total Time (Minutes)' 

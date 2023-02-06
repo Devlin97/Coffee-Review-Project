@@ -46,6 +46,7 @@ const AddRecipe = () => {
         grindSize,
         description,
         totalTime,
+        coffeeOrigin: origin,
         userId: JSON.parse(localStorage.getItem('loginID'))
     }
 
@@ -60,6 +61,7 @@ const AddRecipe = () => {
     setGrindSize('');
     setDescription('');
     setTotalTime('');
+    setOrigin('');
     console.log(recipe);
     alert('Thank you for submitting your recipe!');
   }

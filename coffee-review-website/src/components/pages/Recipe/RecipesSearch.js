@@ -17,16 +17,52 @@ import RecipeDetails from './RecipeDetails';
 import Grid from '@mui/material/Unstable_Grid2'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider';
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'  
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
   const [filter, setFilter] = useState("");
+  const [pouroverRadio, setPouroverRadio] = useState(false);
+  const [immersionRadio, setImmersionRadio] = useState(false);
+  const [aeropressRadio, setAeropressRadio] = useState(false);
 
   const filteredList = recipesIn.filter((entry) => {
+    if(pouroverRadio) {
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Pourover'
+    }
+    if(immersionRadio) {
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Immersion'
+    }
+    if(aeropressRadio) {
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Aeropress'
+    }
+    else {
     return entry.title.toLowerCase().includes(filter.toLowerCase()) ||
-    entry.brewer.toLowerCase().includes(filter.toLowerCase()) ||
     entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())
+    }
   })
+
+  const handlePouroverCheck = () => {
+    setPouroverRadio(true);
+    setImmersionRadio(false);
+    setAeropressRadio(false);
+  }
+
+  const handleImmersionCheck = () => {
+    setPouroverRadio(false);
+    setImmersionRadio(true);
+    setAeropressRadio(false);
+  }
+
+  const handleAeropressCheck = () => {
+    setPouroverRadio(false);
+    setImmersionRadio(false);
+    setAeropressRadio(true);
+  }
 
   return (
     <>
@@ -44,7 +80,7 @@ const RecipesSearch = ({recipesIn}) => {
               id='recipe-search' 
               label='Search' 
               variant='standard'
-              placeholder='Search by Title, Brewer, or Origin...'
+              placeholder='Search by Title or Origin...'
               onChange={(e) => setFilter(e.target.value)}
               InputProps={{
                 startAdornment: (
@@ -56,6 +92,17 @@ const RecipesSearch = ({recipesIn}) => {
               sx={{ width: '100%', input: { color: 'white' } }}
               InputLabelProps={{ style: { color: '#CBCCCD' } }}
             />
+
+            <FormControl sx={{ marginTop: '5px' }}>
+              <FormLabel id='brew-method-radio-group-label' style={{ color: '#CBCCCD' }}>Brew Method</FormLabel>
+              <RadioGroup
+                row
+              >
+                <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
+                <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />
+                <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} />} label={<img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />}/>
+              </RadioGroup>
+            </FormControl>
 
             <List>
             {filteredList.map(rec => (

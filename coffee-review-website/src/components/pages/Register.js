@@ -7,7 +7,6 @@ const Register = () => {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [age, setAge] = useState();
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -16,8 +15,7 @@ const Register = () => {
       await registerUser({
           username,
           password,
-          email,
-          age
+          email
       });
       console.log('done');
     }
@@ -40,7 +38,6 @@ const Register = () => {
 
         setUsername('');
         setEmail('');
-        setAge('');
         setPassword('');
       }
 
@@ -88,18 +85,6 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)} 
             value={email}
             color='primary'
-            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
-            InputLabelProps= {{ style: { color: textColor } }}
-          />
-
-          <TextField 
-            id='age-text' 
-            label='Age' 
-            variant='standard' 
-            onChange={(e) => setAge(e.target.value)} 
-            value={age}
-            color='primary'
-            type='number'
             sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
             InputLabelProps= {{ style: { color: textColor } }}
           />

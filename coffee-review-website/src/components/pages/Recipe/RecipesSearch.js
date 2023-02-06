@@ -20,7 +20,8 @@ const RecipesSearch = ({recipesIn}) => {
 
   const filteredList = recipesIn.filter((entry) => {
     return entry.title.toLowerCase().includes(filter.toLowerCase()) ||
-    entry.brewer.toLowerCase().includes(filter.toLowerCase())
+    entry.brewer.toLowerCase().includes(filter.toLowerCase()) ||
+    entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())
   })
 
   return (
@@ -39,7 +40,7 @@ const RecipesSearch = ({recipesIn}) => {
               id='recipe-search' 
               label='Search' 
               variant='standard'
-              placeholder='Search by Title or Brew Device...'
+              placeholder='Search by Title, Brewer, or Origin...'
               onChange={(e) => setFilter(e.target.value)}
               InputProps={{
                 startAdornment: (
@@ -57,7 +58,7 @@ const RecipesSearch = ({recipesIn}) => {
               <>
                 <ListItem key={rec.id}>
                   <ListItemButton onClick={() => setTheRecipe(rec)}>
-                    <ListItemText primary={rec.title} secondary={rec.brewer} secondaryTypographyProps={{ style: { color: '#CBCCCD' } }} sx={{ color: '#CBCCCD' }} />
+                    <ListItemText primary={rec.title} secondary={`${rec.brewer} | ${rec.coffeeOrigin}`} secondaryTypographyProps={{ style: { color: '#CBCCCD' } }} sx={{ color: '#CBCCCD' }} />
                   </ListItemButton>
                 </ListItem>
                 <Divider component='li' sx={{ backgroundColor: '#CBCCCD' }} />

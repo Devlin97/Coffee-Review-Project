@@ -62,7 +62,6 @@ const AddRecipe = () => {
     setDescription('');
     setTotalTime('');
     setOrigin('');
-    console.log(recipe);
     alert('Thank you for submitting your recipe!');
   }
   

@@ -31,6 +31,7 @@ const AddRecipe = () => {
   const [grindSize, setGrindSize] = useState('');
   const [description, setDescription] = useState('');
   const [totalTime, setTotalTime] = useState('');
+  const [origin, setOrigin] = useState('');
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -223,6 +224,39 @@ const AddRecipe = () => {
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
+
+        <FormControl sx={{ m:1, minWidth: 150 }}>
+            <InputLabel id='select-label-origin' style={{ color: textColor }}>Coffee Origin</InputLabel>
+            <Select
+                labelId='select-origin'
+                id='select-origin'
+                value={origin}
+                label='Coffee Origin'
+                onChange={(e) => setOrigin(e.target.value)}
+                defaultValue=""
+                style={{ color: textColor }}
+                sx={{ fieldset: { borderColor: textColor } }}
+                MenuProps={{
+                    anchorOrigin: {
+                        vertical:'bottom',
+                        horizontal: 'left'
+                    },
+                    transformOrigin: {
+                        vertical: 'top',
+                        horizontal: 'left'
+                    },
+                    getContentAnchorEl: null
+                }}>
+            
+                <MenuItem value={'Ethiopia'}>Ethiopia</MenuItem>
+                <MenuItem value={'Brazil'}>Brazil</MenuItem>
+                <MenuItem value={'Honduras'}>Honduras</MenuItem>
+                <MenuItem value={'Kenya'}>Kenya</MenuItem>
+                <MenuItem value={'Rwanda'}>Rwanda</MenuItem>
+                <MenuItem value={'Burundi'}>Burundi</MenuItem>
+                <MenuItem value={'El Salvador'}>El Salvador</MenuItem>
+            </Select>
+        </FormControl>
 
         <TextField
             id='total-time-text' 

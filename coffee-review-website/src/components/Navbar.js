@@ -2,6 +2,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCoffee, faHome, faPerson, faSignIn } from "@fortawesome/free-solid-svg-icons"
+import { Typography } from '@mui/material';
 
 function Navbar() {
     return (

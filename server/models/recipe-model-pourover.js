@@ -42,7 +42,7 @@ const Recipe_Pourover = sequelize.define(
             allowNull: false
         },
         pours: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.JSON,
             allowNull: false
         },
         bloomTime: {

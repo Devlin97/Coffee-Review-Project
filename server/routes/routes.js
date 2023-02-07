@@ -28,6 +28,8 @@ router.post('/deleteComment', controls.deleteComment);
 //======================= Grinder and Origin Routes =======================
 router.get('/getGrinders', ogControls.getGrinders);
 router.get('/getCountries', ogControls.getCountries);
+
+router.post('/addGrinder', ogControls.addGrinder);
 //=========================================================================
 
 export default router;

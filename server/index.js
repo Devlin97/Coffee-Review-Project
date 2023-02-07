@@ -5,7 +5,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import mysql from 'mysql2';
 import { sequelize } from './database/db.js';
-import { User, Recipe, Comment } from './models/index.js';
+import { User, Recipe, Comment, Country, Grinder } from './models/index.js';
 
 dotenv.config();
 
@@ -45,5 +45,7 @@ await sequelize.authenticate()
 .then(User.sync())
 .then(Recipe.sync())
 .then(Comment.sync())
+.then(Country.sync())
+.then(Grinder.sync())
 .then(() => app.listen(process.env.PORT, () => console.log(`MYSQL Authenticated, Server running on port: ${process.env.PORT}`)))
 .catch((error) => console.log(error.message));

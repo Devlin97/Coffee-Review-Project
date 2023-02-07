@@ -1,30 +1,32 @@
 import React, { useState } from 'react'
-import { TextField, Stack, Box, Button } from '@mui/material';
+import { TextField, Stack, Box, Button, Alert, Collapse } from '@mui/material';
 
 const textColor = '#CBCCCD'
 
 const GrinderAdd = () => {
     const [grinder, setGrinder] = useState('');
+    const [alertBoo, setAlertBoo] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-  
-        console.log(grinder);
-        await uploadGrinder({
-            grinder
-        });
-        console.log('done');
+      e.preventDefault();
+
+      console.log(grinder);
+      await uploadGrinder({
+          grinder
+      });
+      
     }
 
     async function uploadGrinder(creds) {
-        await fetch('/addGrinder', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(creds),
-        })
-        console.log('added');
+      fetch('/addGrinder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(creds),
+      })
+      .then(setGrinder(''))
+      .then(setAlertBoo(true))
     }
   
     return (
@@ -59,6 +61,10 @@ const GrinderAdd = () => {
           />
 
           <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>ADD</Button>
+
+          <Collapse in={alertBoo}>
+            <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>
+          </Collapse>
 
         </Stack>
 

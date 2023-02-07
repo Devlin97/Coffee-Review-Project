@@ -29,3 +29,13 @@ export const addGrinder = async (req, res) => {
     await theGrinder.save()
     .then(console.log(`saved`))
 }
+
+export const addCountry = async (req, res) => {
+    const theName = req.body.country;
+
+    const theCountry = Country.build({
+        name: theName
+    });
+    await theCountry.save()
+    .then(console.log('saved'));
+}

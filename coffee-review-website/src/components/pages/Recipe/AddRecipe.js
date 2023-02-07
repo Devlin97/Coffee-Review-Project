@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
@@ -33,6 +33,9 @@ const AddRecipe = () => {
   const [totalTime, setTotalTime] = useState('');
   const [origin, setOrigin] = useState('');
 
+  const [grindersList, setGrindersList] = useState([]);
+  const [countriesList, setCountriesList] = useState([]);
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     
@@ -64,6 +67,35 @@ const AddRecipe = () => {
     setOrigin('');
     alert('Thank you for submitting your recipe!');
   }
+
+  const fetchGrinders = async () => {
+    const data = await fetch('/getGrinders');
+
+    const jsonData = await data.json();
+
+    const tempList = await jsonData.map(el => (
+        el.name
+    ));
+
+    setGrindersList(tempList);
+  }
+
+  const fetchCountries = async () => {
+    const data = await fetch('/getCountries');
+
+    const jsonData = await data.json();
+
+    const tempList = await jsonData.map(el => (
+        el.name
+    ));
+
+    setCountriesList(tempList);
+  }
+
+  useEffect(() => {
+    fetchGrinders();
+    fetchCountries();
+  }, []);
   
   
     return (
@@ -204,15 +236,9 @@ const AddRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
-                <MenuItem value={'Commandante C40'}>Commandante C40</MenuItem>
-                <MenuItem value={'Timemore C2'}>Timemore C2</MenuItem>
-                <MenuItem value={'Kinu M47'}>Kinu M47</MenuItem>
-                <MenuItem value={'1Zpresso JX'}>1Zpresso JX</MenuItem>
-                <MenuItem value={'1Zpresso JX Pro'}>1Zpresso JX Pro</MenuItem>
-                <MenuItem value={'Timemore Chestnut G1'}>Timemore Chestnut G1</MenuItem>
-                <MenuItem value={'Timemore Chestnut X'}>Timemore Chestnut X</MenuItem>
-                <MenuItem value={'1Zpresso K-Max'}>1Zpresso K-Max</MenuItem>
-                <MenuItem value={'1Zpresso K-Plus'}>1Zpresso K-Plus</MenuItem>
+                {grindersList.map(el => (
+                    <MenuItem value={el}>{el}</MenuItem>
+                ))}
             </Select>
         </FormControl>
 
@@ -249,13 +275,9 @@ const AddRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
-                <MenuItem value={'Ethiopia'}>Ethiopia</MenuItem>
-                <MenuItem value={'Brazil'}>Brazil</MenuItem>
-                <MenuItem value={'Honduras'}>Honduras</MenuItem>
-                <MenuItem value={'Kenya'}>Kenya</MenuItem>
-                <MenuItem value={'Rwanda'}>Rwanda</MenuItem>
-                <MenuItem value={'Burundi'}>Burundi</MenuItem>
-                <MenuItem value={'El Salvador'}>El Salvador</MenuItem>
+                {countriesList.map(el => (
+                    <MenuItem value={el}>{el}</MenuItem>
+                ))}
             </Select>
         </FormControl>
 

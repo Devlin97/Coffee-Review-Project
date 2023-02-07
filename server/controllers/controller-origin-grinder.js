@@ -7,8 +7,13 @@ export const getGrinders = async (req, res) => {
     //Sorts grinders in alphabetical order
     grinders.sort((x,y) => x.name.localeCompare(y.name))
 
-    res.json(grinders);
+    /* const grindersToSend = [];
 
+    grinders.forEach(element => {
+        grindersToSend.push(element.name);
+    }); */
+
+    res.json(grinders);
 }
 
 export const getCountries = async (req, res) => {

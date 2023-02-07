@@ -31,6 +31,8 @@ router.get('/getCountries', ogControls.getCountries);
 
 router.post('/addGrinder', ogControls.addGrinder);
 router.post('/addCountry', ogControls.addCountry);
+
+router.post('/deleteGrinder', ogControls.deleteGrinder);
 //=========================================================================
 
 export default router;

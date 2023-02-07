@@ -36,8 +36,8 @@ const GrinderTable = () => {
   
     return (
     <>
-        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto' }}>
-            <Table>
+        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
+            <Table stickyHeader>
                 <TableHead>
                     <TableRow>
                         <TableCell>

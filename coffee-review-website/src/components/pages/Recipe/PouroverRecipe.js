@@ -315,7 +315,8 @@ const PouroverRecipe = () => {
 
                 <TextField
                     id={`pour${index + 1}-time-text`} 
-                    label={`Pour ${index + 1}: Time to Start Pour`} 
+                    label={`Pour ${index + 1}: Time to Start Pour`}
+                    placeholder='In the format X:XX....' 
                     onChange={(e) => setPoursListTime(() => {
                         const listCopy = poursListTime.slice();
                         listCopy[index] = e.target.value;

@@ -1,6 +1,7 @@
 import express from 'express';
 
 import * as controls from '../controllers/controller.js';
+import * as ogControls from '../controllers/controller-origin-grinder.js'
 
 const router = express.Router();
 
@@ -23,5 +24,10 @@ router.post('/updateRecipe', controls.updateRecipe);
 router.post('/getComments', controls.getComments);
 router.post('/leaveComment', controls.leaveComment);
 router.post('/deleteComment', controls.deleteComment);
+
+//======================= Grinder and Origin Routes =======================
+router.get('/getGrinders', ogControls.getGrinders);
+router.get('/getCountries', ogControls.getCountries);
+//=========================================================================
 
 export default router;

@@ -2,6 +2,7 @@ import '../../App.css';
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { color } from '@mui/system';
+import logo from '../../images/logo.png'
 
 function Home() {
     return (
@@ -19,6 +20,8 @@ function Home() {
                 <h1 style={{ textAlign: 'center' }}>
                     Welcome to Third Wave Coffee Review
                 </h1>
+
+                <img src={logo} alt='logo' style={{ display: 'block', margin: '0 auto', width: '80%' }} />
             </Paper>
         </Box>
     )

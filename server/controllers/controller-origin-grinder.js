@@ -61,3 +61,20 @@ export const deleteGrinder = async (req, res) => {
 
     res.json(grinders);
 }
+
+export const deleteCountry = async (req, res) => {
+    const countryId = req.body.countryId;
+
+    await Country.destroy({
+        where: {
+            id: countryId
+        }
+    });
+
+    let countries = await Country.findAll();
+
+    //Sorts countries by alphabetical order
+    countries.sort((x,y) => x.name.localeCompare(y.name));
+
+    res.json(countries);
+}

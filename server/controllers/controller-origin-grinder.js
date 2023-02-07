@@ -39,3 +39,20 @@ export const addCountry = async (req, res) => {
     await theCountry.save()
     .then(console.log('saved'));
 }
+
+export const deleteGrinder = async (req, res) => {
+    const grindId = req.body.grinderId;
+
+    await Grinder.destroy({
+        where: {
+            id: grindId
+        }
+    });
+
+    let grinders = await Grinder.findAll();
+
+    //Sorts grinders in alphabetical order
+    grinders.sort((x,y) => x.name.localeCompare(y.name))
+
+    res.json(grinders);
+}

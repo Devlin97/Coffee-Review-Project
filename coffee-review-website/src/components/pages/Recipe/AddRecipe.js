@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
-import Alert from '@mui/material/Alert'
+import { Alert, Collapse } from '@mui/material'
 import Box from '@mui/material/Box'
 
 const textColor = '#CBCCCD';
@@ -35,6 +35,8 @@ const AddRecipe = () => {
 
   const [grindersList, setGrindersList] = useState([]);
   const [countriesList, setCountriesList] = useState([]);
+
+  const [alertBoo, setAlertBoo] = useState(false);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -65,7 +67,7 @@ const AddRecipe = () => {
     setDescription('');
     setTotalTime('');
     setOrigin('');
-    alert('Thank you for submitting your recipe!');
+    setAlertBoo(true);
   }
 
   const fetchGrinders = async () => {
@@ -306,6 +308,10 @@ const AddRecipe = () => {
         />
 
         <Button type='submit' variant='contained' color='success'>Submit</Button>
+
+        <Collapse in={alertBoo}>
+            <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>
+        </Collapse>
 
         </Stack>
 

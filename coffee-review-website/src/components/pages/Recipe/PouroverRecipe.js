@@ -173,11 +173,16 @@ const PouroverRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
-                <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
                 <MenuItem value={'V60'}>V60</MenuItem>
                 <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
-                <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
-                <MenuItem value={'Drip'}>Drip</MenuItem>
+                <MenuItem value={'Loveramics Dripper'}>Loveramics Dripper</MenuItem>
+                <MenuItem value={'Wilfa Svart Dripper'}>Wilfa Svart Dripper</MenuItem>
+                <MenuItem value={'Chemex'}>Chemex</MenuItem>
+                <MenuItem value={'April Brewer'}>April Brewer</MenuItem>
+                <MenuItem value={'Fellow Stagg X'}>Fellow Stagg X</MenuItem>
+                <MenuItem value={'Origami Dripper'}>Origami Dripper</MenuItem>
+                <MenuItem value={'Cafec Flower'}>Cafec Flower</MenuItem>
+                <MenuItem value={'Hsiao 50 Dripper'}>Hsiao 50 Dripper</MenuItem>
             </Select>
         </FormControl>
 

@@ -156,11 +156,9 @@ const AddRecipe = () => {
                     getContentAnchorEl: null
                 }}>
             
-                <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
-                <MenuItem value={'V60'}>V60</MenuItem>
-                <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
                 <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
-                <MenuItem value={'Drip'}>Drip</MenuItem>
+                <MenuItem value={'Hario Switch'}>Hario Switch</MenuItem>
+                <MenuItem value={'Cafetieres'}>Cafetieres</MenuItem>
             </Select>
         </FormControl>
 

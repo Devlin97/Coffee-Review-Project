@@ -191,17 +191,6 @@ const PouroverRecipe = () => {
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }}
         />
-        
-        <TextField
-            id='water-weight-text' 
-            label='Water Weight (g)'  
-            type='number' 
-            onChange={(e) => setWaterWeight(parseFloat(e.target.value))}
-            value={waterWeight}
-            InputProps={{ inputProps: { step: 'any' } }}
-            InputLabelProps= {{ style: { color: textColor } }}
-            sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
-        />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
             <InputLabel id='select-label-grinder' style={{ color: textColor }}>Grinder</InputLabel>

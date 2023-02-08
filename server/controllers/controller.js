@@ -1,4 +1,4 @@
-import { User, Recipe, Comment } from '../models/index.js';
+import { User, Recipe, Comment, Recipe_Pourover } from '../models/index.js';
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
@@ -57,6 +57,9 @@ export const testFetch = async (req, res) => {
 
 export const allRecipes = async (req, res) => {
     let recipes = await Recipe.findAll();
+    let pourovers = await Recipe_Pourover.findAll();
+
+    recipes = [...recipes, ...pourovers];
 
     res.json(recipes);
 }

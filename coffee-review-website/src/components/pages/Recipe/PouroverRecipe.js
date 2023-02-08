@@ -287,8 +287,9 @@ const PouroverRecipe = () => {
                         listCopy[index] = e.target.value;
                         return listCopy;
                     })}
-                    value={poursListTime[index]}
+                    value={index === 0 ? `0:00` : poursListTime[index]}
                     inputProps={{ pattern:'[0-9]:[0-5][0-5]' }}
+                    InputProps={{ readOnly: index === 0 ? true : false }}
                     InputLabelProps= {{ style: { color: textColor } }}
                     sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
                 />

@@ -9,6 +9,7 @@ import Register from './components/pages/Register';
 import AddRecipe from './components/pages/Recipe/AddRecipe';
 import ModPage from './components/pages/Mod/ModPage';
 import PouroverRecipe from './components/pages/Recipe/PouroverRecipe';
+import CreateRecipe from './components/pages/Recipe/CreateRecipe';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/signIn' element= {<Login />} />
         <Route path='/register' element= {<Register />} />
         <Route path='/addRecipe' element= {<AddRecipe />} />
+        <Route path='/createRecipe' element= {<CreateRecipe />} />
         <Route path='/mod' element={<ModPage />} />
         <Route path='/pourover' element={<PouroverRecipe />} />
       </Routes>

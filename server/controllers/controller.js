@@ -310,7 +310,6 @@ export const register = async (req, res) => {
 
 export const addRecipe = async (req, res) => {
     const title = req.body.title;
-    const brewMethod = req.body.brewMethod;
     const coffeeWeight = req.body.coffeeWeight;
     const waterWeight = req.body.waterWeight;
     const brewer = req.body.brewer;
@@ -323,7 +322,7 @@ export const addRecipe = async (req, res) => {
 
     const theRecipe = Recipe.build({
         title: title,
-        brewMethod: brewMethod,
+        brewMethod: 'Immersion',
         coffeeWeight: coffeeWeight,
         waterWeight: waterWeight,
         brewer: brewer,

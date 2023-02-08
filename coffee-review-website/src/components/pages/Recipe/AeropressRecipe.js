@@ -255,6 +255,19 @@ const AeropressRecipe = () => {
                             <MenuItem value={'No'}>No</MenuItem>
                         </Select>
                     </FormControl>
+
+                    <TextField
+                        id='description-textarea'
+                        label='Description'
+                        multiline
+                        rows={4}
+                        placeholder='Description...'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        inputProps={{ style: { color: textColor } }}
+                        InputLabelProps= {{ style: { color: textColor } }}
+                        sx={{ fieldset: { borderColor: textColor } }}
+                    />
                     
                     <Button type='submit' variant='contained' color='success'>Submit</Button>
                     <Collapse in={alertBoo}>

@@ -45,14 +45,6 @@ const Recipe_Pourover = sequelize.define(
             type: DataTypes.JSON,
             allowNull: false
         },
-        bloomTime: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        bloomWeight: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         description: {
             type: DataTypes.STRING,
             allowNull: false

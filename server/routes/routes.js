@@ -2,6 +2,7 @@ import express from 'express';
 
 import * as controls from '../controllers/controller.js';
 import * as ogControls from '../controllers/controller-origin-grinder.js'
+import * as pouroverControls from '../controllers/controller-pourover.js'
 
 const router = express.Router();
 
@@ -20,6 +21,8 @@ router.post('/register', controls.register);
 router.post('/addRecipe', controls.addRecipe);
 router.post('/deleteRecipe', controls.deleteRecipe);
 router.post('/updateRecipe', controls.updateRecipe);
+
+router.post('/addPourover', pouroverControls.addPouroverRecipe);
 
 router.post('/getComments', controls.getComments);
 router.post('/leaveComment', controls.leaveComment);

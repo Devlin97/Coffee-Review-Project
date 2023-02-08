@@ -12,7 +12,7 @@ import Box from '@mui/material/Box'
 const textColor = '#CBCCCD';
 
 async function recipeAdd(creds) {
-    fetch('/addRecipePourover', {
+    fetch('/addPourover', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const PouroverRecipe = () => {
             userId: JSON.parse(localStorage.getItem('loginID'))
         }
     
-        //await recipeAdd(recipe);
+        await recipeAdd(recipe);
 
         console.log(recipe);
     
@@ -149,35 +149,6 @@ const PouroverRecipe = () => {
             sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
             InputLabelProps= {{ style: { color: textColor } }}
         />
-
-        <FormControl sx={{ m:1, minWidth: 200 }}>
-            <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brew Method</InputLabel>
-            <Select
-                labelId='select-label-brew-method'
-                id='select-brew-method'
-                value={brewMethod}
-                label='Brew Method'
-                onChange={(e) => setBrewMethod(e.target.value)}
-                defaultValue=""
-                style={{ color: textColor }}
-                sx={{ fieldset: { borderColor: textColor } }}
-                MenuProps={{
-                    anchorOrigin: {
-                        vertical:'bottom',
-                        horizontal: 'left'
-                    },
-                    transformOrigin: {
-                        vertical: 'top',
-                        horizontal: 'left'
-                    },
-                    getContentAnchorEl: null
-                }}>
-            
-                <MenuItem value={'Immersion'}>Immersion</MenuItem>
-                <MenuItem value={'Pourover'}>Pourover</MenuItem>
-                <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
-            </Select>
-        </FormControl>
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
             <InputLabel id='select-label-brewer' style={{ color: textColor }}>Brewer</InputLabel>

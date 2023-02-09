@@ -2,8 +2,16 @@
   --police-blue: #37586F;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: var(--police-blue);
+  /* background-color: var(--police-blue); */
+  margin: 0;
+  padding: 0;
+  /* background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); */
 }
 
 .create-recipe-h1 {

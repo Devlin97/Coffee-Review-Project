@@ -17,7 +17,8 @@ const RecipeDetails = ({ recipeIn = {} }) => {
       alignItems: 'center', 
       minHeight: '10vh', 
       margin: '0',
-      background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )',
+      /* background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', */
+      backgroundColor: 'rgba(32,38,57,0.6)',
       paddingLeft: '15px',
       paddingRight: '15px',
       paddingBottom: '50px',
@@ -36,7 +37,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         <TextField 
           id='title-read-only' 
           label='Title' 
-          variant='outlined' 
+          variant='standard' 
           value={recipeIn.title ? recipeIn.title : ''}
           color='primary'
           sx={{ input: { color: textColor }, fieldset: { borderColor: textColor }, width: '100%' }}

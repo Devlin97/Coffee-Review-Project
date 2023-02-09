@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
-import { Alert, Collapse } from '@mui/material'
+import { Alert, Collapse, InputAdornment } from '@mui/material'
 import Box from '@mui/material/Box'
 
 const textColor = '#CBCCCD';
@@ -168,7 +168,7 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setCoffeeWeight(parseFloat(e.target.value))}
             value={coffeeWeight} 
-            InputProps={{ inputProps: { step: '.1' } }}
+            InputProps={{ inputProps: { step: '.1', min: 0 } }}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }}
         />
@@ -179,7 +179,7 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setWaterWeight(parseFloat(e.target.value))}
             value={waterWeight}
-            InputProps={{ inputProps: { step: 'any' } }}
+            InputProps={{ inputProps: { step: 'any', min: 0 } }}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
@@ -219,6 +219,7 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setGrindSize(parseInt(e.target.value))}
             value={grindSize}
+            InputProps= {{ inputProps: { min: 0 } }}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
@@ -258,7 +259,7 @@ const AddRecipe = () => {
             type='number' 
             onChange={(e) => setTotalTime(parseFloat(e.target.value))}
             value={totalTime}
-            InputProps={{ inputProps: { step: 'any' } }}
+            InputProps={{ inputProps: { step: 'any', min: 0 } }}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />

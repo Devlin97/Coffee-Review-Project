@@ -24,7 +24,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
       paddingBottom: '50px',
       paddingTop: '50px', 
       borderRadius: '25px', 
-      marginTop: '10px'
+      marginTop: '10px',
     }}>
 
     <Grid container spacing={2}>
@@ -50,7 +50,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         <TextField 
           id='brew-method-read-only' 
           label='Brew Method' 
-          variant='outlined' 
+          variant='standard' 
           value={recipeIn.brewMethod ? recipeIn.brewMethod : ''}
           color='primary'
           sx={{ input: { color: textColor }, fieldset: { borderColor: textColor }, width: '100%'}}
@@ -63,7 +63,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
         <TextField 
           id='brewer-read-only' 
           label='Brewer' 
-          variant='outlined' 
+          variant='standard' 
           value={recipeIn.brewer ? recipeIn.brewer : ''}
           color='primary'
           sx={{ input: { color: textColor }, fieldset: { borderColor: textColor }, width: '100%' }}

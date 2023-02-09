@@ -99,9 +99,9 @@ const RecipesSearch = ({recipesIn}) => {
                 row
                 sx={{ marginLeft: '10px' }}
               >
-                <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
-                <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />
-                <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} />} label={<img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />}/>
+                <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
+                <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />
+                <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />}/>
               </RadioGroup>
             </FormControl>
 

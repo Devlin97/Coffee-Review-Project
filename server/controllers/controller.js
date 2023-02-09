@@ -68,11 +68,25 @@ export const allRecipes = async (req, res) => {
 export const userRecipes = async (req, res) => {
     const userId = req.body.userId;
 
-    const recipes = await Recipe.findAll({
+    const recipesImmersion = await Recipe.findAll({
         where: {
             UserId: userId
         }
     });
+
+    const recipesPour = await Recipe_Pourover.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+
+    const recipesAero = await Recipe_Aeropress.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+
+    const recipes = [...recipesImmersion, ...recipesPour, ...recipesAero];
     
     if(recipes.length > 0) {
         recipes.sort((a, b) => {

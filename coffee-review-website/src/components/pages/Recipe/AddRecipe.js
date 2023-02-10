@@ -6,8 +6,9 @@ import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
-import { Alert, Collapse, InputAdornment } from '@mui/material'
+import { Alert, Collapse, InputAdornment, Autocomplete } from '@mui/material'
 import Box from '@mui/material/Box'
+import { color } from '@mui/system'
 
 const textColor = '#CBCCCD';
 
@@ -99,6 +100,7 @@ const AddRecipe = () => {
     fetchCountries();
   }, []);
   
+  console.log('The grinder: ', grinder);
   
     return (
     <form onSubmit={handleSubmit}>
@@ -131,6 +133,19 @@ const AddRecipe = () => {
         color='primary'
         sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
         InputLabelProps= {{ style: { color: textColor } }}
+        />
+
+        <Autocomplete
+            disablePortal
+            id='auto-box-brewer'
+            options={grindersList}
+            onChange={(event, newValue) => {
+                console.log('newvalue ', '');
+                newValue === null ? setGrinder('') : setGrinder(newValue)
+            }}
+            value={grinder}
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            renderInput={(params) => <TextField {...params} label='Grinder' InputLabelProps={{ style: { color: textColor } }} />}
         />
 
         <FormControl sx={{ m:1, minWidth: 150 }}>

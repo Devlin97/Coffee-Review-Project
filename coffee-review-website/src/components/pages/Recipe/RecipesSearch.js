@@ -106,9 +106,9 @@ const RecipesSearch = ({recipesIn}) => {
             </FormControl>
 
             <List>
-            {filteredList.map(rec => (
+            {filteredList.map((rec, ind) => (
               <>
-                <ListItem key={rec.id}>
+                <ListItem key={ind}>
                   <ListItemButton onClick={() => setTheRecipe(rec)}>
                     <ListItemIcon>
                       {rec.brewMethod === 'Pourover' &&

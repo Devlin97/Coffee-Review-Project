@@ -139,11 +139,11 @@ const AddRecipe = () => {
             disablePortal
             id='auto-box-brewer'
             options={grindersList}
+            value={grinder}
             onChange={(event, newValue) => {
                 console.log('newvalue ', '');
                 newValue === null ? setGrinder('') : setGrinder(newValue)
             }}
-            value={grinder}
             sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
             renderInput={(params) => <TextField {...params} label='Grinder' InputLabelProps={{ style: { color: textColor } }} />}
         />

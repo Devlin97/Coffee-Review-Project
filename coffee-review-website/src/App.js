@@ -10,6 +10,7 @@ import AddRecipe from './components/pages/Recipe/AddRecipe';
 import ModPage from './components/pages/Mod/ModPage';
 import PouroverRecipe from './components/pages/Recipe/PouroverRecipe';
 import CreateRecipe from './components/pages/Recipe/CreateRecipe';
+import ImmersionDetails from './components/pages/Recipe/ImmersionDetails';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/createRecipe' element= {<CreateRecipe />} />
         <Route path='/mod' element={<ModPage />} />
         <Route path='/pourover' element={<PouroverRecipe />} />
+        <Route path='/imDetails' element={<ImmersionDetails />} />
       </Routes>
     </Router>
     </>

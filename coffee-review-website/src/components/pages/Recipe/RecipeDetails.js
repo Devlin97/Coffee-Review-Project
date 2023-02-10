@@ -27,7 +27,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
       marginTop: '10px',
     }}>
 
-    <Grid container spacing={2}>
+    <Grid container spacing={0.5}>
 
       <Grid xs={12}>
         <h1 className='create-recipe-h1'>{recipeIn.title}</h1>

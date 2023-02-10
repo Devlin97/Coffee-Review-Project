@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import pouroverIcon from '../../../images/v60.svg'
 import immersionIcon from '../../../images/immersion.svg'
 import aeropressIcon from '../../../images/aeropress.svg'
+import coffeeIcon from '../../../images/coffee-cup.svg'
 import Comment from '../../Comment';
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -64,6 +65,12 @@ const RecipesSearch = ({recipesIn}) => {
     setAeropressRadio(true);
   }
 
+  const handleAllCheck = () => {
+    setPouroverRadio(false);
+    setImmersionRadio(false);
+    setAeropressRadio(false);
+  }
+
   return (
     <>
       <Grid container spacing={0}>
@@ -102,10 +109,11 @@ const RecipesSearch = ({recipesIn}) => {
                 <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
                 <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />
                 <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />}/>
+                <FormControlLabel value='all' control={<Radio onClick={() => handleAllCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={coffeeIcon} title='All' alt='Icon of a cup' />}/>
               </RadioGroup>
             </FormControl>
 
-            <List>
+            <List sx={{ height: '100%', maxHeight: '550px', overflowY: 'auto' }}>
             {filteredList.map((rec, ind) => (
               <>
                 <ListItem key={ind}>

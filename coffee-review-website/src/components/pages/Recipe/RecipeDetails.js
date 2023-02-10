@@ -30,11 +30,13 @@ const RecipeDetails = ({ recipeIn = {} }) => {
     <Grid container spacing={2}>
 
       <Grid xs={12}>
-        <h1 className='create-recipe-h1'>Recipe Details</h1>
+        <h1 className='create-recipe-h1'>{recipeIn.title}</h1>
       </Grid>
 
       <Grid xs={12}>
-        <TextField 
+        <h2 className='create-recipe-h1'>{recipeIn.title}</h2>
+        
+        {/* <TextField 
           id='title-read-only' 
           label='Title' 
           variant='standard' 
@@ -43,7 +45,7 @@ const RecipeDetails = ({ recipeIn = {} }) => {
           sx={{ input: { color: textColor }, fieldset: { borderColor: textColor }, width: '100%' }}
           InputLabelProps= {{ style: { color: textColor } }}
           InputProps= {{ readOnly: true }}
-        />
+        /> */}
       </Grid>
 
       <Grid xs={6}>

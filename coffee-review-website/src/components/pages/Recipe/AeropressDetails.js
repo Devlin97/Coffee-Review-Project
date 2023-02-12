@@ -1,16 +1,10 @@
-import React, { useState } from 'react'
-import TextField from '@mui/material/TextField'
-import Stack from '@mui/material/Stack'
+import React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography } from '@mui/material'
-import AeropressDetails from './AeropressDetails'
 
-const textColor = '#CBCCCD';
-
-const ImmersionDetails = ({ recipeIn = {} }) => {
+const AeropressDetails = ({ recipeIn = {} }) => {
   return (
-    <>
     <Box sx={{ 
         width: '100%', 
         maxWidth: 500, 
@@ -32,10 +26,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
       <Grid container spacing={1}>
   
         <Grid xs={12}>
-          <h1 className='create-recipe-h1'>{recipeIn.title ? recipeIn.title : 'Dark Roast Goodness'}</h1>
+          <h1 className='create-recipe-h1'>{recipeIn.title ? recipeIn.title : 'Aeropress Magic'}</h1>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                Immersion | Hario Switch
+                Aeropress | Standard
             </Typography>
           </p>
         </Grid>
@@ -44,7 +38,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Coffee In:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                25g
+                20g
             </Typography>
           </p>
         </Grid>
@@ -104,9 +98,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
   
       </Grid>
     </Box>
-    <AeropressDetails />
-    </>
   )
 }
 
-export default ImmersionDetails
+export default AeropressDetails

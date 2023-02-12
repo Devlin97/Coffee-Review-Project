@@ -34,20 +34,28 @@ const RecipesSearch = ({recipesIn}) => {
   const [immersionRadio, setImmersionRadio] = useState(false);
   const [aeropressRadio, setAeropressRadio] = useState(false);
 
-  console.log(theRecipe);
-
   const filteredList = recipesIn.filter((entry) => {
     if(pouroverRadio) {
-      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Pourover'
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) ||
+      entry.brewer.toLowerCase().includes(filter.toLowerCase()) || 
+      entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && 
+      entry.brewMethod === 'Pourover'
     }
     if(immersionRadio) {
-      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Immersion'
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) ||
+      entry.brewer.toLowerCase().includes(filter.toLowerCase()) || 
+      entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && 
+      entry.brewMethod === 'Immersion'
     }
     if(aeropressRadio) {
-      return (entry.title.toLowerCase().includes(filter.toLowerCase()) || entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && entry.brewMethod === 'Aeropress'
+      return (entry.title.toLowerCase().includes(filter.toLowerCase()) ||
+      entry.brewer.toLowerCase().includes(filter.toLowerCase()) || 
+      entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())) && 
+      entry.brewMethod === 'Aeropress'
     }
     else {
     return entry.title.toLowerCase().includes(filter.toLowerCase()) ||
+    entry.brewer.toLowerCase().includes(filter.toLowerCase()) ||
     entry.coffeeOrigin.toLowerCase().includes(filter.toLowerCase())
     }
   })

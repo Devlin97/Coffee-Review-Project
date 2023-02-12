@@ -4,7 +4,6 @@ import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography } from '@mui/material'
-import AeropressDetails from './AeropressDetails'
 
 const textColor = '#CBCCCD';
 
@@ -104,7 +103,6 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
   
       </Grid>
     </Box>
-    <AeropressDetails />
     </>
   )
 }

@@ -23,6 +23,9 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'  
+import PouroverDetails from './PouroverDetails';
+import AeropressDetails from './AeropressDetails';
+import ImmersionDetails from './ImmersionDetails';
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
@@ -30,6 +33,8 @@ const RecipesSearch = ({recipesIn}) => {
   const [pouroverRadio, setPouroverRadio] = useState(false);
   const [immersionRadio, setImmersionRadio] = useState(false);
   const [aeropressRadio, setAeropressRadio] = useState(false);
+
+  console.log(theRecipe);
 
   const filteredList = recipesIn.filter((entry) => {
     if(pouroverRadio) {
@@ -139,7 +144,11 @@ const RecipesSearch = ({recipesIn}) => {
           </Box>
         </Grid>
         <Grid xs={12} md={4}>
+          {theRecipe?.brewMethod === 'Immersion' ? <ImmersionDetails recipeIn={theRecipe} /> : 
+          theRecipe?.brewMethod === 'Pourover' ? <PouroverDetails recipeIn={theRecipe} /> :
+          theRecipe?.brewMethod === 'Aeropress' ? <AeropressDetails recipeIn={theRecipe} /> :
           <RecipeDetails recipeIn={theRecipe} />
+          }
         </Grid>
         <Grid xs={12} md={4}>
           <Comment postIdIn={theRecipe?.id} />

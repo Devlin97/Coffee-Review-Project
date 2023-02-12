@@ -31,10 +31,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
       <Grid container spacing={1}>
   
         <Grid xs={12}>
-          <h1 className='create-recipe-h1'>{recipeIn.title ? recipeIn.title : 'Dark Roast Goodness'}</h1>
+          <h1 className='create-recipe-h1'>{recipeIn.title}</h1>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                Immersion | Hario Switch
+                {`${recipeIn.brewMethod} | ${recipeIn.brewer}`}
             </Typography>
           </p>
         </Grid>
@@ -43,7 +43,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Coffee In:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                25g
+                {`${recipeIn.coffeeWeight}g`}
             </Typography>
           </p>
         </Grid>
@@ -52,7 +52,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Water Weight:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                250g
+                {`${recipeIn.waterWeight}g`}
             </Typography>
           </p>
         </Grid>
@@ -61,7 +61,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Grinder:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                1Zpresso JX Pro
+                {recipeIn.grinder}
             </Typography>
           </p>
         </Grid>
@@ -70,7 +70,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Grind Size:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                25
+                {recipeIn.grindSize}
             </Typography>
           </p>
         </Grid>
@@ -79,7 +79,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Coffee Origin:</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                Ethiopia
+                {recipeIn.coffeeOrigin}
             </Typography>
           </p>
         </Grid>
@@ -88,7 +88,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Total Time (Minutes):</h3>
         <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                4
+                {recipeIn.totalTimeMinutes}
             </Typography>
           </p>
         </Grid>
@@ -96,7 +96,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
         <Grid xs={12}>
         <p className='create-recipe-h1'>
           <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-            Adipisicing exercitation tempor magna magna enim ipsum nulla velit velit est. Fugiat non amet consectetur culpa magna ea laboris magna nulla sint adipisicing sunt sunt. Sint velit commodo ea fugiat irure amet ea Lorem reprehenderit magna.
+            {recipeIn.description}
           </Typography>
         </p>
         </Grid>

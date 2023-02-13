@@ -15,8 +15,13 @@ export const addPouroverRecipe = async (req, res) => {
 
     const thePours = [];
     
-    poursListTime.forEach(element => {
-        thePours.push({ time: element })
+    poursListTime.forEach((element, i) => {
+        if(i === 0) {
+            thePours.push({ time: '0:00' })
+        }
+        else {
+            thePours.push({ time: element })
+        }
     });
 
     poursListWater.forEach((element, index) => {

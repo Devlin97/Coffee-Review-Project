@@ -35,10 +35,11 @@ const PostHistory = () => {
         fetchRecipes();
     }, []);
 
-    const handlePostDelete = async (idIn) => {
+    const handlePostDelete = async (idIn, methodIn) => {
         const creds = { 
             userId: JSON.parse(localStorage.getItem('loginID')),
-            postId: idIn 
+            postId: idIn,
+            brewMethod: methodIn 
         };
 
         const data = await fetch('/deleteRecipe', {
@@ -99,7 +100,7 @@ const PostHistory = () => {
                                     </Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => handlePostDelete(rec.id)}>
+                                    <Button onClick={() => handlePostDelete(rec.id, rec.brewMethod)}>
                                         Delete
                                     </Button>
                                 </TableCell>

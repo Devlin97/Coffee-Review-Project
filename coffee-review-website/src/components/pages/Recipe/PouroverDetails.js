@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Typography } from '@mui/material'
+import { Typography, Collapse } from '@mui/material'
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
 
 const PouroverDetails = ({ recipeIn = {} }) => {
+  const [alertBool, setAlertBool] = useState(false);
   console.log(recipeIn)
   return (
     <Box sx={{ 

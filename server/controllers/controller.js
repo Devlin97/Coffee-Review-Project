@@ -103,26 +103,76 @@ export const userRecipes = async (req, res) => {
 export const deleteRecipe = async (req, res) => {
     const userId = req.body.userId;
     const postId = req.body.postId;
+    const brewMethod = req.body.brewMethod;
 
-    await Comment.destroy({
-        where: {
-            RecipeId: postId
-        }
-    });
-    
-    const thePost = await Recipe.findOne({
-        where: {
-            id: postId
-        }
-    });
+    if(brewMethod === 'Immersion') {
+        await Comment.destroy({
+            where: {
+                RecipeId: postId
+            }
+        });
+        
+        const thePost = await Recipe.findOne({
+            where: {
+                id: postId
+            }
+        });
 
-    await thePost.destroy();
+        await thePost.destroy();
+    }
 
-    const recipes = await Recipe.findAll({
+    if(brewMethod === 'Pourover') {
+        await Comment.destroy({
+            where: {
+                RecipePouroverId: postId
+            }
+        });
+        
+        const thePost = await Recipe_Pourover.findOne({
+            where: {
+                id: postId
+            }
+        });
+
+        await thePost.destroy();
+    }
+
+    if(brewMethod === 'Aeropress') {
+        await Comment.destroy({
+            where: {
+                RecipeAeropressId: postId
+            }
+        });
+        
+        const thePost = await Recipe_Aeropress.findOne({
+            where: {
+                id: postId
+            }
+        });
+
+        await thePost.destroy();
+    }
+
+    //Rerender recipes
+    const recipesIm = await Recipe.findAll({
         where: {
             UserId: userId
         }
     });
+
+    const recipesPour = await Recipe_Pourover.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+
+    const recipesAero = await Recipe_Aeropress.findAll({
+        where: {
+            UserId: userId
+        }
+    });
+
+    const recipes = [...recipesIm, ...recipesPour, ...recipesAero];
     
     if(recipes.length > 0) {
         recipes.sort((a, b) => {

@@ -250,7 +250,8 @@ const EditRecipe = ({ recipeIn }) => {
   )}
   else {
     return (
-      <h2>Test</h2>
+      <>
+      </>
     )
   }
 }

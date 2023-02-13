@@ -138,12 +138,31 @@ export const deleteRecipe = async (req, res) => {
 
 export const getComments = async (req, res) => {
     const postId = req.body.postId;
+    const brewMethod = req.body.brewMethod;
 
-    const commentsHolder = await Comment.findAll({
-        where: {
-            RecipeId: postId
-        }
-    });
+    let commentsHolder = [];
+    
+    if(brewMethod === 'Immersion') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Pourover') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipePouroverId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Aeropress') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeAeropressId: postId
+            }
+        });
+    }
 
     //Sorts the list so most recent comments display first
     commentsHolder.sort((a, b) => { 
@@ -175,22 +194,60 @@ export const leaveComment = async (req, res) => {
     const postId = req.body.postId;
     const userId = req.body.userId;
     const commentText = req.body.text;
+    const brewMethod = req.body.brewMethod;
 
-    const theComment = Comment.build({
-        text: commentText,
-        UserId: userId,
-        RecipeId: postId
-    });
-
-    await theComment.save()
-    .then(console.log('saved'));
+    if (brewMethod === 'Immersion') {
+        const theComment = Comment.build({
+            text: commentText,
+            UserId: userId,
+            RecipeId: postId,
+        });
+        await theComment.save()
+        .then(console.log('saved'));
+    }
+    else if (brewMethod === 'Pourover') {
+        const theComment = Comment.build({
+            text: commentText,
+            UserId: userId,
+            RecipePouroverId: postId,
+        });
+        await theComment.save()
+        .then(console.log('saved'));
+    }
+    else if (brewMethod === 'Aeropress') {
+        const theComment = Comment.build({
+            text: commentText,
+            UserId: userId,
+            RecipeAeropressId: postId,
+        });
+        await theComment.save()
+        .then(console.log('saved'));
+    }
     
     //Rerender comments
-    const commentsHolder = await Comment.findAll({
-        where: {
-            RecipeId: postId
-        }
-    });
+    let commentsHolder = [];
+    
+    if(brewMethod === 'Immersion') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Pourover') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipePouroverId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Aeropress') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeAeropressId: postId
+            }
+        });
+    }
 
     //Sorts the list so most recent comments display first
     commentsHolder.sort((a, b) => { 
@@ -221,6 +278,7 @@ export const leaveComment = async (req, res) => {
 export const deleteComment = async (req, res) => {
     const commentID = req.body.comId;
     const postId = req.body.postId;
+    const brewMethod = req.body.brewMethod;
 
     const theComment = await Comment.findOne({
         where: {
@@ -231,11 +289,29 @@ export const deleteComment = async (req, res) => {
     await theComment.destroy();
 
     //Rerender comments
-    const commentsHolder = await Comment.findAll({
-        where: {
-            RecipeId: postId
-        }
-    });
+    let commentsHolder = [];
+    
+    if(brewMethod === 'Immersion') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Pourover') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipePouroverId: postId
+            }
+        });
+    }
+    else if (brewMethod === 'Aeropress') {
+        commentsHolder = await Comment.findAll({
+            where: {
+                RecipeAeropressId: postId
+            }
+        });
+    }
 
     //Sorts the list so most recent comments display first
     commentsHolder.sort((a, b) => { 

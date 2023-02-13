@@ -11,12 +11,15 @@ import Button from '@mui/material/Button'
 
 const textColor = '#CBCCCD';
 
-const Comment = ({ postIdIn }) => {
+const Comment = ({ postIdIn, brewMethodIn }) => {
   const [comments, setComments] = useState([]);
   const [theComment, setTheComment] = useState('');
   
   const fetchComments = async() => {
-    const creds = { postId: postIdIn };
+    const creds = { 
+      postId: postIdIn,
+      brewMethod: brewMethodIn 
+    };
 
     const data = await fetch('/getComments', {
       method: 'POST',
@@ -49,7 +52,8 @@ const Comment = ({ postIdIn }) => {
       const creds = {
         postId: postIdIn,
         userId: JSON.parse(localStorage.getItem('loginID')),
-        text: theComment
+        text: theComment,
+        brewMethod: brewMethodIn
       }
 
       const data = await fetch('/leaveComment', {
@@ -71,7 +75,8 @@ const Comment = ({ postIdIn }) => {
   const handleCommentDelete = async (idIn) => {
     const creds = {
       comId: idIn,
-      postId: postIdIn
+      postId: postIdIn,
+      brewMethod: brewMethodIn
     };
 
     const data = await fetch('/deleteComment', {

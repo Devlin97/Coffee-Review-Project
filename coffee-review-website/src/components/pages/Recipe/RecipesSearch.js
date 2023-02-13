@@ -159,7 +159,7 @@ const RecipesSearch = ({recipesIn}) => {
           }
         </Grid>
         <Grid xs={12} md={4}>
-          <Comment postIdIn={theRecipe?.id} />
+          <Comment postIdIn={theRecipe?.id} brewMethodIn={theRecipe?.brewMethod} />
         </Grid>
       </Grid>
       <Link to='/addRecipe' >

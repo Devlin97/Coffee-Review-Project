@@ -14,7 +14,7 @@ const AeropressDetails = ({ recipeIn = {} }) => {
         minHeight: '10vh', 
         margin: '0',
         /* background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', */
-        backgroundColor: 'rgba(32,38,57,0.6)',
+        backgroundColor: 'rgba(63,76,119,0.6)',
         paddingLeft: '15px',
         paddingRight: '15px',
         paddingBottom: '50px',

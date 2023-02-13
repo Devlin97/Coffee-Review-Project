@@ -2,8 +2,10 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography } from '@mui/material'
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
 
 const PouroverDetails = ({ recipeIn = {} }) => {
+  console.log(recipeIn)
   return (
     <Box sx={{ 
         width: '100%', 
@@ -21,6 +23,10 @@ const PouroverDetails = ({ recipeIn = {} }) => {
         paddingTop: '50px', 
         borderRadius: '25px', 
         marginTop: '10px',
+        maxHeight: '700px',
+        overflowY: 'auto',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
       }}>
   
       <Grid container spacing={1}>
@@ -86,6 +92,40 @@ const PouroverDetails = ({ recipeIn = {} }) => {
             {recipeIn.totalTimeMinutes}
           </Typography>
         </p>
+        </Grid>
+
+        <Grid xs={12}>
+        <TableContainer component={Paper} sx={{ background: 'rgba(11, 11, 11, 0.33)' }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell align='center' colSpan={2} sx={{ color: '#CBCCCD' }}>
+                  Pours
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='center' sx={{ color: '#CBCCCD' }}>
+                  Pour Start
+                </TableCell>
+                <TableCell align='center' sx={{ color: '#CBCCCD' }}>
+                  Until Water Weight
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {recipeIn?.pours.map((pour, i) => (
+                <TableRow key={i}>
+                  <TableCell align='center' sx={{ color: '#CBCCCD' }}>
+                    {pour.time}
+                  </TableCell>
+                  <TableCell align='center' sx={{ color: '#CBCCCD' }}>
+                    {`${pour.water}g`}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
         </Grid>
   
         <Grid xs={12}>

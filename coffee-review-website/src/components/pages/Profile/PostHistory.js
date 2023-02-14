@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import TableContainer from '@mui/material/TableContainer'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -64,63 +65,72 @@ const PostHistory = () => {
     if(recipes.length > 0) {
     return (
         <>
-            <Grid2 xs={6}>
-                <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
-                    <Table aria-label='recipes-table'>
-                        <TableHead>
-                            <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
+            <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
+                <Table aria-label='recipes-table'>
+                    <TableHead>
+                        <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
+                            <TableCell>
+                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    Recipe Name
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    Method
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    Created
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    Edit
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    Delete
+                                </Typography>    
+                            </TableCell>    
+                        </TableRow>    
+                    </TableHead>
+                    <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
+                        {recipes.map(rec => (
+                            <TableRow key={rec.id}>
+                                <TableCell>{rec.title}</TableCell>
+                                <TableCell>{rec.brewMethod}</TableCell>
+                                <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>
                                 <TableCell>
-                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                        Recipe Name
-                                    </Typography>
+                                    <Button onClick={() => setRecipeOut(rec)}>
+                                        {rec.brewMethod === 'Immersion' &&
+                                            <Link to={'/editImmersion/' + rec.id}>
+                                                Edit
+                                            </Link>
+                                        }
+                                        {rec.brewMethod === 'Pourover' &&
+                                            <Link to={'/editPourover/' + rec.id}>
+                                                Edit
+                                            </Link>
+                                        }
+                                        {rec.brewMethod === 'Aeropress' &&
+                                            <Link to={'/editAeropress/' + rec.id}>
+                                                Edit
+                                            </Link>
+                                        }
+                                    </Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                        Method
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                        Created
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                        Edit
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                    <Button onClick={() => handlePostDelete(rec.id, rec.brewMethod)}>
                                         Delete
-                                    </Typography>    
-                                </TableCell>    
-                            </TableRow>    
-                        </TableHead>
-                        <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
-                            {recipes.map(rec => (
-                                <TableRow key={rec.id}>
-                                    <TableCell>{rec.title}</TableCell>
-                                    <TableCell>{rec.brewMethod}</TableCell>
-                                    <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>
-                                    <TableCell>
-                                        <Button onClick={() => setRecipeOut(rec)}>
-                                            Edit
-                                        </Button>
-                                    </TableCell>
-                                    <TableCell>
-                                        <Button onClick={() => handlePostDelete(rec.id, rec.brewMethod)}>
-                                            Delete
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>    
-                    </Table> 
-                </TableContainer>
-            </Grid2>
-            <Grid2 xs={6}>
-                <EditRecipe recipeIn={recipeOut} />
-            </Grid2>
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>    
+                </Table> 
+            </TableContainer>
         </>
   )}
   else {

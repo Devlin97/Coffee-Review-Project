@@ -7,24 +7,55 @@ import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
+import { useParams } from 'react-router-dom'
+import { Skeleton } from '@mui/material'
 
 const textColor = '#CBCCCD';
 
-const EditRecipe = ({ recipeIn }) => {
-  const [title, setTitle] = useState(recipeIn?.title ? recipeIn.title : '');
-  const [brewMethod, setBrewMethod] = useState(recipeIn?.brewMethod ? recipeIn.brewMethod : '');
-  const [coffeeWeight, setCoffeeWeight] = useState(recipeIn?.coffeeWeight ? recipeIn.coffeeWeight : '');
-  const [waterWeight, setWaterWeight] = useState(recipeIn?.waterWeight ? recipeIn.waterWeight : '');
-  const [brewer, setBrewer] = useState(recipeIn?.brewer ? recipeIn.brewer : '');
-  const [grinder, setGrinder] = useState(recipeIn?.grinder ? recipeIn.grinder : '');
-  const [grindSize, setGrindSize] = useState(recipeIn?.grindSize ? recipeIn.grindSize : '');
-  const [description, setDescription] = useState(recipeIn?.description ? recipeIn.description : '');
-  const [totalTime, setTotalTime] = useState(recipeIn?.totalTimeMinutes ? recipeIn.totalTimeMinutes : '');
-  const [origin, setOrigin] = useState(recipeIn?.coffeeOrigin ? recipeIn.coffeeOrigin : '');
+const EditRecipe = () => {
+  const { id } = useParams();
+
+  console.log(id);
+  
+  const [title, setTitle] = useState('');
+  const [brewMethod, setBrewMethod] = useState('');
+  const [coffeeWeight, setCoffeeWeight] = useState('');
+  const [waterWeight, setWaterWeight] = useState('');
+  const [brewer, setBrewer] = useState('');
+  const [grinder, setGrinder] = useState('');
+  const [grindSize, setGrindSize] = useState('');
+  const [description, setDescription] = useState('');
+  const [totalTime, setTotalTime] = useState('');
+  const [origin, setOrigin] = useState('');
 
   const [grindersList, setGrindersList] = useState([]);
   const [countriesList, setCountriesList] = useState([]);
 
+  const fetchTheRecipe = async () => {
+    const creds = { id }; 
+    
+    const data = await fetch('/findImmersion', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds),
+    });
+
+    const jsonData = await data.json();
+
+    setTitle(jsonData.title);
+    setBrewMethod(jsonData.brewMethod);
+    setCoffeeWeight(jsonData.coffeeWeight);
+    setWaterWeight(jsonData.waterWeight);
+    setBrewer(jsonData.brewer);
+    setGrinder(jsonData.grinder);
+    setGrindSize(jsonData.grindSize);
+    setDescription(jsonData.description);
+    setTotalTime(jsonData.totalTimeMinutes);
+    setOrigin(jsonData.coffeeOrigin);
+  }
+  
   const fetchGrinders = async () => {
     const data = await fetch('/getGrinders');
 
@@ -50,26 +81,14 @@ const EditRecipe = ({ recipeIn }) => {
   }
   
   useEffect(() => {
-    if(recipeIn) {
-      setTitle(recipeIn.title);
-      setBrewMethod(recipeIn.brewMethod);
-      setCoffeeWeight(recipeIn.coffeeWeight);
-      setWaterWeight(recipeIn.waterWeight);
-      setBrewer(recipeIn.brewer);
-      setGrinder(recipeIn.grinder);
-      setGrindSize(recipeIn.grindSize);
-      setDescription(recipeIn.description);
-      setTotalTime(recipeIn.totalTimeMinutes);
-      setOrigin(recipeIn.coffeeOrigin);
-
-      fetchCountries();
-      fetchGrinders();
-    }
-  }, [recipeIn]);
+    fetchCountries();
+    fetchGrinders();
+    fetchTheRecipe();
+  }, []);
 
   const handleUpdate = async () => {
     const creds = {
-      postId: recipeIn.id,
+      postId: id,
       title,
       brewMethod: 'Immersion',
       coffeeWeight,
@@ -92,7 +111,6 @@ const EditRecipe = ({ recipeIn }) => {
     });
   }
 
-  if(recipeIn) {
   return (
     <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
 
@@ -102,7 +120,7 @@ const EditRecipe = ({ recipeIn }) => {
         alignItems='stretch'
         width='100%'
         sx={{ 
-          background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
+          backgroundColor: 'rgba(63,76,119,0.6)', 
           paddingLeft: '15px',
           paddingRight: '15px',
           paddingBottom: '50px',
@@ -113,7 +131,8 @@ const EditRecipe = ({ recipeIn }) => {
 
       <h1 className='create-recipe-h1'>Edit Recipe</h1>
 
-      <TextField 
+      {title ? (
+        <TextField 
         id='title-text' 
         label='Title' 
         variant='outlined' 
@@ -122,8 +141,11 @@ const EditRecipe = ({ recipeIn }) => {
         color='primary'
         sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
         InputLabelProps= {{ style: { color: textColor } }}
-        InputProps= {{ readOnly: true }}
-      />
+      /> ) : (
+        <Skeleton variant='rectangle' animation='wave' width={'100%'} height={'60px'} />
+      )
+      }
+      
 
       <FormControl sx={{ m:1, minWidth: 150 }}>
         <InputLabel id='select-label-brewer' style={{ color: textColor }}>Brewer</InputLabel>
@@ -272,13 +294,7 @@ const EditRecipe = ({ recipeIn }) => {
       </Stack>
 
     </Box>
-  )}
-  else {
-    return (
-      <>
-      </>
-    )
-  }
+  )
 }
 
 export default EditRecipe

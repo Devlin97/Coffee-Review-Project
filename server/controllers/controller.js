@@ -481,6 +481,23 @@ export const addRecipe = async (req, res) => {
     ));
 }
 
+export const findRecipeImmersion = async (req, res) => {
+    const id = req.body.id;
+
+    if(id) {
+        const theRecipe = await Recipe.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        res.json(theRecipe);
+    }
+    else {
+        res.json();
+    }
+}
+
 export const updateRecipeImmersion = async (req, res) => {
     const title = req.body.title;
     const brewMethod = req.body.brewMethod;

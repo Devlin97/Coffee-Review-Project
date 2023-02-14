@@ -21,7 +21,7 @@ router.post('/register', controls.register);
 
 router.post('/addRecipe', controls.addRecipe);
 router.post('/deleteRecipe', controls.deleteRecipe);
-router.post('/updateRecipe', controls.updateRecipe);
+router.post('/updateRecipeImmersion', controls.updateRecipeImmersion);
 
 router.post('/addPourover', pouroverControls.addPouroverRecipe);
 

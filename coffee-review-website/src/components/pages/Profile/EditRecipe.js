@@ -20,7 +20,35 @@ const EditRecipe = ({ recipeIn }) => {
   const [grindSize, setGrindSize] = useState(recipeIn?.grindSize ? recipeIn.grindSize : '');
   const [description, setDescription] = useState(recipeIn?.description ? recipeIn.description : '');
   const [totalTime, setTotalTime] = useState(recipeIn?.totalTimeMinutes ? recipeIn.totalTimeMinutes : '');
+  const [origin, setOrigin] = useState(recipeIn?.coffeeOrigin ? recipeIn.coffeeOrigin : '');
 
+  const [grindersList, setGrindersList] = useState([]);
+  const [countriesList, setCountriesList] = useState([]);
+
+  const fetchGrinders = async () => {
+    const data = await fetch('/getGrinders');
+
+    const jsonData = await data.json();
+
+    const tempList = await jsonData.map(el => (
+        el.name
+    ));
+
+    setGrindersList(tempList);
+  }
+
+  const fetchCountries = async () => {
+    const data = await fetch('/getCountries');
+
+    const jsonData = await data.json();
+
+    const tempList = await jsonData.map(el => (
+        el.name
+    ));
+
+    setCountriesList(tempList);
+  }
+  
   useEffect(() => {
     if(recipeIn) {
       setTitle(recipeIn.title);
@@ -32,6 +60,10 @@ const EditRecipe = ({ recipeIn }) => {
       setGrindSize(recipeIn.grindSize);
       setDescription(recipeIn.description);
       setTotalTime(recipeIn.totalTimeMinutes);
+      setOrigin(recipeIn.coffeeOrigin);
+
+      fetchCountries();
+      fetchGrinders();
     }
   }, [recipeIn]);
 
@@ -39,7 +71,7 @@ const EditRecipe = ({ recipeIn }) => {
     const creds = {
       postId: recipeIn.id,
       title,
-      brewMethod,
+      brewMethod: 'Immersion',
       coffeeWeight,
       waterWeight,
       brewer,
@@ -47,10 +79,11 @@ const EditRecipe = ({ recipeIn }) => {
       grindSize,
       description,
       totalTime,
+      origin,
       userId: JSON.parse(localStorage.getItem('loginID'))
     };
 
-    fetch('/updateRecipe', {
+    fetch('/updateRecipeImmersion', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -92,35 +125,6 @@ const EditRecipe = ({ recipeIn }) => {
         InputProps= {{ readOnly: true }}
       />
 
-      <FormControl sx={{ m:1, minWidth: 200 }}>
-        <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brew Method</InputLabel>
-        <Select
-          labelId='select-label-brew-method'
-          id='select-brew-method'
-          value={brewMethod}
-          label='Brew Method'
-          onChange={(e) => setBrewMethod(e.target.value)}
-          defaultValue=""
-          style={{ color: textColor }}
-          sx={{ fieldset: { borderColor: textColor } }}
-          MenuProps={{
-            anchorOrigin: {
-                vertical:'bottom',
-                horizontal: 'left'
-            },
-            transformOrigin: {
-                vertical: 'top',
-                horizontal: 'left'
-            },
-            getContentAnchorEl: null
-          }}>
-        
-          <MenuItem value={'Immersion'}>Immersion</MenuItem>
-          <MenuItem value={'Pourover'}>Pourover</MenuItem>
-          <MenuItem value={'Drip'}>Drip</MenuItem>
-        </Select>
-      </FormControl>
-
       <FormControl sx={{ m:1, minWidth: 150 }}>
         <InputLabel id='select-label-brewer' style={{ color: textColor }}>Brewer</InputLabel>
         <Select
@@ -134,21 +138,19 @@ const EditRecipe = ({ recipeIn }) => {
           sx={{ fieldset: { borderColor: textColor } }}
           MenuProps={{
             anchorOrigin: {
-                vertical:'bottom',
-                horizontal: 'left'
+              vertical:'bottom',
+              horizontal: 'left'
             },
             transformOrigin: {
-                vertical: 'top',
-                horizontal: 'left'
+              vertical: 'top',
+              horizontal: 'left'
             },
             getContentAnchorEl: null
           }}>
         
-          <MenuItem value={'Aeropress'}>Aeropress</MenuItem>
-          <MenuItem value={'V60'}>V60</MenuItem>
-          <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
-          <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
-          <MenuItem value={'Drip'}>Drip</MenuItem>
+            <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
+            <MenuItem value={'Hario Switch'}>Hario Switch</MenuItem>
+            <MenuItem value={'Cafetiere'}>Cafetiere</MenuItem>
         </Select>
       </FormControl>
 
@@ -196,15 +198,9 @@ const EditRecipe = ({ recipeIn }) => {
             getContentAnchorEl: null
           }}>
         
-          <MenuItem value={'Commandante C40'}>Commandante C40</MenuItem>
-          <MenuItem value={'Timemore C2'}>Timemore C2</MenuItem>
-          <MenuItem value={'Kinu M47'}>Kinu M47</MenuItem>
-          <MenuItem value={'1Zpresso JX'}>1Zpresso JX</MenuItem>
-          <MenuItem value={'1Zpresso JX Pro'}>1Zpresso JX Pro</MenuItem>
-          <MenuItem value={'Timemore Chestnut G1'}>Timemore Chestnut G1</MenuItem>
-          <MenuItem value={'Timemore Chestnut X'}>Timemore Chestnut X</MenuItem>
-          <MenuItem value={'1Zpresso K-Max'}>1Zpresso K-Max</MenuItem>
-          <MenuItem value={'1Zpresso K-Plus'}>1Zpresso K-Plus</MenuItem>
+          {grindersList.map((el, i) => (
+            <MenuItem key={i} value={el}>{el}</MenuItem>
+          ))}
         </Select>
       </FormControl>
 
@@ -217,6 +213,35 @@ const EditRecipe = ({ recipeIn }) => {
         InputLabelProps= {{ style: { color: textColor } }}
         sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
       />
+
+      <FormControl sx={{ m:1, minWidth: 150 }}>
+        <InputLabel id='select-label-origin' style={{ color: textColor }}>Coffee Origin</InputLabel>
+        <Select
+          labelId='select-origin'
+          id='select-origin'
+          value={origin}
+          label='Coffee Origin'
+          onChange={(e) => setOrigin(e.target.value)}
+          defaultValue=""
+          style={{ color: textColor }}
+          sx={{ fieldset: { borderColor: textColor } }}
+          MenuProps={{
+              anchorOrigin: {
+                  vertical:'bottom',
+                  horizontal: 'left'
+              },
+              transformOrigin: {
+                  vertical: 'top',
+                  horizontal: 'left'
+              },
+              getContentAnchorEl: null
+          }}>
+      
+          {countriesList.map((el, i) => (
+            <MenuItem key={i} value={el}>{el}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <TextField
         id='total-time-text' 

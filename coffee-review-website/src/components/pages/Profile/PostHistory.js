@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import EditRecipe from './EditRecipe'
+import Grid2 from '@mui/material/Unstable_Grid2'
 
 const PostHistory = () => {
     //================================= Recipes Table =================================
@@ -63,53 +64,63 @@ const PostHistory = () => {
     if(recipes.length > 0) {
     return (
         <>
-            <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
-                <Table aria-label='recipes-table'>
-                    <TableHead>
-                        <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
-                            <TableCell>
-                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                    Recipe Name
-                                </Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                    Created
-                                </Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                    Edit
-                                </Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                    Delete
-                                </Typography>    
-                            </TableCell>    
-                        </TableRow>    
-                    </TableHead>
-                    <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
-                        {recipes.map(rec => (
-                            <TableRow key={rec.id}>
-                                <TableCell>{rec.title}</TableCell>
-                                <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>
+            <Grid2 xs={6}>
+                <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
+                    <Table aria-label='recipes-table'>
+                        <TableHead>
+                            <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
                                 <TableCell>
-                                    <Button onClick={() => setRecipeOut(rec)}>
+                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                        Recipe Name
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                        Method
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                                        Created
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
                                         Edit
-                                    </Button>
+                                    </Typography>
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => handlePostDelete(rec.id, rec.brewMethod)}>
+                                    <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
                                         Delete
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>    
-                </Table> 
-            </TableContainer>
-            <EditRecipe recipeIn={recipeOut} />
+                                    </Typography>    
+                                </TableCell>    
+                            </TableRow>    
+                        </TableHead>
+                        <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
+                            {recipes.map(rec => (
+                                <TableRow key={rec.id}>
+                                    <TableCell>{rec.title}</TableCell>
+                                    <TableCell>{rec.brewMethod}</TableCell>
+                                    <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>
+                                    <TableCell>
+                                        <Button onClick={() => setRecipeOut(rec)}>
+                                            Edit
+                                        </Button>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Button onClick={() => handlePostDelete(rec.id, rec.brewMethod)}>
+                                            Delete
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>    
+                    </Table> 
+                </TableContainer>
+            </Grid2>
+            <Grid2 xs={6}>
+                <EditRecipe recipeIn={recipeOut} />
+            </Grid2>
         </>
   )}
   else {

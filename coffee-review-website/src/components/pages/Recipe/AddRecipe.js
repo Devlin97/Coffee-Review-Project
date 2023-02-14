@@ -135,7 +135,7 @@ const AddRecipe = () => {
         InputLabelProps= {{ style: { color: textColor } }}
         />
 
-        <Autocomplete
+        {/* <Autocomplete
             disablePortal
             id='auto-box-brewer'
             options={grindersList}
@@ -146,7 +146,7 @@ const AddRecipe = () => {
             }}
             sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
             renderInput={(params) => <TextField {...params} label='Grinder' InputLabelProps={{ style: { color: textColor } }} />}
-        />
+        /> */}
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
             <InputLabel id='select-label-brewer' style={{ color: textColor }}>Brewer</InputLabel>
@@ -173,7 +173,7 @@ const AddRecipe = () => {
             
                 <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
                 <MenuItem value={'Hario Switch'}>Hario Switch</MenuItem>
-                <MenuItem value={'Cafetieres'}>Cafetieres</MenuItem>
+                <MenuItem value={'Cafetiere'}>Cafetiere</MenuItem>
             </Select>
         </FormControl>
 

@@ -481,7 +481,7 @@ export const addRecipe = async (req, res) => {
     ));
 }
 
-export const updateRecipe = async (req, res) => {
+export const updateRecipeImmersion = async (req, res) => {
     const title = req.body.title;
     const brewMethod = req.body.brewMethod;
     const coffeeWeight = req.body.coffeeWeight;
@@ -491,7 +491,7 @@ export const updateRecipe = async (req, res) => {
     const grindSize = req.body.grindSize;
     const description = req.body.description;
     const totalTime = req.body.totalTime;
-    const coffeeOrigin = req.body.coffeeOrigin;
+    const origin = req.body.origin;
     const postId = req.body.postId;
 
     const theRecipe = await Recipe.findOne({
@@ -510,7 +510,7 @@ export const updateRecipe = async (req, res) => {
         grindSize: grindSize,
         description: description,
         totalTimeMinutes: totalTime,
-        coffeeOrigin: coffeeOrigin
+        coffeeOrigin: origin
     });
 
     await theRecipe.save();

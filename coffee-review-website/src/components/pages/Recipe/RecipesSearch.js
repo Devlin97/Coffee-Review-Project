@@ -145,7 +145,7 @@ const RecipesSearch = ({recipesIn}) => {
                     <ListItemText primary={rec.title} secondary={`${rec.brewer} | ${rec.coffeeOrigin}`} secondaryTypographyProps={{ style: { color: '#CBCCCD' } }} sx={{ color: '#CBCCCD' }} />
                   </ListItemButton>
                 </ListItem>
-                <Divider component='li' sx={{ backgroundColor: '#CBCCCD' }} />
+                <Divider key={'d'+ind} component='li' sx={{ backgroundColor: '#CBCCCD' }} />
               </>
             ))}
             </List>
@@ -162,7 +162,7 @@ const RecipesSearch = ({recipesIn}) => {
           <Comment postIdIn={theRecipe?.id} brewMethodIn={theRecipe?.brewMethod} />
         </Grid>
       </Grid>
-      <Link to='/addRecipe' >
+      <Link to='/createRecipe' >
         <Button 
           variant='contained' 
           color='success'

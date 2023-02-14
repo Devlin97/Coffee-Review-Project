@@ -25,6 +25,7 @@ router.post('/updateRecipeImmersion', controls.updateRecipeImmersion);
 router.post('/findImmersion', controls.findRecipeImmersion);
 
 router.post('/addPourover', pouroverControls.addPouroverRecipe);
+router.post('/findPourover', pouroverControls.findPouroverRecipe);
 
 router.post('/addAeropress', aeroControls.addAeropress);
 

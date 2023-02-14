@@ -46,3 +46,19 @@ export const addPouroverRecipe = async (req, res) => {
     await theRecipe.save()
     .then(console.log('saved'));
 }
+
+export const findPouroverRecipe = async (req, res) => {
+    const id = req.body.id;
+    if(id) {
+        let theRecipe = await Recipe_Pourover.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        res.json(theRecipe);
+    }
+    else {
+        res.json({});
+    }
+}

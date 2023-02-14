@@ -11,7 +11,18 @@ const CreateRecipe = () => {
   
     return (
         <>
-            <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
+            <Box sx={{ 
+                width: '100%', 
+                maxWidth: 300, 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                minHeight: '10vh', 
+                margin: '0 auto', 
+                backgroundColor: 'rgba(63,76,119,0.6)',
+                borderRadius: '25px',
+                marginTop: '5px'
+                }}>
                 <FormControl sx={{ m:1, minWidth: 200 }}>
                     <InputLabel id='select-label-brew-method' style={{ color: textColor }}>Brew Method</InputLabel>
                     <Select
@@ -31,8 +42,7 @@ const CreateRecipe = () => {
                             transformOrigin: {
                                 vertical: 'top',
                                 horizontal: 'left'
-                            },
-                            getContentAnchorEl: null
+                            }
                         }}>
                     
                         <MenuItem value={'Aeropress'}>Aeropress</MenuItem>

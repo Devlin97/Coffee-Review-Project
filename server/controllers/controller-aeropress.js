@@ -77,5 +77,6 @@ export const updateAeropress = async (req, res) => {
         inverted: inverted === 'Yes' ? true : false
     });
 
-    await theRecipe.save();
+    await theRecipe.save()
+    .then(res.json({success: true}));
 }

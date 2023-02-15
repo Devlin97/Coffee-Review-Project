@@ -6,9 +6,9 @@ import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
-import { Alert, Collapse } from '@mui/material'
 import Box from '@mui/material/Box'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const textColor = '#CBCCCD';
 
@@ -46,7 +46,6 @@ const EditAeropress = () => {
     setTitle(jsonData.title);
     setCoffeeWeight(jsonData.coffeeWeight);
     setWaterWeight(jsonData.waterWeight);
-    setBrewer(jsonData.brewer);
     setGrinder(jsonData.grinder);
     setGrindSize(jsonData.grindSize);
     setDescription(jsonData.description);
@@ -88,7 +87,6 @@ const EditAeropress = () => {
   const handleUpdate = async () => {
     const creds = {
       title,
-      brewer,
       grinder,
       grindSize,
       description,
@@ -286,9 +284,6 @@ const EditAeropress = () => {
           />
             
           <Button onClick={() => handleUpdate()} variant='contained' color='success'>Submit</Button>
-          <Collapse in={alertBoo}>
-              <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>
-          </Collapse>
         </Stack>
       </Box>
     )

@@ -14,7 +14,8 @@ const ImmersionExplainer = () => {
                 width: '100%', 
                 padding: '10px', 
                 backgroundColor: 'rgba(63,76,119,0.6)',
-                color: '#CBCCCD' 
+                color: '#CBCCCD',
+                minHeight: '60px' 
             }}>
                 <Stack direction='row' spacing={2}>
                     <img src={immersionIcon} alt='logo' style={{ display: 'block', margin: '0 auto', height: '50px', width: '50px' }} />

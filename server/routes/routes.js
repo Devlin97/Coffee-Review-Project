@@ -29,6 +29,8 @@ router.post('/findPourover', pouroverControls.findPouroverRecipe);
 router.post('/updatePourover', pouroverControls.updatePourover);
 
 router.post('/addAeropress', aeroControls.addAeropress);
+router.post('/findAeropress', aeroControls.findAeropressRecipe);
+router.post('/updateAeropress', aeroControls.updateAeropress);
 
 router.post('/getComments', controls.getComments);
 router.post('/leaveComment', controls.leaveComment);

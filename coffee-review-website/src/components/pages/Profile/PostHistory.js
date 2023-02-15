@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import EditRecipe from './EditRecipe'
 import Grid2 from '@mui/material/Unstable_Grid2'
+import { Skeleton } from '@mui/material'
+import Box from '@mui/material/Box'
 
 const PostHistory = () => {
     //================================= Recipes Table =================================
@@ -62,10 +64,10 @@ const PostHistory = () => {
     
     //================================= Edit Recipe =================================
   
-    if(recipes.length > 0) {
     return (
         <>
-            <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
+            <TableContainer sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
+                {recipes.length > 0 ? (
                 <Table aria-label='recipes-table'>
                     <TableHead>
                         <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
@@ -128,28 +130,15 @@ const PostHistory = () => {
                                 </TableCell>
                             </TableRow>
                         ))}
-                    </TableBody>    
-                </Table> 
+                    </TableBody>
+                </Table>
+                ) : (
+                    <Skeleton variant='rectangular' width={'100%'} height={'400px'} sx={{ bgcolor: 'grey' }} />
+                )
+                }
             </TableContainer>
         </>
-  )}
-  else {
-    return(
-        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
-            <Table aria-label='recipes-table'>
-                <TableHead>
-                    <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
-                        <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                Create recipes to see them here!
-                            </Typography>
-                        </TableCell>
-                    </TableRow>    
-                </TableHead>
-            </Table>
-        </TableContainer>
-    )
-  }
+  )
 }
 
 export default PostHistory

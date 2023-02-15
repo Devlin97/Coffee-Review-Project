@@ -253,7 +253,21 @@ const EditPourover = () => {
             id='pours-text' 
             label='Total Pours'  
             type='number' 
-            onChange={(e) => setPours(new Array(parseInt(e.target.value)).fill(1))}
+            onChange={(e) => setPours(() => {
+                const newArray = new Array(parseInt(e.target.value)).fill(1);
+
+                if(newArray.length < poursListTime.length) {
+                    const timeCopy = [...poursListTime];
+                    timeCopy.splice(newArray.length);
+                    setPoursListTime(timeCopy);
+
+                    const waterCopy = [...poursListWater];
+                    waterCopy.splice(newArray.length);
+                    setPoursListWater(waterCopy);
+                }
+
+                return newArray;
+            })}
             value={pours.length}
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
@@ -274,7 +288,7 @@ const EditPourover = () => {
                     value={index === 0 ? `0:00` : poursListTime[index]}
                     inputProps={{ pattern:'[0-9]:[0-5][0-5]' }}
                     InputProps={{ readOnly: index === 0 ? true : false }}
-                    InputLabelProps= {{ style: { color: textColor } }}
+                    InputLabelProps= {{ style: { color: textColor }, shrink: true }}
                     sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
                 />
                 
@@ -288,7 +302,7 @@ const EditPourover = () => {
                         return listCopy;
                     })}
                     value={poursListWater[index]}
-                    InputLabelProps= {{ style: { color: textColor } }}
+                    InputLabelProps= {{ style: { color: textColor }, shrink: true }}
                     sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
                 />
             </>

@@ -110,5 +110,6 @@ export const updatePourover = async (req, res) => {
         coffeeOrigin: coffeeOrigin
     });
 
-    await theRecipe.save();
+    await theRecipe.save()
+    .then(res.json({success: true}));
 }

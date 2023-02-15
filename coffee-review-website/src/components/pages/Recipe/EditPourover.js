@@ -16,9 +16,7 @@ const EditPourover = () => {
     const { id } = useParams();
 
     const [title, setTitle] = useState('');
-    const [brewMethod, setBrewMethod] = useState('');
     const [coffeeWeight, setCoffeeWeight] = useState('');
-    const [waterWeight, setWaterWeight] = useState('');
     const [brewer, setBrewer] = useState('');
     const [grinder, setGrinder] = useState('');
     const [grindSize, setGrindSize] = useState('');
@@ -26,8 +24,6 @@ const EditPourover = () => {
     const [totalTime, setTotalTime] = useState('');
     const [origin, setOrigin] = useState('');
     const [pours, setPours] = useState([]);
-    const [bloomTime, setBloomTime] = useState('');
-    const [bloomWeight, setBloomWeight] = useState('');
 
     const [poursListWater, setPoursListWater] = useState([]);
     const [poursListTime, setPoursListTime] = useState([]);
@@ -59,9 +55,7 @@ const EditPourover = () => {
         })
     
         setTitle(jsonData.title);
-        setBrewMethod(jsonData.brewMethod);
         setCoffeeWeight(jsonData.coffeeWeight);
-        setWaterWeight(jsonData.waterWeight);
         setBrewer(jsonData.brewer);
         setGrinder(jsonData.grinder);
         setGrindSize(jsonData.grindSize);
@@ -102,6 +96,30 @@ const EditPourover = () => {
         fetchCountries();
         fetchTheRecipe();
     }, []);
+
+    const handleUpdate = async () => {
+        const creds = {
+            title,
+            poursListTime,
+            poursListWater,
+            brewer,
+            grinder,
+            grindSize,
+            description,
+            totalTime,
+            coffeeOrigin: origin,
+            coffeeWeight,
+            id
+        };
+
+        fetch('/updatePourover', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(creds),
+        });
+    }
 
   return (
     <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
@@ -332,7 +350,7 @@ const EditPourover = () => {
             sx={{ fieldset: { borderColor: textColor } }}
         />
 
-        <Button type='submit' variant='contained' color='success'>Submit</Button>
+        <Button onClick={() => handleUpdate()} variant='contained' color='success'>Submit</Button>
 
         <Collapse in={alertBoo}>
             <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>

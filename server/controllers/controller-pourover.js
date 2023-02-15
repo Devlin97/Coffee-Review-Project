@@ -62,3 +62,53 @@ export const findPouroverRecipe = async (req, res) => {
         res.json({});
     }
 }
+
+export const updatePourover = async (req, res) => {
+    const title = req.body.title;
+    const poursListTime = req.body.poursListTime;
+    const poursListWater = req.body.poursListWater;
+    const brewer = req.body.brewer;
+    const grinder = req.body.grinder;
+    const grindSize = req.body.grindSize;
+    const description = req.body.description;
+    const totalTime = req.body.totalTime;
+    const coffeeOrigin = req.body.coffeeOrigin;
+    const coffeeWeight = req.body.coffeeWeight;
+    const id = req.body.id;
+
+    const thePours = [];
+    
+    poursListTime.forEach((element, i) => {
+        if(i === 0) {
+            thePours.push({ time: '0:00' })
+        }
+        else {
+            thePours.push({ time: element })
+        }
+    });
+
+    poursListWater.forEach((element, index) => {
+        thePours[index].water = element
+    });
+
+    const theRecipe = await Recipe_Pourover.findOne({
+        where: {
+            id: id 
+        }
+    });
+
+    theRecipe.set({
+        title: title,
+        waterWeight: poursListWater[poursListWater.length - 1],
+        coffeeWeight: coffeeWeight,
+        brewer: brewer,
+        grinder: grinder,
+        grindSize: grindSize,
+        description: description,
+        totalTimeMinutes: totalTime,
+        pours: thePours,
+        coffeeOrigin: coffeeOrigin
+    });
+
+    await theRecipe.save();
+}

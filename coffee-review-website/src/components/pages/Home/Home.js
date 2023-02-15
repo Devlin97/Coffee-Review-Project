@@ -1,8 +1,7 @@
-import '../../App.css';
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import { color } from '@mui/system';
-import logo from '../../images/logo.png'
+import logo from '../../../images/logo.png'
 
 function Home() {
     return (

@@ -66,7 +66,7 @@ const PostHistory = () => {
   
     return (
         <>
-            <TableContainer sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto' }}>
+            <TableContainer sx={{ maxWidth: '700px', display: 'flex', margin: '0 auto' }}>
                 {recipes.length > 0 ? (
                 <Table aria-label='recipes-table'>
                     <TableHead>

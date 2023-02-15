@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Skeleton } from '@mui/material'
 
 const textColor = '#CBCCCD';
@@ -30,6 +30,8 @@ const EditRecipe = () => {
 
   const [grindersList, setGrindersList] = useState([]);
   const [countriesList, setCountriesList] = useState([]);
+
+  const [success, setSuccess] = useState(false);
 
   const fetchTheRecipe = async () => {
     const creds = { id }; 
@@ -102,15 +104,24 @@ const EditRecipe = () => {
       userId: JSON.parse(localStorage.getItem('loginID'))
     };
 
-    fetch('/updateRecipeImmersion', {
+    const data = await fetch('/updateRecipeImmersion', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
       body: JSON.stringify(creds),
     });
+
+    const jsonData = await data.json();
+
+    console.log(jsonData.success);
+
+    if (jsonData.success === true) {
+      setSuccess(true);
+    } 
   }
 
+  if(!success) {
   return (
     <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
 
@@ -295,6 +306,35 @@ const EditRecipe = () => {
 
     </Box>
   )
+  }
+  else {
+    return (
+    <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto' }}>
+      <Stack 
+        spacing={2}
+        direction='column'
+        alignItems='stretch'
+        width='100%'
+        sx={{ 
+          backgroundColor: 'rgba(63,76,119,0.6)', 
+          paddingLeft: '15px',
+          paddingRight: '15px',
+          paddingBottom: '50px',
+          paddingTop: '50px', 
+          borderRadius: '25px',
+          marginTop: '15px' 
+      }}>
+        <h1 className='create-recipe-h1'>Update Successful</h1>
+        <Button variant='contained' color='success'>
+          <Link to={'/profile'} style={{ textDecoration: 'none', color: textColor }}>
+            Back to Profile
+          </Link>
+        </Button>
+      </Stack>
+      
+    </Box>
+    )
+  }
 }
 
 export default EditRecipe

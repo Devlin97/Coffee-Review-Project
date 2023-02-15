@@ -530,5 +530,6 @@ export const updateRecipeImmersion = async (req, res) => {
         coffeeOrigin: origin
     });
 
-    await theRecipe.save();
+    await theRecipe.save()
+    .then(res.json({success: true}));
 }

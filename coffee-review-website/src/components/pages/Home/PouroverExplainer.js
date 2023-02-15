@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import pouroverIcon from '../../../images/v60.svg'
-import { Box, Paper, Stack, Collapse } from '@mui/material'
+import { Box, Paper, Stack, Collapse, Divider } from '@mui/material'
 
 const PouroverExplainer = () => {
     const [textBoo, setTextBoo] = useState(false);
@@ -23,7 +23,9 @@ const PouroverExplainer = () => {
                         }
                         <Collapse in={textBoo}>
                             {textBoo &&
-                                <p style={{ color: '#CBCCCD' }}>Pourover is one of the most popular ways to brew third wave coffee! Pourover uses a brewer which extracts the coffee from the beans by using gravity to pull the hot water through the beans. Pourovers are probably the most tricky way to brew coffee. It is done through various pours and even changing the most minute of factors can drastically affect the final cup!</p>
+                                <p style={{ color: '#CBCCCD' }}>Pourover is one of the most popular ways to brew third wave coffee! 
+                                <Divider sx={{ backgroundColor: '#CBCCCD', marginTop: '8px', marginBottom: '4px' }}/>Pourover uses a brewer which extracts the coffee from the beans by using gravity to pull the hot water through the beans. 
+                                <Divider sx={{ backgroundColor: '#CBCCCD', marginTop: '8px', marginBottom: '4px' }}/>Pourovers are probably the most tricky way to brew coffee. It is done through various pours and even changing the most minute of factors can drastically affect the final cup!</p>
                             }
                         </Collapse>
                     </Stack>

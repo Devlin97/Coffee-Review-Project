@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import immersionIcon from '../../../images/immersion.svg'
-import { Box, Paper, Stack, Collapse } from '@mui/material'
+import { Box, Paper, Stack, Collapse, Divider } from '@mui/material'
 
 const ImmersionExplainer = () => {
     const [textBoo, setTextBoo] = useState(false);
@@ -23,7 +23,10 @@ const ImmersionExplainer = () => {
                     }
                     <Collapse in={textBoo}>
                         {textBoo &&
-                            <p style={{ color: '#CBCCCD' }}>Immersion is one of the most classic ways of brewing coffee. Most families will have a cafetiere or french press already in their homes! Immersion brews coffee by letting the coffee grounds sit immersed in the hot water for a specific amount of time before straining the coffee grounds out of the water. Many devices exist for this such as the aforementioned cafetiere, but devices such as the Hario Switch and Clever Dripper strain the coffee out the bottom of the brewer through a filter. Immersion is very verstaile as you could technically brew coffee this way with a bowl and a mesh strainer!</p>
+                            <p style={{ color: '#CBCCCD' }}>Immersion is one of the most classic ways of brewing coffee. Most families will have a cafetiere or french press already in their homes! 
+                            <Divider sx={{ backgroundColor: '#CBCCCD', marginTop: '8px', marginBottom: '4px' }}/>Immersion brews coffee by letting the coffee grounds sit immersed in the hot water for a specific amount of time before straining the coffee grounds out of the water. 
+                            <Divider sx={{ backgroundColor: '#CBCCCD', marginTop: '8px', marginBottom: '4px' }}/>Many devices exist for this such as the aforementioned cafetiere, but devices such as the Hario Switch and Clever Dripper strain the coffee out the bottom of the brewer through a filter. 
+                            <Divider sx={{ backgroundColor: '#CBCCCD', marginTop: '8px', marginBottom: '4px' }}/>Immersion is very verstaile as you could technically brew coffee this way with a bowl and a mesh strainer!</p>
                         }
                     </Collapse>
                 </Stack>

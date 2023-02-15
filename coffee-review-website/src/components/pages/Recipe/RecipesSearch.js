@@ -26,6 +26,7 @@ import FormLabel from '@mui/material/FormLabel'
 import PouroverDetails from './PouroverDetails';
 import AeropressDetails from './AeropressDetails';
 import ImmersionDetails from './ImmersionDetails';
+import BlankRecipeDetials from './BlankRecipeDetials';
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
@@ -155,7 +156,7 @@ const RecipesSearch = ({recipesIn}) => {
           {theRecipe?.brewMethod === 'Immersion' ? <ImmersionDetails recipeIn={theRecipe} /> : 
           theRecipe?.brewMethod === 'Pourover' ? <PouroverDetails recipeIn={theRecipe} /> :
           theRecipe?.brewMethod === 'Aeropress' ? <AeropressDetails recipeIn={theRecipe} /> :
-          <RecipeDetails recipeIn={theRecipe} />
+          <BlankRecipeDetials />
           }
         </Grid>
         <Grid xs={12} md={4}>

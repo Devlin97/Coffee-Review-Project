@@ -27,6 +27,8 @@ import PouroverDetails from './PouroverDetails';
 import AeropressDetails from './AeropressDetails';
 import ImmersionDetails from './ImmersionDetails';
 import BlankRecipeDetials from './BlankRecipeDetials';
+import AddIcon from '@mui/icons-material/Add'
+import { Fab } from '@mui/material';
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
@@ -163,14 +165,14 @@ const RecipesSearch = ({recipesIn}) => {
           <Comment postIdIn={theRecipe?.id} brewMethodIn={theRecipe?.brewMethod} />
         </Grid>
       </Grid>
-      <Link to='/createRecipe' >
-        <Button 
-          variant='contained' 
-          color='success'
-        >
-          Create your own Recipe!
-        </Button>
-      </Link>
+      <Box sx={{ position: 'fixed', bottom: 0, right: 0, margin: '10px' }}>
+        <Link to='/createRecipe'>
+          <Fab variant='extended' color='primary'>
+            <AddIcon />
+            Create Recipe
+          </Fab>
+        </Link>
+      </Box>
     </>
   )
 }

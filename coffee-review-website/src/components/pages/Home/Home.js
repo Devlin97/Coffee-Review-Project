@@ -6,6 +6,9 @@ import PouroverExplainer from './PouroverExplainer';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import ImmersionExplainer from './ImmersionExplainer';
 import AeropressExplainer from './AeropressExplainer';
+import ThirdWaveCoffeeCard from './ThirdWaveCoffeeCard';
+import CreateRecipeCard from './CreateRecipesCard';
+import RegisterCard from './RegisterCard';
 
 function Home() {
     return (
@@ -29,9 +32,9 @@ function Home() {
                 </Paper>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', alignContent: 'center' }}>
-                <PouroverExplainer />
-                <ImmersionExplainer />
-                <AeropressExplainer />
+                <ThirdWaveCoffeeCard />
+                <CreateRecipeCard />
+                <RegisterCard />
             </Box>
         </>
     )

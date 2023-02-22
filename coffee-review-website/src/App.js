@@ -14,6 +14,7 @@ import ImmersionDetails from './components/pages/Recipe/ImmersionDetails';
 import EditRecipe from './components/pages/Profile/EditRecipe';
 import EditPourover from './components/pages/Recipe/EditPourover';
 import EditAeropress from './components/pages/Recipe/EditAeropress';
+import AboutHome from './components/pages/About/AboutHome';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/editImmersion/:id' element={<EditRecipe />} />
         <Route path='/editPourover/:id' element={<EditPourover />} />
         <Route path='/editAeropress/:id' element={<EditAeropress />} />
+        <Route path='/About' element={<AboutHome />} />
       </Routes>
     </Router>
     </>

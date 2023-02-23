@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemButton, ListSubheader, ListItemText, Collapse } from '@mui/material'
+import { List, ListItem, ListItemButton, ListSubheader, ListItemText, Collapse, Box } from '@mui/material'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import WhatIsPourover from './WhatIsPourover'
-import { Stack } from '@mui/system'
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 
 const AboutList = () => {
     const [open, setOpen] = useState(true)
     const [explainer, setExplainer] = useState()
 
   return (
-    <>
-    <Stack direction='row'>
+    <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 2fr' }}>
         <List sx={{ 
             height: '100%', 
             maxHeight: '550px', 
-            overflowY: 'auto', 
-            maxWidth: 400, 
+            overflowY: 'auto',
+            maxWidth: 400,
+            minWidth: 350, 
             backgroundColor: 'rgba(63,76,119,0.2)',
             color: '#CBCCCD' 
             }} 
@@ -55,8 +55,7 @@ const AboutList = () => {
                 </Collapse>
         </List>
         <WhatIsPourover />
-    </Stack>
-    </>
+    </Box>
   )
 }
 

@@ -4,16 +4,16 @@ import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import WhatIsPourover from './WhatIsPourover'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
+import WhatIsImmersion from './WhatIsImmersion'
 
 const AboutList = () => {
     const [open, setOpen] = useState(true)
-    const [explainer, setExplainer] = useState()
+    const [immersion, setImmersion] = useState(false)
+    const [pourover, setPourover] = useState(false)
 
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 2fr' }}>
-        <List sx={{ 
-            height: '100%', 
-            maxHeight: '550px', 
+        <List sx={{  
             overflowY: 'auto',
             maxWidth: 400,
             minWidth: 350, 
@@ -37,12 +37,18 @@ const AboutList = () => {
                 <Collapse in={open} timeout='auto' unmountOnExit>
                     <List disablePadding>
                         <ListItem sx={{ pl: 4 }}>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => {
+                                setPourover(true)
+                                setImmersion(false)
+                            }}>
                                 <ListItemText primary='Pourover' />
                             </ListItemButton>
                         </ListItem>
                         <ListItem sx={{ pl: 4 }}>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => { 
+                                setImmersion(true)
+                                setPourover(false)
+                             }}>
                                 <ListItemText primary='Immersion' />
                             </ListItemButton>
                         </ListItem>
@@ -54,7 +60,12 @@ const AboutList = () => {
                     </List>
                 </Collapse>
         </List>
-        <WhatIsPourover />
+        {pourover && 
+            <WhatIsPourover />
+        }
+        {immersion && 
+            <WhatIsImmersion />
+        }
     </Box>
   )
 }

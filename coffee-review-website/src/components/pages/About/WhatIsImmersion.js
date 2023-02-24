@@ -10,7 +10,7 @@ const WhatIsImmersion = () => {
             <p>Immersion is the easiest and most widly used way of brewing coffee. Most people will have some level of familiarity with this method. If you have ever brewed coffee using a cafetiere / french press then you've made immersion coffee before!</p>
             <p>Instead of letting the water flow through the coffee grounds, immersion coffee brews by letting the coffee grounds and the water sit together. After a certain period of time you strain the coffee grounds from the water and your brewed coffee is ready to be enjoyed.</p>
             <h3 className='about-subheading'>What does an immersion brew consist of?</h3>
-            <p>Immersion is probably the simplest and most forgiving ways to brew coffee. The variables and an immersion brew are: </p>
+            <p>Immersion is probably the simplest and most forgiving ways to brew coffee. The variables for an immersion brew are: </p>
             <ul>
               <li>Coffee Weight</li>
               <li>Water Weight</li>

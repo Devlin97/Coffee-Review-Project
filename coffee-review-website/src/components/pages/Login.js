@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import { Link } from 'react-router-dom';
 
 const textColor = '#CBCCCD';
 
@@ -137,6 +138,10 @@ const Login = () => {
                     />
 
                     <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>Log In</Button>
+
+                    <Link to="/register" style={{ textDecoration: 'none' }}>
+                        <Button variant='outlined' style={{ color: textColor }} color='success'>Register</Button>
+                    </Link>
 
                 </Stack>
 

@@ -14,24 +14,9 @@ function Home() {
     return (
         <>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '50px', marginBottom: '10px' }}>
-                <Paper 
-                    elevation={3} 
-                    sx={{ 
-                        maxWidth: '550px', 
-                        width: '100%', 
-                        padding: '10px', 
-                        background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )',
-                        color: '#CBCCCD' 
-                    }}>
-
-                    <h1 style={{ textAlign: 'center' }}>
-                        Welcome to Third Wave Coffee Review
-                    </h1>
-
-                    <img src={logo} alt='logo' style={{ display: 'block', margin: '0 auto', width: '60%' }} />
-                </Paper>
+                    <img src={logo} alt='logo' style={{ display: 'block', margin: '0 auto', width: '500px', boxShadow: '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)' }} />
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', alignContent: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', alignContent: 'center', marginTop: '50px' }}>
                 <ThirdWaveCoffeeCard />
                 <CreateRecipeCard />
                 <RegisterCard />

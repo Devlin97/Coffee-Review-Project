@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCoffee, faHome, faPerson, faSignIn } from "@fortawesome/free-solid-svg-icons"
 import { Typography } from '@mui/material';
+import School from '@mui/icons-material/School'
 
 function Navbar() {
     return (
@@ -23,6 +24,11 @@ function Navbar() {
                         <li>
                             <Link to="/profile" className="navbar-item">
                                 <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/About" className="navbar-item">
+                                <School style={{ height: '18px', width: '18px' }}/>
                             </Link>
                         </li>
                         <li>

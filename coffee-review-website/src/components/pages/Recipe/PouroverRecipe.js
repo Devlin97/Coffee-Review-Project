@@ -137,7 +137,7 @@ const PouroverRecipe = () => {
                 marginTop: '15px' 
             }}>
 
-        <h1 className='create-recipe-h1'>Create a Recipe</h1>
+        <h1 className='create-recipe-h1'>Create a Pourover Recipe</h1>
 
         <TextField 
             id='title-text' 

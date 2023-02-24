@@ -11,6 +11,7 @@ const CreateRecipe = () => {
   
     return (
         <>
+            <h1 className='sign-in-header' style={{ textAlign: 'center' }}>Choose Recipe Brew Method</h1>
             <Box sx={{ 
                 width: '100%', 
                 maxWidth: 300, 

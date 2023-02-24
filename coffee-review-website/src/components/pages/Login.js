@@ -137,10 +137,10 @@ const Login = () => {
                         InputLabelProps= {{ style: { color: textColor } }}
                     />
 
-                    <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>Log In</Button>
+                    <Button type='submit' variant='contained' style={{ color: textColor }} color='success'>Log In</Button>
 
                     <Link to="/register" style={{ textDecoration: 'none' }}>
-                        <Button variant='outlined' style={{ color: textColor }} color='success'>Register</Button>
+                        <Button variant='contained' style={{ color: textColor }} color='success'>Register</Button>
                     </Link>
 
                 </Stack>

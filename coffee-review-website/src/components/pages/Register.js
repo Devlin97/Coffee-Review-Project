@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Stack, Box, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const textColor = '#CBCCCD';
 
@@ -111,7 +112,7 @@ const Register = () => {
             InputLabelProps= {{ style: { color: textColor } }}
           />
 
-          <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>Register</Button>
+          <Button type='submit' variant='contained' style={{ color: textColor }} color='success'>Register</Button>
 
         </Stack>
 
@@ -140,6 +141,10 @@ const Register = () => {
                 <h2 className='sign-in-header'>YOU ARE ALREADY LOGGED IN</h2>
 
                 <h2 className='sign-in-header'>THANK YOU FOR REGISTERING</h2>
+
+                <Link to="/">
+                  <Button variant='contained' style={{ color: textColor }} color='success'>Home</Button>
+                </Link>
 
             </Stack>
 

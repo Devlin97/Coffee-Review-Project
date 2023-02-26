@@ -191,6 +191,7 @@ export const deleteRecipe = async (req, res) => {
 export const getComments = async (req, res) => {
     const postId = req.body.postId;
     const brewMethod = req.body.brewMethod;
+    const userId = req.body.userId;
 
     let commentsHolder = [];
     
@@ -239,7 +240,7 @@ export const getComments = async (req, res) => {
 
         comments.push(holder);
     }
-    res.json(comments);
+    res.json({comments, userId});
 }
 
 export const leaveComment = async (req, res) => {

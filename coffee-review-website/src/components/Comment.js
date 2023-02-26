@@ -14,6 +14,8 @@ const textColor = '#CBCCCD';
 const Comment = ({ postIdIn, brewMethodIn }) => {
   const [comments, setComments] = useState([]);
   const [theComment, setTheComment] = useState('');
+
+  const [loggedInId, setLoggedInId] = useState();
   
   const fetchComments = async() => {
     const creds = { 
@@ -21,17 +23,38 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
       brewMethod: brewMethodIn 
     };
 
-    const data = await fetch('/getComments', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(creds),
-    });
+    const token = localStorage.getItem('token');
 
-    const jsonComments = await data.json();
+    if(!token) {
+      const data = await fetch('/getComments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(creds),
+      });
 
-    setComments(jsonComments);
+      const jsonComments = await data.json();
+
+      setComments(jsonComments);
+    }
+    else {
+      const data = await fetch('/getComments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : token
+        },
+        body: JSON.stringify(creds),
+      });
+
+      const jsonComments = await data.json();
+
+      console.log(jsonComments)
+
+      setComments(jsonComments?.comments);
+      setLoggedInId(jsonComments?.userId);
+    }
   }
 
   useEffect(() => {
@@ -140,7 +163,7 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
                 <CardContent sx={{ position: 'relative' }}>
                     <Typography sx={{ fontSize: 15 }} color={textColor} gutterBottom>
                         {com.name}
-                        {JSON.parse(localStorage.getItem('loginID')) === com.userId &&
+                        {loggedInId === com.userId &&
                           <Button color='error' size='small' onClick={() => handleCommentDelete(com.id)} sx={{ position: 'absolute', top: '0', right: '0' }}>Delete</Button>
                         }
                     </Typography>

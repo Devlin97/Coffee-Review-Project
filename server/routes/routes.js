@@ -32,7 +32,7 @@ router.post('/addAeropress', aeroControls.addAeropress);
 router.post('/findAeropress', aeroControls.findAeropressRecipe);
 router.post('/updateAeropress', aeroControls.updateAeropress);
 
-router.post('/getComments', controls.getComments);
+router.post('/getComments', controls.verifyJWT, controls.getComments);
 router.post('/leaveComment', controls.leaveComment);
 router.post('/deleteComment', controls.deleteComment);
 

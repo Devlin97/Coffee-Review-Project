@@ -49,7 +49,6 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
 
     const jsonData = await data.json()
 
-    console.log('JSON DATA: ', jsonData);
     setLoggedInId(jsonData);
   }
 
@@ -62,16 +61,18 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
 
   const handleCommentSubmit = async () => {
     
-    if(localStorage.getItem('loginID') === null) {
+    const token = localStorage.getItem('token');
+
+    if(token === null) {
       alert('You must be logged in to leave comments!');
     }
     if(theComment.length > 150) {
       alert('Please make sure the comment length is under 150 charachters!');
     }
     else {
+      console.log('here')
       const creds = {
         postId: postIdIn,
-        userId: JSON.parse(localStorage.getItem('loginID')),
         text: theComment,
         brewMethod: brewMethodIn
       }
@@ -79,12 +80,15 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
       const data = await fetch('/leaveComment', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-access-token' : token
         },
         body: JSON.stringify(creds),
       });
 
       const jsonComments = await data.json();
+
+      console.log('JSON DATA: ', jsonComments);
 
       setComments(jsonComments);
 

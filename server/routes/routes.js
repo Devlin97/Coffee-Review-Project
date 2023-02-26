@@ -34,7 +34,7 @@ router.post('/findAeropress', aeroControls.findAeropressRecipe);
 router.post('/updateAeropress', aeroControls.updateAeropress);
 
 router.post('/getComments', controls.getComments);
-router.post('/leaveComment', controls.leaveComment);
+router.post('/leaveComment', controls.verifyJWT, controls.leaveComment);
 router.post('/deleteComment', controls.deleteComment);
 
 //======================= Grinder and Origin Routes =======================

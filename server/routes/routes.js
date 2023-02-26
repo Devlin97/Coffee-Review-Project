@@ -20,7 +20,7 @@ router.post('/login', controls.login);
 router.post('/register', controls.register);
 
 router.post('/addRecipe', controls.addRecipe);
-router.post('/deleteRecipe', controls.deleteRecipe);
+router.post('/deleteRecipe', controls.verifyJWT, controls.deleteRecipe);
 router.post('/updateRecipeImmersion', controls.updateRecipeImmersion);
 router.post('/findImmersion', controls.findRecipeImmersion);
 

@@ -46,8 +46,9 @@ const PostHistory = () => {
     }, []);
 
     const handlePostDelete = async (idIn, methodIn) => {
+        const token = localStorage.getItem('token')
+
         const creds = { 
-            userId: JSON.parse(localStorage.getItem('loginID')),
             postId: idIn,
             brewMethod: methodIn 
         };
@@ -55,7 +56,8 @@ const PostHistory = () => {
         const data = await fetch('/deleteRecipe', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token' : token
             },
             body: JSON.stringify(creds),
         });

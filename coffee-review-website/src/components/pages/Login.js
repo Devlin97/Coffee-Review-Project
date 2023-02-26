@@ -9,7 +9,7 @@ const textColor = '#CBCCCD';
 
 const Login = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        if(localStorage.getItem('loginID') === null) {
+        if(localStorage.getItem('token') === null) {
             return false;
         }
         else {
@@ -20,8 +20,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const handleLogOut = () => {
-        localStorage.removeItem('loginID');
-        localStorage.removeItem('loginUsername');
+        localStorage.removeItem('token');
         setIsLoggedIn(false);
     }
 
@@ -49,16 +48,15 @@ const Login = () => {
     
         console.log('Login Success: ', jsonSuccess);
     
-        if(jsonSuccess.success) {
-            localStorage.setItem('loginID', jsonSuccess.theId);
-            localStorage.setItem('loginUsername', jsonSuccess.username);
+        if(jsonSuccess.auth) {
+            localStorage.setItem('token', jsonSuccess.token);
             setIsLoggedIn(true);
 
             setUsername('');
             setPassword('');
         }
     
-        if(!jsonSuccess.success) {
+        if(!jsonSuccess.auth) {
             alert('Invalid Username / Password Combination.');
         }
     }

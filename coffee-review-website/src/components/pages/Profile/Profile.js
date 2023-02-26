@@ -6,9 +6,6 @@ function Profile() {
     console.log(localStorage.getItem('loginUsername'));
     return (
         <>
-            <h1 style={{ textAlign: 'center', color: '#CBCCCD' }}>
-                {`${localStorage.getItem('loginUsername')}'s Post History`}
-            </h1>
             <PostHistory />
         </>
     )

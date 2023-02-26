@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { json, Link } from 'react-router-dom'
 import TableContainer from '@mui/material/TableContainer'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -19,20 +19,26 @@ const PostHistory = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipeOut, setRecipeOut] = useState();
 
-    const fetchRecipes = async() => {
-        const creds = { userId: JSON.parse(localStorage.getItem('loginID')) };
+    const [name, setName] = useState('');
 
+    const fetchRecipes = async() => {
+        // const creds = { userId: JSON.parse(localStorage.getItem('loginID')) };
+        const token = localStorage.getItem('token')
+
+        console.log('The token: ', token)
         const data = await fetch('/getUserRecipes', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token' : token
             },
-            body: JSON.stringify(creds),
+            // body: JSON.stringify(creds),
         });
 
         const jsonData = await data.json();
 
-        setRecipes(jsonData);
+        setRecipes(jsonData.recipes);
+        setName(jsonData.name)
     }
     
     useEffect(() => {
@@ -66,6 +72,9 @@ const PostHistory = () => {
   
     return (
         <>
+            <h1 style={{ textAlign: 'center', color: '#CBCCCD' }}>
+                {`${name}'s Post History`}
+            </h1>
             <TableContainer sx={{ maxWidth: '700px', display: 'flex', margin: '0 auto' }}>
                 {recipes.length > 0 ? (
                 <Table aria-label='recipes-table'>

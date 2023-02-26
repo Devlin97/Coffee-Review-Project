@@ -1,4 +1,5 @@
 import { User, Recipe, Comment, Recipe_Pourover, Recipe_Aeropress } from '../models/index.js';
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
@@ -67,6 +68,7 @@ export const allRecipes = async (req, res) => {
 
 export const userRecipes = async (req, res) => {
     const userId = req.body.userId;
+    const name = req.body.theUsername;
 
     const recipesImmersion = await Recipe.findAll({
         where: {
@@ -93,7 +95,7 @@ export const userRecipes = async (req, res) => {
             return b.createdAt - a.createdAt
         });
 
-        res.json(recipes);
+        res.json({recipes, name});
     }
     else {
         res.json({});
@@ -389,6 +391,30 @@ export const deleteComment = async (req, res) => {
     res.json(comments);
 }
 
+export const verifyJWT = (req, res, next) => {
+    const token = req.headers["x-access-token"]
+
+    if(!token) {
+        res.send('Authentication Failed')
+    }
+    else {
+        jwt.verify(token, process.env.SECRET, (err, decoded) => {
+            if(err) {
+                res.json({ 
+                    auth: false,
+                    message: 'You Failed To Verify Your Token'
+                })
+            }
+            else {
+                console.log(decoded)
+                req.body.userId = decoded.id
+                req.body.theUsername = decoded.name
+                next()
+            }
+        })
+    }
+}
+
 export const login = async (req, res) => {
     console.log('here');
     console.log(req.body.username);
@@ -404,15 +430,24 @@ export const login = async (req, res) => {
     console.log(compared);
 
     if(compared) {
-        res.json({
+        const id = theUser.id
+        const name = theUser.name
+        const token = jwt.sign({id, name}, process.env.SECRET, {expiresIn: '1h'})
+
+        res.json({ auth: true, token: token, result: {
+            theId: theUser.id,
+            username: theUser.name
+        } })
+        
+        /* res.json({
             theId: theUser.id,
             username: theUser.name,
             success: true
-        });
+        }); */
     }
     else {
         res.json({
-            success: false
+            auth: false
         })
     }
 

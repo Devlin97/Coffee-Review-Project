@@ -23,43 +23,40 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
       brewMethod: brewMethodIn 
     };
 
+    const data = await fetch('/getComments', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(creds),
+    });
+
+    const jsonComments = await data.json();
+
+    setComments(jsonComments);
+  }
+
+  const fetchId = async () => {
     const token = localStorage.getItem('token');
 
-    if(!token) {
-      const data = await fetch('/getComments', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(creds),
-      });
+    const data = await fetch('/getId', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token' : token
+      },
+    });
 
-      const jsonComments = await data.json();
+    const jsonData = await data.json()
 
-      setComments(jsonComments);
-    }
-    else {
-      const data = await fetch('/getComments', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-access-token' : token
-        },
-        body: JSON.stringify(creds),
-      });
-
-      const jsonComments = await data.json();
-
-      console.log(jsonComments)
-
-      setComments(jsonComments?.comments);
-      setLoggedInId(jsonComments?.userId);
-    }
+    console.log('JSON DATA: ', jsonData);
+    setLoggedInId(jsonData);
   }
 
   useEffect(() => {
     if(postIdIn) {
       fetchComments();
+      fetchId();
     }
   }, [postIdIn]);
 

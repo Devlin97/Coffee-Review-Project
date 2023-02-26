@@ -240,7 +240,7 @@ export const getComments = async (req, res) => {
 
         comments.push(holder);
     }
-    res.json({comments, userId});
+    res.json(comments);
 }
 
 export const leaveComment = async (req, res) => {
@@ -568,4 +568,10 @@ export const updateRecipeImmersion = async (req, res) => {
 
     await theRecipe.save()
     .then(res.json({success: true}));
+}
+
+export const getTheId = async (req, res) => {
+    const userId = req.body.userId;
+    console.log('In get user id, ', userId);
+    res.json(userId);
 }

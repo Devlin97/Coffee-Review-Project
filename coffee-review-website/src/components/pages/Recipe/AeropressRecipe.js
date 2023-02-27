@@ -4,10 +4,14 @@ import { InputLabel, MenuItem, Select, FormControl, TextField, Stack, Button, Al
 const textColor = '#CBCCCD'
 
 async function recipeAdd(creds) {
+
+    const token = localStorage.getItem('token');
+
     fetch('/addAeropress', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-access-token': token
         },
         body: JSON.stringify(creds),
     })
@@ -45,13 +49,10 @@ const AeropressRecipe = () => {
             description,
             totalTime,
             inverted,
-            coffeeOrigin: origin,
-            userId: JSON.parse(localStorage.getItem('loginID'))
+            coffeeOrigin: origin
         }
     
         await recipeAdd(recipe);
-
-        console.log(recipe);
     
         setTitle('');
         setBrewMethod('');

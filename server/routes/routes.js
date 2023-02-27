@@ -20,16 +20,16 @@ router.post('/login', controls.login);
 router.post('/register', controls.register);
 router.get('/getId', controls.verifyJWT, controls.getTheId);
 
-router.post('/addRecipe', controls.addRecipe);
+router.post('/addRecipe', controls.verifyJWT, controls.addRecipe);
 router.post('/deleteRecipe', controls.verifyJWT, controls.deleteRecipe);
 router.post('/updateRecipeImmersion', controls.updateRecipeImmersion);
 router.post('/findImmersion', controls.findRecipeImmersion);
 
-router.post('/addPourover', pouroverControls.addPouroverRecipe);
+router.post('/addPourover', controls.verifyJWT, pouroverControls.addPouroverRecipe);
 router.post('/findPourover', pouroverControls.findPouroverRecipe);
 router.post('/updatePourover', pouroverControls.updatePourover);
 
-router.post('/addAeropress', aeroControls.addAeropress);
+router.post('/addAeropress', controls.verifyJWT, aeroControls.addAeropress);
 router.post('/findAeropress', aeroControls.findAeropressRecipe);
 router.post('/updateAeropress', aeroControls.updateAeropress);
 

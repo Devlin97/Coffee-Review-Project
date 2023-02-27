@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState();
 
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-      if(localStorage.getItem('loginID') === null) {
+      if(localStorage.getItem('token') === null) {
           return false;
       }
       else {

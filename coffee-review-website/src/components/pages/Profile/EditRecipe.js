@@ -100,8 +100,7 @@ const EditRecipe = () => {
       grindSize,
       description,
       totalTime,
-      origin,
-      userId: JSON.parse(localStorage.getItem('loginID'))
+      origin
     };
 
     const data = await fetch('/updateRecipeImmersion', {

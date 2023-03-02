@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { Stack } from '@mui/material'
 
 const GuestProfile = () => {
     const { id } = useParams();
@@ -33,9 +34,13 @@ const GuestProfile = () => {
 
   return (
     <>
-        <p>{theUser.name}</p>
-        <p>{theUser.favouriteBrewer}</p>
-        <p>{theUser.favouriteCoffeeType}</p>
+        <h1 style={{ textAlign: 'center', color: '#CBCCCD' }}>
+            {`${theUser.name}'s Profile`}
+        </h1>
+        <Stack sx={{ alignItems: 'center', color: '#CBCCCD' }}>
+            <p>{`Favourite Brewer: ${theUser.favouriteBrewer}`}</p>
+            <p>{`Favourite Coffee Country: ${theUser.favouriteCoffeeType}`}</p>
+        </Stack>
     </>
   )
 }

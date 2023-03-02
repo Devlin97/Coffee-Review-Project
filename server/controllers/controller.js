@@ -71,8 +71,6 @@ export const findTheUser = async(req, res) => {
         favouriteCoffeeType: 'Ethiopia'
     }
 
-    console.log(userToSend);
-
     res.json(userToSend);
 }
 

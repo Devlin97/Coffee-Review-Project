@@ -15,6 +15,7 @@ import EditRecipe from './components/pages/Profile/EditRecipe';
 import EditPourover from './components/pages/Recipe/EditPourover';
 import EditAeropress from './components/pages/Recipe/EditAeropress';
 import AboutHome from './components/pages/About/AboutHome';
+import GuestProfile from './components/pages/GuestProfile/GuestProfile';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/editPourover/:id' element={<EditPourover />} />
         <Route path='/editAeropress/:id' element={<EditAeropress />} />
         <Route path='/About' element={<AboutHome />} />
+        <Route path='/user/:id' element={<GuestProfile />} />
       </Routes>
     </Router>
     </>

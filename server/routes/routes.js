@@ -13,6 +13,8 @@ router.get('/home', controls.testAddUser);
 
 router.get('/testing', controls.testFetch);
 
+router.post('/findUser', controls.verifyJWT, controls.findTheUser);
+
 router.get('/allrecipes', controls.allRecipes);
 router.post('/getUserRecipes', controls.verifyJWT, controls.userRecipes);
 

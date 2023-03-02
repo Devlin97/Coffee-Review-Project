@@ -56,6 +56,26 @@ export const testFetch = async (req, res) => {
     .then(console.log('saved'));
 }
 
+export const findTheUser = async(req, res) => {
+    let theId = req.body.idOfUser;
+
+    const theUser = await User.findOne({
+        where: {
+            id: theId
+        }
+    });
+
+    const userToSend = {
+        name: theUser.name,
+        favouriteBrewer: 'V60',
+        favouriteCoffeeType: 'Ethiopia'
+    }
+
+    console.log(userToSend);
+
+    res.json(userToSend);
+}
+
 export const allRecipes = async (req, res) => {
     let recipes = await Recipe.findAll();
     let pourovers = await Recipe_Pourover.findAll();

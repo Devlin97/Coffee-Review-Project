@@ -110,8 +110,8 @@ const PostHistory = () => {
                         </TableRow>    
                     </TableHead>
                     <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
-                        {recipes.map(rec => (
-                            <TableRow key={rec.id}>
+                        {recipes.map((rec, i) => (
+                            <TableRow key={i}>
                                 <TableCell>{rec.title}</TableCell>
                                 <TableCell>{rec.brewMethod}</TableCell>
                                 <TableCell>{(rec.createdAt).substring(0, 10)}</TableCell>

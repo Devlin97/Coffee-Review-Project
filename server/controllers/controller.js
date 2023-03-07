@@ -441,8 +441,6 @@ export const login = async (req, res) => {
     const password = req.body.password;
     
     const theUser = await User.findOne({ where: { name: username }});
-    
-    console.log(theUser.dataValues.password);
 
     const compared = await bcrypt.compare(password, theUser.dataValues.password);
 
@@ -451,7 +449,7 @@ export const login = async (req, res) => {
     if(compared) {
         const id = theUser.id
         const name = theUser.name
-        const token = jwt.sign({id, name}, process.env.SECRET, {expiresIn: '1h'})
+        const token = jwt.sign({id, name}, process.env.SECRET, {expiresIn: '24h'})
 
         res.json({ auth: true, token: token, result: {
             theId: theUser.id,

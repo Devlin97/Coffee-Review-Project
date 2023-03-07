@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const AeropressDetails = ({ recipeIn = {} }) => {
   return (
@@ -27,6 +28,13 @@ const AeropressDetails = ({ recipeIn = {} }) => {
   
         <Grid xs={12}>
           <h1 className='create-recipe-h1'>{recipeIn.title}</h1>
+          <Link to={ '/user/' + recipeIn.UserId } style={{ textDecoration: 'none' }}>
+            <p className='create-recipe-h1'>
+              <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
+                  {`By: ${recipeIn.username}`}
+              </Typography>
+            </p>
+          </Link>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
                 {`${recipeIn.brewer} | ${recipeIn.inverted === true ? 'Inverted' : 'Standard'}`}

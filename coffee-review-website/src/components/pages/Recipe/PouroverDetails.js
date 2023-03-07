@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import { Typography, Collapse } from '@mui/material'
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const PouroverDetails = ({ recipeIn = {} }) => {
   const [alertBool, setAlertBool] = useState(false);
@@ -34,6 +35,13 @@ const PouroverDetails = ({ recipeIn = {} }) => {
   
         <Grid xs={12}>
           <h1 className='create-recipe-h1'>{recipeIn.title}</h1>
+          <Link to={ '/user/' + recipeIn.UserId } style={{ textDecoration: 'none' }}>
+            <p className='create-recipe-h1'>
+              <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
+                  {`By: ${recipeIn.username}`}
+              </Typography>
+            </p>
+          </Link>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
                 {`${recipeIn.brewMethod} | ${recipeIn.brewer}`}

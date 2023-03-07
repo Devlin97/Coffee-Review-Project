@@ -79,6 +79,30 @@ export const allRecipes = async (req, res) => {
     let pourovers = await Recipe_Pourover.findAll();
     let aeropresses = await Recipe_Aeropress.findAll();
 
+    let newRecipes = []
+    let newPourovers = []
+    let newAeropresses = []
+
+    for (const el of recipes) {
+        const theUserId = el.UserId
+        const theUser = await User.findByPk(theUserId)
+        el.dataValues.username = theUser.name
+    }
+
+    for (const el of pourovers) {
+        const theUserId = el.UserId
+        const theUser = await User.findByPk(theUserId)
+        el.dataValues.username = theUser.name
+    }
+
+    for (const el of aeropresses) {
+        const theUserId = el.UserId
+        const theUser = await User.findByPk(theUserId)
+        el.dataValues.username = theUser.name
+    }
+
+    console.log(recipes);
+
     recipes = [...recipes, ...pourovers, ...aeropresses];
 
     res.json(recipes);

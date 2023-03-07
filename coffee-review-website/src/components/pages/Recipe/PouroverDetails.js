@@ -103,9 +103,9 @@ const PouroverDetails = ({ recipeIn = {} }) => {
         </p>
         </Grid>
 
-        <Grid xs={12}>
-        <TableContainer component={Paper} sx={{ background: 'rgba(11, 11, 11, 0.33)' }}>
-          <Table>
+        {/* <Grid xs={12} sx={{ overflowY: 'auto' }}>
+        <TableContainer sx={{ background: 'rgba(11, 11, 11, 0.33)' }}>
+          <Table sx={{ overflowY: 'auto' }}>
             <TableHead>
               <TableRow>
                 <TableCell align='center' colSpan={2} sx={{ color: '#CBCCCD' }}>
@@ -135,9 +135,29 @@ const PouroverDetails = ({ recipeIn = {} }) => {
             </TableBody>
           </Table>
         </TableContainer>
-        </Grid>
-  
+        </Grid> */}
+
         <Grid xs={12}>
+          <h3 className='create-recipe-h1'>Pours:</h3>
+        </Grid>
+
+        {recipeIn?.pours.map((pour, i) => (
+          <>
+            <Grid key={i} xs={4} className='create-recipe-h1'>
+              {`Pour ${i + 1}: `}
+            </Grid>
+
+            <Grid key={'d' + i} xs={4} className='create-recipe-h1'>
+              {pour.time}
+            </Grid>
+
+            <Grid key={'x' + i} xs={4} className='create-recipe-h1'>
+              {`${pour.water}g`}
+            </Grid>
+          </>
+        ))}
+  
+        <Grid xs={12} style={{ marginTop: '20px' }}>
         <p className='create-recipe-h1'>
           <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
             {recipeIn.description}

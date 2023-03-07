@@ -59,11 +59,7 @@ export const testFetch = async (req, res) => {
 export const findTheUser = async(req, res) => {
     let theId = req.body.idOfUser;
 
-    const theUser = await User.findOne({
-        where: {
-            id: theId
-        }
-    });
+    const theUser = await User.findByPk(theId);
 
     const userToSend = {
         name: theUser.name,
@@ -100,8 +96,6 @@ export const allRecipes = async (req, res) => {
         const theUser = await User.findByPk(theUserId)
         el.dataValues.username = theUser.name
     }
-
-    console.log(recipes);
 
     recipes = [...recipes, ...pourovers, ...aeropresses];
 
@@ -449,7 +443,6 @@ export const verifyJWT = (req, res, next) => {
                 })
             }
             else {
-                console.log(decoded)
                 req.body.userId = decoded.id
                 req.body.theUsername = decoded.name
                 next()
@@ -459,16 +452,12 @@ export const verifyJWT = (req, res, next) => {
 }
 
 export const login = async (req, res) => {
-    console.log('here');
-    console.log(req.body.username);
     const username = req.body.username;
     const password = req.body.password;
     
     const theUser = await User.findOne({ where: { name: username }});
 
     const compared = await bcrypt.compare(password, theUser.dataValues.password);
-
-    console.log(compared);
 
     if(compared) {
         const id = theUser.id

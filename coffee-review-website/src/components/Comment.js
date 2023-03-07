@@ -8,6 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import CommentIcon from '@mui/icons-material/Comment'
 import Stack from '@mui/material/Stack' 
 import Button from '@mui/material/Button'
+import { Link } from 'react-router-dom'
 
 const textColor = '#CBCCCD';
 
@@ -163,7 +164,9 @@ const Comment = ({ postIdIn, brewMethodIn }) => {
               <Card variant='outline' sx={{ background: 'rgba(63,76,119,0.6)' }}>
                 <CardContent sx={{ position: 'relative' }}>
                     <Typography sx={{ fontSize: 15 }} color={textColor} gutterBottom>
+                      <Link to={'/user/' + com.userId} style={{ textDecoration: 'none', color: textColor }}>
                         {com.name}
+                      </Link>
                         {loggedInId === com.userId &&
                           <Button color='error' size='small' onClick={() => handleCommentDelete(com.id)} sx={{ position: 'absolute', top: '0', right: '0' }}>Delete</Button>
                         }

@@ -63,8 +63,9 @@ export const findTheUser = async(req, res) => {
 
     const userToSend = {
         name: theUser.name,
-        favouriteBrewer: 'V60',
-        favouriteCoffeeType: 'Ethiopia'
+        favouriteBrewer: theUser.favouriteBrewer,
+        favouriteOrigin: theUser.favouriteOrigin,
+        bio: theUser.bio
     }
 
     res.json(userToSend);

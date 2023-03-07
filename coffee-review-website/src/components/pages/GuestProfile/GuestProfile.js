@@ -39,7 +39,8 @@ const GuestProfile = () => {
         </h1>
         <Stack sx={{ alignItems: 'center', color: '#CBCCCD' }}>
             <p>{`Favourite Brewer: ${theUser.favouriteBrewer}`}</p>
-            <p>{`Favourite Coffee Country: ${theUser.favouriteCoffeeType}`}</p>
+            <p>{`Favourite Coffee Country: ${theUser.favouriteOrigin}`}</p>
+            <p>{`Bio: ${theUser.bio}`}</p>
         </Stack>
     </>
   )

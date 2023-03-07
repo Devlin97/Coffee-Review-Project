@@ -11,8 +11,10 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import EditRecipe from './EditRecipe'
 import Grid2 from '@mui/material/Unstable_Grid2'
-import { Skeleton } from '@mui/material'
+import { Skeleton, Stack, TextField, Collapse, Alert } from '@mui/material'
 import Box from '@mui/material/Box'
+
+const textColor = '#CBCCCD'
 
 const PostHistory = () => {
     //================================= Recipes Table =================================
@@ -20,6 +22,12 @@ const PostHistory = () => {
     const [recipeOut, setRecipeOut] = useState();
 
     const [name, setName] = useState('');
+
+    const [favBrewer, setFavBrewer] = useState('');
+    const [favOrigin, setFavOrigin] = useState('');
+    const [bio, setBio] = useState('');
+
+    const [alertBool, setAlertBool] = useState(false);
 
     const fetchRecipes = async() => {
         // const creds = { userId: JSON.parse(localStorage.getItem('loginID')) };
@@ -38,7 +46,10 @@ const PostHistory = () => {
         const jsonData = await data.json();
 
         setRecipes(jsonData.recipes);
-        setName(jsonData.name)
+        setName(jsonData.name);
+        setBio(jsonData.bio);
+        setFavBrewer(jsonData.favBrew);
+        setFavOrigin(jsonData.favOrigin);
     }
     
     useEffect(() => {
@@ -67,6 +78,31 @@ const PostHistory = () => {
         setRecipes(jsonData);
     }
 
+    const handleBiosUpdate = async () => {
+        const token = localStorage.getItem('token')
+
+        const creds = { 
+            bio,
+            favBrewer,
+            favOrigin
+        };
+
+        const data = await fetch('/updateUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token' : token
+            },
+            body: JSON.stringify(creds),
+        });
+
+        const jsonData = await data.json();
+
+        if(jsonData.success === true){
+            setAlertBool(true)
+        }
+    }
+
     //================================= Recipes Table =================================
     //================================= Edit Recipe =================================
     
@@ -77,8 +113,70 @@ const PostHistory = () => {
             <h1 style={{ textAlign: 'center', color: '#CBCCCD' }}>
                 {`${name}'s Post History`}
             </h1>
+
+            <Box sx={{ width: '100%', maxWidth: 500, display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '10vh', margin: '0 auto', marginBottom: '20px' }}>
+
+                <Stack 
+                spacing={2}
+                direction='column'
+                alignItems='stretch'
+                width='100%'
+                sx={{ 
+                    background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
+                    paddingLeft: '15px',
+                    paddingRight: '15px',
+                    paddingBottom: '50px',
+                    paddingTop: '50px', 
+                    borderRadius: '25px',
+                    marginTop: '15px' 
+                }}>
+
+                    <TextField 
+                        id='fav-brewer-text' 
+                        label='Favourite Brewer' 
+                        variant='outlined' 
+                        onChange={(e) => setFavBrewer(e.target.value)} 
+                        value={favBrewer ? favBrewer : ''}
+                        color='primary'
+                        sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+                        InputLabelProps= {{ style: { color: textColor } }}
+                    />
+
+                    <TextField 
+                        id='fav-origin-text' 
+                        label='Favourite Coffee Origin' 
+                        variant='outlined' 
+                        onChange={(e) => setFavOrigin(e.target.value)} 
+                        value={favOrigin ? favOrigin : ''}
+                        color='primary'
+                        sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+                        InputLabelProps= {{ style: { color: textColor } }}
+                    />
+
+                    <TextField
+                        id='bio-textarea'
+                        label='Bio'
+                        multiline
+                        rows={4}
+                        placeholder='Write short bio about yourself...'
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        inputProps={{ style: { color: textColor } }}
+                        InputLabelProps= {{ style: { color: textColor } }}
+                        sx={{ fieldset: { borderColor: textColor } }}
+                    />
+
+                    <Button onClick={() => handleBiosUpdate()} variant='contained' color='success'>Submit</Button>
+
+                    <Collapse in={alertBool}>
+                        <Alert onClose={() => setAlertBool(false)}>Successfully updated!</Alert>
+                    </Collapse>
+
+                </Stack>
+            </Box>
+
             <TableContainer sx={{ maxWidth: '700px', display: 'flex', margin: '0 auto' }}>
-                {recipes.length > 0 ? (
+                {recipes?.length > 0 ? (
                 <Table aria-label='recipes-table'>
                     <TableHead>
                         <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>

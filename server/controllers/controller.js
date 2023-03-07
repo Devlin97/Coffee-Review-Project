@@ -70,6 +70,24 @@ export const findTheUser = async(req, res) => {
     res.json(userToSend);
 }
 
+export const updateUsersFacts = async (req, res) => {
+    const theId = req.body.userId;
+    const favBrew = req.body.favBrewer;
+    const bio = req.body.bio;
+    const favOrigin = req.body.favOrigin;
+
+    const theUser = await User.findByPk(theId);
+
+    theUser.set({
+        bio: bio,
+        favouriteBrewer: favBrew,
+        favouriteOrigin: favOrigin
+    });
+
+    await theUser.save()
+    .then(res.json({success: true}))
+}
+
 export const allRecipes = async (req, res) => {
     let recipes = await Recipe.findAll();
     let pourovers = await Recipe_Pourover.findAll();
@@ -125,16 +143,22 @@ export const userRecipes = async (req, res) => {
     });
 
     const recipes = [...recipesImmersion, ...recipesPour, ...recipesAero];
+
+    //Find the users other details
+    const theUser = await User.findByPk(userId)
+    const bio = theUser.dataValues.bio
+    const favBrew = theUser.dataValues.favouriteBrewer
+    const favOrigin = theUser.dataValues.favouriteOrigin
     
     if(recipes.length > 0) {
         recipes.sort((a, b) => {
             return b.createdAt - a.createdAt
         });
 
-        res.json({recipes, name});
+        res.json({recipes, name, bio, favBrew, favOrigin});
     }
     else {
-        res.json({});
+        res.json({name, bio, favBrew, favOrigin});
     }
 }
 

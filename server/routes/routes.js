@@ -15,6 +15,7 @@ router.get('/testing', controls.testFetch);
 
 router.post('/findUser', controls.verifyJWT, controls.findTheUser);
 router.post('/updateUser', controls.verifyJWT, controls.updateUsersFacts);
+router.post('/findMod', controls.verifyJWT, controls.getTheMod);
 
 router.get('/allrecipes', controls.allRecipes);
 router.post('/getUserRecipes', controls.verifyJWT, controls.userRecipes);

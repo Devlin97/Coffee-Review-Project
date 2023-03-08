@@ -470,6 +470,7 @@ export const verifyJWT = (req, res, next) => {
             else {
                 req.body.userId = decoded.id
                 req.body.theUsername = decoded.name
+                req.body.moderator = decoded.moderator
                 next()
             }
         })
@@ -487,11 +488,13 @@ export const login = async (req, res) => {
     if(compared) {
         const id = theUser.id
         const name = theUser.name
-        const token = jwt.sign({id, name}, process.env.SECRET, {expiresIn: '24h'})
+        const moderator = theUser.moderator
+        const token = jwt.sign({id, name, moderator}, process.env.SECRET, {expiresIn: '24h'})
 
         res.json({ auth: true, token: token, result: {
             theId: theUser.id,
-            username: theUser.name
+            username: theUser.name,
+            moderator: moderator
         } })
         
         /* res.json({
@@ -526,7 +529,8 @@ export const register = async (req, res) => {
         const theUser = User.build({
             name: username,
             email: email,
-            password: hashed
+            password: hashed,
+            moderator: false
         });
 
         await theUser.save()
@@ -628,4 +632,9 @@ export const getTheId = async (req, res) => {
     const userId = req.body.userId;
     console.log('In get user id, ', userId);
     res.json(userId);
+}
+
+export const getTheMod = async (req, res) => {
+    const mod = req.body.moderator;
+    res.json(mod);
 }

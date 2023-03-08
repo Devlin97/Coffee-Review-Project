@@ -42,6 +42,10 @@ const User = sequelize.define(
         favouriteOrigin: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        moderator: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     });
 

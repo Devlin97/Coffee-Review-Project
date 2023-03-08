@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
@@ -18,6 +18,30 @@ const Login = () => {
     })
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const [isModerator, setIsModerator] = useState(false);
+
+    useEffect(() => {
+        if(isLoggedIn){
+            findModerator();
+        }
+    }, []);
+
+    const findModerator = async () => {
+        const token = localStorage.getItem('token');
+
+        const data = await fetch('/findMod', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token
+            }
+        });
+
+        const jsonData = await data.json();
+
+        setIsModerator(jsonData);
+    }
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
@@ -52,6 +76,10 @@ const Login = () => {
             localStorage.setItem('token', jsonSuccess.token);
             setIsLoggedIn(true);
 
+            if(jsonSuccess.result.moderator) {
+                setIsModerator(true);
+            }
+
             setUsername('');
             setPassword('');
         }
@@ -84,6 +112,12 @@ const Login = () => {
             
 
                 <Button variant='outlined' style={{ color: textColor }} color='success' onClick={() => handleLogOut()} >Log Out</Button>
+
+                {isModerator &&
+                    <Link to="/mod" style={{ textDecoration: 'none' }}>
+                        <Button variant='outlined' style={{ color: textColor }} color='success'>Moderator Hub</Button>
+                    </Link>
+                }
 
             </Stack>
 

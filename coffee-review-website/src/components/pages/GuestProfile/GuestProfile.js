@@ -51,7 +51,7 @@ const GuestProfile = () => {
                 background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
                 paddingLeft: '15px',
                 paddingRight: '15px',
-                paddingBottom: '50px',
+                paddingBottom: '30px',
                 paddingTop: '50px', 
                 borderRadius: '25px',
                 marginTop: '15px' 

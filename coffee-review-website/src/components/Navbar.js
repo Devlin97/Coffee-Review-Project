@@ -4,12 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCoffee, faHome, faPerson, faSignIn } from "@fortawesome/free-solid-svg-icons"
 import { Typography } from '@mui/material';
 import School from '@mui/icons-material/School'
+import { useState } from 'react';
 
 function Navbar() {
+    const [active, setActive] = useState(false);
+
+
     return (
         <>
             <nav className='navbar'>
-                <div className='navbar-container'>
+                <a href='#' className='toggle-button' onClick={() => setActive(!active)}>
+                    <span className='bar'></span>
+                    <span className='bar'></span>
+                    <span className='bar'></span>
+                </a>
+                <div className={`navbar-container ${active ? 'active' : ''}`}>
                     <ul>
                         <li>
                             <Link to="/" className="navbar-item">
@@ -32,7 +41,7 @@ function Navbar() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/signIn" className="navbar-item navbar-item-right">
+                            <Link to="/signIn" className={`navbar-item ${!active ? 'navbar-item-right' : ''}`}>
                                 <FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>
                             </Link>
                         </li>

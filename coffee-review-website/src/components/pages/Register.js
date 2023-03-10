@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 const textColor = '#CBCCCD';
 
 const Register = () => {
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState('')
 
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
       if(localStorage.getItem('token') === null) {
@@ -21,12 +22,18 @@ const Register = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
 
-      console.log(username, password);
-      await registerUser({
-          username,
-          password,
-          email
-      });
+      if(passwordCheck !== password) {
+        alert("You're passwords do not match. Please try again.");
+        setPassword('');
+        setPasswordCheck('');
+      }
+      else if (passwordCheck === password) {
+        await registerUser({
+            username,
+            password,
+            email
+        });
+      }
       console.log('done');
     }
 
@@ -49,9 +56,9 @@ const Register = () => {
         setUsername('');
         setEmail('');
         setPassword('');
+        setIsLoggedIn(true);
       }
-
-      if(!jsonRegister.success) {
+      else if(!jsonRegister.success) {
         alert('Username Taken');
       }
     
@@ -112,6 +119,18 @@ const Register = () => {
             InputLabelProps= {{ style: { color: textColor } }}
           />
 
+          <TextField 
+            id='password-check-text' 
+            label='Password Checker' 
+            variant='standard' 
+            onChange={(e) => setPasswordCheck(e.target.value)} 
+            value={passwordCheck}
+            color='primary'
+            type='password'
+            sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+            InputLabelProps= {{ style: { color: textColor } }}
+          />
+
           <Button type='submit' variant='contained' style={{ color: textColor }} color='success'>Register</Button>
 
         </Stack>
@@ -144,6 +163,10 @@ const Register = () => {
 
                 <Link to="/">
                   <Button variant='contained' style={{ color: textColor }} color='success'>Home</Button>
+                </Link>
+
+                <Link to="/signIn">
+                  <Button variant='contained' style={{ color: textColor }} color='success'>Login</Button>
                 </Link>
 
             </Stack>

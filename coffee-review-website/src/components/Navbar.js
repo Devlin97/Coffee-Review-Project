@@ -5,6 +5,7 @@ import { faCoffee, faHome, faPerson, faSignIn } from "@fortawesome/free-solid-sv
 import { Typography } from '@mui/material';
 import School from '@mui/icons-material/School'
 import { useState } from 'react';
+import logo from '../images/logo.png'
 
 function Navbar() {
     const [active, setActive] = useState(false);
@@ -22,22 +23,26 @@ function Navbar() {
                     <ul>
                         <li>
                             <Link to="/" className="navbar-item">
-                                <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+                                {/* <FontAwesomeIcon icon={faHome}></FontAwesomeIcon> */}
+                                Home
                             </Link>
                         </li>
                         <li>
                             <Link to="/recipes" className="navbar-item">
-                                <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+                                {/* <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon> */}
+                                Recipes
                             </Link>
                         </li>
                         <li>
                             <Link to="/profile" className="navbar-item">
-                                <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon>
+                                {/* <FontAwesomeIcon icon={faPerson}></FontAwesomeIcon> */}
+                                Profile
                             </Link>
                         </li>
                         <li>
                             <Link to="/About" className="navbar-item">
-                                <School style={{ height: '18px', width: '18px' }}/>
+                                {/* <School style={{ height: '18px', width: '18px' }}/> */}
+                                Wiki
                             </Link>
                         </li>
                         <li>

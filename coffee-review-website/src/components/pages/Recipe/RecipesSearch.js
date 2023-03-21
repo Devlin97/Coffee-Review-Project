@@ -94,8 +94,8 @@ const RecipesSearch = ({recipesIn}) => {
           <Box sx={{ 
             bgcolor: 'lightslategrey', 
             width: 400, 
+            margin: '0 auto',
             marginTop: '10px', 
-            marginLeft: '5px', 
             background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.5) 11.4%, rgba(63,76,119,0.5) 70.2% )' 
             }}>
 

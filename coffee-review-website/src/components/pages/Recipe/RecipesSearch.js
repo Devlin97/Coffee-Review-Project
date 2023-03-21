@@ -28,7 +28,7 @@ import AeropressDetails from './AeropressDetails';
 import ImmersionDetails from './ImmersionDetails';
 import BlankRecipeDetials from './BlankRecipeDetials';
 import AddIcon from '@mui/icons-material/Add'
-import { Fab } from '@mui/material';
+import { Fab, Tooltip } from '@mui/material';
 
 const RecipesSearch = ({recipesIn}) => {
   const [theRecipe, setTheRecipe] = useState();
@@ -122,10 +122,26 @@ const RecipesSearch = ({recipesIn}) => {
                 row
                 sx={{ marginLeft: '10px' }}
               >
-                <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>} />
-                <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>} />
-                <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />}/>
-                <FormControlLabel value='all' control={<Radio onClick={() => handleAllCheck()} sx={{ color: '#CBCCCD' }} />} label={<img src={coffeeIcon} title='All' alt='Icon of a cup' />}/>
+                <FormControlLabel value='pourover' control={<Radio onClick={() => handlePouroverCheck()} sx={{ color: '#CBCCCD' }} />} label={
+                  <Tooltip title='Pourover' placement='top'>
+                    <img src={pouroverIcon} title='Pourover' alt='Icon of a pourover brewer'/>
+                  </Tooltip>
+                  } />
+                <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} sx={{ color: '#CBCCCD' }} />} label={
+                  <Tooltip title='Immersion' placement='top'>
+                    <img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>
+                  </Tooltip>
+                } />
+                <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} sx={{ color: '#CBCCCD' }} />} label={
+                  <Tooltip title='Aeropress' placement='top'>
+                    <img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />
+                  </Tooltip>
+                }/>
+                <FormControlLabel value='all' control={<Radio onClick={() => handleAllCheck()} sx={{ color: '#CBCCCD' }} />} label={
+                  <Tooltip title='All' placement='top'>
+                    <img src={coffeeIcon} title='All' alt='Icon of a cup' />
+                  </Tooltip>
+                }/>
               </RadioGroup>
             </FormControl>
 

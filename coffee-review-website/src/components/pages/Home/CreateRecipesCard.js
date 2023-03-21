@@ -19,7 +19,8 @@ const CreateRecipeCard = () => {
                 boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'
             },
             cursor: 'pointer',
-            height: '150px'
+            height: '150px',
+            marginBottom: '8px'
         }}>
             <h2>
                 Create 

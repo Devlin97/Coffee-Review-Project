@@ -6,12 +6,14 @@ import WhatIsPourover from './WhatIsPourover'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import WhatIsImmersion from './WhatIsImmersion'
 import WhatIsAeropress from './WhatIsAeropress'
+import WhatIsTWCoffee from './WhatIsTWCoffee'
 
 const AboutList = () => {
     const [open, setOpen] = useState(true)
     const [immersion, setImmersion] = useState(false)
     const [pourover, setPourover] = useState(true)
     const [aeropress, setAeropress] = useState(false)
+    const [thirdWave, setThirdwave] = useState(false)
 
   return (
     <Box sx={{ width: '100%', margin: '0 auto', padding: '0 1.5rem', maxWidth: '1024px' }}>
@@ -41,6 +43,17 @@ const AboutList = () => {
                 </ListSubheader>}>
 
                 <ListItem>
+                    <ListItemButton onClick={() => {
+                        setThirdwave(true)
+                        setPourover(false)
+                        setImmersion(false)
+                        setAeropress(false)
+                    }}>
+                        <ListItemText primary='Third Wave Coffee' />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem>
                     <ListItemButton onClick={() => {setOpen(!open)}}>
                         <ListItemText primary='Ways to brew speciality coffee' />
                         {open ? <ExpandLess /> : <ExpandMore />}
@@ -53,6 +66,7 @@ const AboutList = () => {
                                     setPourover(true)
                                     setImmersion(false)
                                     setAeropress(false)
+                                    setThirdwave(false)
                                 }}>
                                     <ListItemText primary='Pourover' />
                                 </ListItemButton>
@@ -62,6 +76,7 @@ const AboutList = () => {
                                     setImmersion(true)
                                     setPourover(false)
                                     setAeropress(false)
+                                    setThirdwave(false)
                                 }}>
                                     <ListItemText primary='Immersion' />
                                 </ListItemButton>
@@ -71,6 +86,7 @@ const AboutList = () => {
                                     setImmersion(false)
                                     setPourover(false)
                                     setAeropress(true)
+                                    setThirdwave(false)
                                 }}>
                                     <ListItemText primary='Aeropress' />
                                 </ListItemButton>
@@ -86,6 +102,9 @@ const AboutList = () => {
             }
             {aeropress && 
                 <WhatIsAeropress />
+            }
+            {thirdWave &&
+                <WhatIsTWCoffee />
             }
         </Box>
     </Box>

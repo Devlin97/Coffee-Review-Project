@@ -11,7 +11,7 @@ const BlankRecipeDetials = () => {
         alignItems: 'center', 
         minHeight: '10vh', 
         height: '300px',
-        margin: '0',
+        margin: '0 auto',
         /* background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', */
         backgroundColor: 'rgba(63,76,119,0.6)',
         paddingLeft: '15px',

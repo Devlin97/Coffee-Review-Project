@@ -14,7 +14,7 @@ const WhatIsTWCoffee = () => {
             <p>When beans are originally cultiviated on a farm they they are known as 'green coffee beans' and would not taste very good at all to drink. Roasters buy these beans to roast them and make them drinkable! Much in the same where lots of mass-produced coffee beans are old and unfresh, they are also roasted very dark to the point of almost being burnt. This makes the coffee bitter and can mask the flavour of older beans.</p>
             <p>For roasters who are focused on the third wave coffee community, they aim to maximise flavour by using a lighter roast and increasing freshness by roasting beans as close to the day they sell them as possible. If you order a bag of coffee from a local roaster it will usually tell you the exact date it was roasted on! Coffee will usually taste best within 4 days to a month of it being roasted, but of course you can enjoy it after this also, just don't expect it to taste as good!</p>
             <h3 className='about-subheading'>Grinding</h3>
-            <p>One of the most important parts of third wave coffee is grinding your own coffee at home. Pre-ground coffee loses most of aromas and freshness </p>
+            <p>One of the most important parts of third wave coffee is grinding your own coffee at home. Pre-ground coffee starts losing its aroma and freshness rapidly once it has been ground. Due to this, grinding your coffee right before you brew it will optimise the flavour of your brewed coffee.</p>
         </Stack>
     </div> 
   )

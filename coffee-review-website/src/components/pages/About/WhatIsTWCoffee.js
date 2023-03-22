@@ -15,6 +15,9 @@ const WhatIsTWCoffee = () => {
             <p>For roasters who are focused on the third wave coffee community, they aim to maximise flavour by using a lighter roast and increasing freshness by roasting beans as close to the day they sell them as possible. If you order a bag of coffee from a local roaster it will usually tell you the exact date it was roasted on! Coffee will usually taste best within 4 days to a month of it being roasted, but of course you can enjoy it after this also, just don't expect it to taste as good!</p>
             <h3 className='about-subheading'>Grinding</h3>
             <p>One of the most important parts of third wave coffee is grinding your own coffee at home. Pre-ground coffee starts losing its aroma and freshness rapidly once it has been ground. Due to this, grinding your coffee right before you brew it will optimise the flavour of your brewed coffee.</p>
+            <h3 className='about-subheading'>Drinking</h3>
+            <p>Now that you brewed third wave coffee, how should you drink it? Because brewing a cup of third wave coffee takes so much more time and effort to create, it is usually enjoyed black without and sweeteners or sugar. To get into this cup your coffee has been grown for years, cultivated, probably shipped halfway across the world, roasted to impart the flavours into it, and then grinded and brewed by you! Brewing coffe in these ways lets you taste all the subtleties and complexities of the coffee.</p>
+            <p>When roasters roast coffee they usually assign tasting notes to it. If you buy a bag from a local brewer, some of these flavour notes should be included on your bag of coffee beans. See if you can also taste these flavour notes!</p>
         </Stack>
     </div> 
   )

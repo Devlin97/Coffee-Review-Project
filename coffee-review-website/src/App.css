@@ -33,7 +33,7 @@ body {
 }
 
 .about-holder > * {
-  background-color: #121212;
+  background-color: rgba(63,76,119,0.2);
   border-radius: 20px;
   padding-left: 5px;
   padding-right: 5px;

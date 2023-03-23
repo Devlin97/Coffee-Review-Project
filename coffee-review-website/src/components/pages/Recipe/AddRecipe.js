@@ -103,8 +103,6 @@ const AddRecipe = () => {
     fetchCountries();
   }, []);
   
-  console.log('The grinder: ', grinder);
-  
     return (
     <form onSubmit={handleSubmit}>
 

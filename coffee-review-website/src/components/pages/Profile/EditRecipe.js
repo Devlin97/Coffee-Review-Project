@@ -14,8 +14,6 @@ const textColor = '#CBCCCD';
 
 const EditRecipe = () => {
   const { id } = useParams();
-
-  console.log(id);
   
   const [title, setTitle] = useState('');
   const [brewMethod, setBrewMethod] = useState('');

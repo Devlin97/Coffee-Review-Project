@@ -1,5 +1,6 @@
 import Grinder from "../models/grinder-model.js";
 import Country from "../models/country-model.js";
+import Brewer from "../models/brewers-model.js";
 
 export const getGrinders = async (req, res) => {
     let grinders = await Grinder.findAll();
@@ -77,4 +78,45 @@ export const deleteCountry = async (req, res) => {
     countries.sort((x,y) => x.name.localeCompare(y.name));
 
     res.json(countries);
+}
+
+export const getBrewers = async (req, res) => {
+    let brewers = await Brewer.findAll();
+
+    brewers.sort((x,y) => x.brewMethod.localeCompare(y.brewMethod));
+
+    res.json(brewers);
+}
+
+export const addBrewers = async (req, res) => {
+    const theName = req.body.name;
+    const theMethod = req.body.brewMethod;
+
+    const theBrewer = Brewer.build({
+        name: theName,
+        brewMethod: theMethod
+    });
+    await theBrewer.save();
+
+    let brewers = await Brewer.findAll();
+
+    brewers.sort((x,y) => x.brewMethod.localeCompare(y.brewMethod));
+
+    res.json(brewers);
+}
+
+export const deleteBrewer = async (req, res) => {
+    const brewerId = req.body.brewerId;
+
+    await Brewer.destroy({
+        where: {
+            id: brewerId
+        }
+    });
+
+    let brewers = await Brewer.findAll();
+
+    brewers.sort((x,y) => x.brewMethod.localeCompare(y.brewMethod));
+
+    res.json(brewers);
 }

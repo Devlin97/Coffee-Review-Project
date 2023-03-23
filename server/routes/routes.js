@@ -44,12 +44,15 @@ router.post('/deleteComment', controls.deleteComment);
 //======================= Grinder and Origin Routes =======================
 router.get('/getGrinders', ogControls.getGrinders);
 router.get('/getCountries', ogControls.getCountries);
+router.get('/getBrewers', ogControls.getBrewers);
 
 router.post('/addGrinder', ogControls.addGrinder);
 router.post('/addCountry', ogControls.addCountry);
+router.post('/addBrewer', ogControls.addBrewers);
 
 router.post('/deleteGrinder', ogControls.deleteGrinder);
 router.post('/deleteCountry', ogControls.deleteCountry);
+router.post('/deleteBrewer', ogControls.deleteBrewer);
 //=========================================================================
 
 export default router;

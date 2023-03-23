@@ -111,11 +111,11 @@ const Login = () => {
                 <h2 className='sign-in-header'>SUCCESSFUL</h2>
             
 
-                <Button variant='outlined' style={{ color: textColor }} color='success' onClick={() => handleLogOut()} >Log Out</Button>
+                <Button variant='contained' style={{ color: textColor }} color='success' onClick={() => handleLogOut()} >Log Out</Button>
 
                 {isModerator &&
                     <Link to="/mod" style={{ textDecoration: 'none' }}>
-                        <Button variant='outlined' style={{ color: textColor }} color='success'>Moderator Hub</Button>
+                        <Button variant='contained' style={{ color: textColor }} color='success'>Moderator Hub</Button>
                     </Link>
                 }
 

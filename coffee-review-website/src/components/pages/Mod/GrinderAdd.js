@@ -60,7 +60,7 @@ const GrinderAdd = () => {
             InputLabelProps= {{ style: { color: textColor } }}
           />
 
-          <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>ADD</Button>
+          <Button type='submit' variant='contained' style={{ color: textColor }} color='success'>ADD</Button>
 
           <Collapse in={alertBoo}>
             <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>

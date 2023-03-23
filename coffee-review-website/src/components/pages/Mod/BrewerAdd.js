@@ -1,0 +1,73 @@
+import React, { useState } from 'react'
+import { TextField, Stack, Box, Button, Alert, Collapse } from '@mui/material';
+
+const BrewerAdd = () => {
+    const [brewer, setBrewer] = useState('')
+    const [alertBoo, setAlertBoo] = useState(false)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+  
+        await uploadBrewer({
+            country
+        });
+    }
+
+    async function uploadBrewer(creds) {
+        fetch('/addCountry', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(creds),
+        })
+        .then(setBrewer(''))
+        .then(setAlertBoo(true))
+    }
+  
+    return (
+        <form onSubmit={handleSubmit}>
+
+            <Box sx={{ width: '100%', height: 600 , justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+    
+                <Stack
+                    spacing={4}
+                    direction='column'
+                    alignItems='center'
+                    sx={{ 
+                        background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )', 
+                        paddingLeft: '100px',
+                        paddingRight: '100px',
+                        paddingBottom: '50px',
+                        paddingTop: '50px', 
+                        borderRadius: '25px' 
+                    }}>
+        
+                    <h2 className='sign-in-header'>Add Country</h2>
+        
+                    <TextField 
+                    id='brewer-add-text' 
+                    label='Add Brewer' 
+                    variant='standard' 
+                    onChange={(e) => setBrewer(e.target.value)} 
+                    value={brewer}
+                    color='primary'
+                    sx={{ input: { color: textColor }, fieldset: { borderColor: textColor } }}
+                    InputLabelProps= {{ style: { color: textColor } }}
+                    />
+        
+                    <Button type='submit' variant='outlined' style={{ color: textColor }} color='success'>ADD</Button>
+
+                    <Collapse in={alertBoo}>
+                        <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>
+                    </Collapse>
+        
+                </Stack>
+    
+            </Box>
+  
+        </form>
+  )
+}
+
+export default BrewerAdd

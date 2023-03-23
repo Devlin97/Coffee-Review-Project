@@ -11,9 +11,9 @@ import WhatIsTWCoffee from './WhatIsTWCoffee'
 const AboutList = () => {
     const [open, setOpen] = useState(true)
     const [immersion, setImmersion] = useState(false)
-    const [pourover, setPourover] = useState(true)
+    const [pourover, setPourover] = useState(false)
     const [aeropress, setAeropress] = useState(false)
-    const [thirdWave, setThirdwave] = useState(false)
+    const [thirdWave, setThirdwave] = useState(true)
 
   return (
     <Box sx={{ width: '100%', margin: '0 auto', padding: '0 1.5rem', maxWidth: '1024px' }}>

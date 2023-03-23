@@ -129,17 +129,23 @@ const RecipesSearch = ({recipesIn}) => {
                   } />
                 <FormControlLabel value='immersion' control={<Radio onClick={() => handleImmersionCheck()} sx={{ color: '#CBCCCD' }} />} label={
                   <Tooltip title='Immersion' placement='top'>
-                    <img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>
+                    <div>
+                      <img src={immersionIcon} title='Immersion' alt='Icon of a immersion brewer'/>
+                    </div>
                   </Tooltip>
                 } />
                 <FormControlLabel value='aeropress' control={<Radio onClick={() => handleAeropressCheck()} sx={{ color: '#CBCCCD' }} />} label={
                   <Tooltip title='Aeropress' placement='top'>
-                    <img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />
+                    <div>
+                      <img src={aeropressIcon} title='Aeropress' alt='Icon of a aeropress brewer' />
+                    </div>
                   </Tooltip>
                 }/>
                 <FormControlLabel value='all' control={<Radio onClick={() => handleAllCheck()} sx={{ color: '#CBCCCD' }} />} label={
                   <Tooltip title='All' placement='top'>
-                    <img src={coffeeIcon} title='All' alt='Icon of a cup' />
+                    <div>
+                      <img src={coffeeIcon} title='All' alt='Icon of a cup' />
+                    </div>
                   </Tooltip>
                 }/>
               </RadioGroup>

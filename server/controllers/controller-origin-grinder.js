@@ -2,6 +2,18 @@ import Grinder from "../models/grinder-model.js";
 import Country from "../models/country-model.js";
 import Brewer from "../models/brewers-model.js";
 
+export const getAllThree = async (req, res) => {
+    let grinders = await Grinder.findAll();
+    let countries = await Country.findAll();
+    let brewers = await Brewer.findAll();
+
+    grinders.sort((x,y) => x.name.localeCompare(y.name))
+    countries.sort((x,y) => x.name.localeCompare(y.name))
+    brewers.sort((x,y) => x.brewMethod.localeCompare(y.brewMethod))
+
+    res.json({grinders, countries, brewers})
+}
+
 export const getGrinders = async (req, res) => {
     let grinders = await Grinder.findAll();
 

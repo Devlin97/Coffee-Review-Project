@@ -79,19 +79,19 @@ const BrewerTable = () => {
         <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
             <Table stickyHeader>
                 <TableHead>
-                    <TableRow sx={{ background: 'linear-gradient( 112.1deg,  rgba(32,38,57,0.6) 11.4%, rgba(63,76,119,0.6) 70.2% )' }}>
+                    <TableRow>
                         <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
-                                Country Name
+                            <Typography sx={{ fontSize: 18 }} gutterBottom>
+                                Brewer Name
                             </Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                            <Typography sx={{ fontSize: 18 }} gutterBottom>
                                 Brew Method
                             </Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                            <Typography sx={{ fontSize: 18 }} gutterBottom>
                                 Delete
                             </Typography>
                         </TableCell>

@@ -41,12 +41,12 @@ const GrinderTable = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                            <Typography sx={{ fontSize: 18 }} gutterBottom>
                                 Grinder Name
                             </Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography sx={{ fontSize: 18 }} color='#CBCCCD' gutterBottom>
+                            <Typography sx={{ fontSize: 18 }} gutterBottom>
                                 Delete
                             </Typography>
                         </TableCell>

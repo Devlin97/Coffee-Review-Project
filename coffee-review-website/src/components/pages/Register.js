@@ -121,7 +121,7 @@ const Register = () => {
 
           <TextField 
             id='password-check-text' 
-            label='Password Checker' 
+            label='Confirm Password' 
             variant='standard' 
             onChange={(e) => setPasswordCheck(e.target.value)} 
             value={passwordCheck}

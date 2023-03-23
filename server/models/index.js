@@ -5,6 +5,7 @@ import Grinder from "./grinder-model.js";
 import Country from "./country-model.js";
 import Recipe_Pourover from "./recipe-model-pourover.js";
 import Recipe_Aeropress from "./recipe-model-aeropress.js";
+import Brewer from "./brewers-model.js";
 
 User.hasMany(Recipe);
 Recipe.belongsTo(User);
@@ -29,4 +30,4 @@ Comment.belongsTo(Recipe_Aeropress);
 
 console.log('got here');
 
-export {User, Recipe, Comment, Grinder, Country, Recipe_Pourover, Recipe_Aeropress};
+export {User, Recipe, Comment, Grinder, Country, Recipe_Pourover, Recipe_Aeropress, Brewer};

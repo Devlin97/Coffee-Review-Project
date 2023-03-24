@@ -310,7 +310,7 @@ const EditPourover = () => {
                 
                 <TextField
                     id={`pour${index + 1}-water-text`} 
-                    label={`Pour ${index + 1}: Total Water Weight at End of Pour`} 
+                    label={`Pour ${index + 1}: Total Water Weight at End of Pour (g)`} 
                     type='number' 
                     onChange={(e) => setPoursListWater(() => {
                         const listCopy = poursListWater.slice();

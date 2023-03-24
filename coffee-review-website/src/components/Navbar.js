@@ -46,6 +46,12 @@ function Navbar() {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/ratio" className="navbar-item">
+                                {/* <School style={{ height: '18px', width: '18px' }}/> */}
+                                Ratios
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/signIn" className={`navbar-item ${!active ? 'navbar-item-right' : ''}`}>
                                 <FontAwesomeIcon icon={faSignIn}></FontAwesomeIcon>
                             </Link>

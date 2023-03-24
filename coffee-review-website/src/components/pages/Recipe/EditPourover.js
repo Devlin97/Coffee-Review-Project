@@ -30,6 +30,7 @@ const EditPourover = () => {
 
     const [grindersList, setGrindersList] = useState([]);
     const [countriesList, setCountriesList] = useState([]);
+    const [brewersList, setBrewersList] = useState([]);
 
     const [success, setSuccess] = useState(false);
 
@@ -67,33 +68,31 @@ const EditPourover = () => {
         setPours(jsonData.pours);
     }
 
-    const fetchGrinders = async () => {
-        const data = await fetch('/getGrinders');
+    const fetchDropDowns = async () => {
+        const data = await fetch('/getDropDowns');
     
         const jsonData = await data.json();
     
-        const tempList = await jsonData.map(el => (
+        const tempCountries = await jsonData.countries.map(el => (
             el.name
-        ));
+        ))
     
-        setGrindersList(tempList);
-    }
-    
-    const fetchCountries = async () => {
-        const data = await fetch('/getCountries');
-
-        const jsonData = await data.json();
-
-        const tempList = await jsonData.map(el => (
+        const tempGrinders = await jsonData.grinders.map(el => (
             el.name
-        ));
-
-        setCountriesList(tempList);
+        ))
+    
+        const tempBrewers = await jsonData.brewers.filter(el => (
+            el.brewMethod === 'Pourover'  
+        ))
+        .map(el => el.name)
+    
+        setGrindersList(tempGrinders)
+        setCountriesList(tempCountries)
+        setBrewersList(tempBrewers)
     }
     
     useEffect(() => {
-        fetchGrinders();
-        fetchCountries();
+        fetchDropDowns();
         fetchTheRecipe();
     }, []);
 
@@ -181,16 +180,9 @@ const EditPourover = () => {
                     }
                 }}>
             
-                <MenuItem value={'V60'}>V60</MenuItem>
-                <MenuItem value={'Kalita Wave'}>Kalita Wave</MenuItem>
-                <MenuItem value={'Loveramics Dripper'}>Loveramics Dripper</MenuItem>
-                <MenuItem value={'Wilfa Svart Dripper'}>Wilfa Svart Dripper</MenuItem>
-                <MenuItem value={'Chemex'}>Chemex</MenuItem>
-                <MenuItem value={'April Brewer'}>April Brewer</MenuItem>
-                <MenuItem value={'Fellow Stagg X'}>Fellow Stagg X</MenuItem>
-                <MenuItem value={'Origami Dripper'}>Origami Dripper</MenuItem>
-                <MenuItem value={'Cafec Flower'}>Cafec Flower</MenuItem>
-                <MenuItem value={'Hsiao 50 Dripper'}>Hsiao 50 Dripper</MenuItem>
+                {brewersList.map((el, i) => (
+                    <MenuItem key={i} value={el}>{el}</MenuItem>
+                ))}
             </Select>
         </FormControl>
 

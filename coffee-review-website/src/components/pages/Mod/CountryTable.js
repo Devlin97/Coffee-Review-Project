@@ -36,7 +36,7 @@ const CountryTable = () => {
 
     return (
     <>
-        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
+        <TableContainer sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -52,7 +52,7 @@ const CountryTable = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
                     {countries.map(country => (
                         <TableRow key={country.id}>
                             <TableCell>{country.name}</TableCell>

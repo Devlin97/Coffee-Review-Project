@@ -12,6 +12,7 @@ const BrewerTable = () => {
     const [brewer, setBrewer] = useState('')
     const [method, setMethod] = useState('')
     const [alertBoo, setAlertBoo] = useState(false)
+    const [alertBooErr, setAlertBooErr] = useState(false)
 
     //Table
     const fetchBrewers = async() => {
@@ -48,11 +49,18 @@ const BrewerTable = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-  
-        await uploadBrewer({
-            name: brewer,
-            brewMethod: method
-        });
+
+        console.log(method);
+
+        if(method === 'Immersion' || method === 'Pourover') {
+            await uploadBrewer({
+                name: brewer,
+                brewMethod: method
+            });
+        }
+        else {
+            setAlertBooErr(true)
+        }
     }
 
     async function uploadBrewer(creds) {
@@ -76,7 +84,13 @@ const BrewerTable = () => {
 
     return (
     <>
-        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
+        <TableContainer sx={{ 
+            maxWidth: '800px', 
+            display: 'flex', 
+            margin: '0 auto', 
+            height: '400px', 
+            overflowY: 'auto'
+            }}>
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -97,7 +111,7 @@ const BrewerTable = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
                     {brewers.map(brewer => (
                         <TableRow key={brewer.id}>
                             <TableCell>{brewer.name}</TableCell>
@@ -174,6 +188,10 @@ const BrewerTable = () => {
 
                     <Collapse in={alertBoo}>
                         <Alert onClose={() => setAlertBoo(false)}>Successfully added!</Alert>
+                    </Collapse>
+
+                    <Collapse in={alertBooErr}>
+                        <Alert severity='error' onClose={() => setAlertBooErr(false)}>Please select a brew method.</Alert>
                     </Collapse>
         
                 </Stack>

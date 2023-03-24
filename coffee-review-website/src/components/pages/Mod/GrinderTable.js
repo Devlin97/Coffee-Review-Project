@@ -36,7 +36,7 @@ const GrinderTable = () => {
   
     return (
     <>
-        <TableContainer component={Paper} sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
+        <TableContainer sx={{ maxWidth: '800px', display: 'flex', margin: '0 auto', height: '400px', overflowY: 'auto'  }}>
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -52,7 +52,7 @@ const GrinderTable = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={{ backgroundColor: 'whitesmoke' }}>
                     {grinders.map(grinder => (
                         <TableRow key={grinder.id}>
                             <TableCell>{grinder.name}</TableCell>

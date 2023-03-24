@@ -28,6 +28,7 @@ const EditRecipe = () => {
 
   const [grindersList, setGrindersList] = useState([]);
   const [countriesList, setCountriesList] = useState([]);
+  const [brewersList, setBrewersList] = useState([]);
 
   const [success, setSuccess] = useState(false);
 
@@ -56,33 +57,31 @@ const EditRecipe = () => {
     setOrigin(jsonData.coffeeOrigin);
   }
   
-  const fetchGrinders = async () => {
-    const data = await fetch('/getGrinders');
+  const fetchDropDowns = async () => {
+    const data = await fetch('/getDropDowns');
 
     const jsonData = await data.json();
 
-    const tempList = await jsonData.map(el => (
+    const tempCountries = await jsonData.countries.map(el => (
         el.name
-    ));
+    ))
 
-    setGrindersList(tempList);
-  }
-
-  const fetchCountries = async () => {
-    const data = await fetch('/getCountries');
-
-    const jsonData = await data.json();
-
-    const tempList = await jsonData.map(el => (
+    const tempGrinders = await jsonData.grinders.map(el => (
         el.name
-    ));
+    ))
 
-    setCountriesList(tempList);
+    const tempBrewers = await jsonData.brewers.filter(el => (
+        el.brewMethod === 'Immersion'  
+    ))
+    .map(el => el.name)
+
+    setGrindersList(tempGrinders)
+    setCountriesList(tempCountries)
+    setBrewersList(tempBrewers)
   }
   
   useEffect(() => {
-    fetchCountries();
-    fetchGrinders();
+    fetchDropDowns();
     fetchTheRecipe();
   }, []);
 
@@ -178,9 +177,9 @@ const EditRecipe = () => {
             getContentAnchorEl: null
           }}>
         
-            <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
-            <MenuItem value={'Hario Switch'}>Hario Switch</MenuItem>
-            <MenuItem value={'Cafetiere'}>Cafetiere</MenuItem>
+          {brewersList.map((el, i) => (
+            <MenuItem key={i} value={el}>{el}</MenuItem>
+          ))}
         </Select>
       </FormControl>
 

@@ -40,7 +40,7 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
           </Link>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                {`${recipeIn.brewMethod} | ${recipeIn.brewer} | ${recipeIn.username}`}
+                {`${recipeIn.brewMethod} | ${recipeIn.brewer}`}
             </Typography>
           </p>
         </Grid>

@@ -16,6 +16,7 @@ import EditPourover from './components/pages/Recipe/EditPourover';
 import EditAeropress from './components/pages/Recipe/EditAeropress';
 import AboutHome from './components/pages/About/AboutHome';
 import GuestProfile from './components/pages/GuestProfile/GuestProfile';
+import RatioCalculator from './components/pages/RatioCalculator/RatioCalculator';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/editAeropress/:id' element={<EditAeropress />} />
         <Route path='/About' element={<AboutHome />} />
         <Route path='/user/:id' element={<GuestProfile />} />
+        <Route path='/ratio' element={<RatioCalculator />} />
       </Routes>
     </Router>
     </>

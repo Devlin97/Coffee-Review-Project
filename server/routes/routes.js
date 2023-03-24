@@ -45,6 +45,7 @@ router.post('/deleteComment', controls.deleteComment);
 router.get('/getGrinders', ogControls.getGrinders);
 router.get('/getCountries', ogControls.getCountries);
 router.get('/getBrewers', ogControls.getBrewers);
+router.get('/getDropDowns', ogControls.getAllThree);
 
 router.post('/addGrinder', ogControls.addGrinder);
 router.post('/addCountry', ogControls.addCountry);

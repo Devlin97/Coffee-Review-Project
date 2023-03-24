@@ -40,6 +40,7 @@ const AddRecipe = () => {
 
   const [grindersList, setGrindersList] = useState([]);
   const [countriesList, setCountriesList] = useState([]);
+  const [brewersList, setBrewersList] = useState([]);
 
   const [alertBoo, setAlertBoo] = useState(false);
 
@@ -74,33 +75,31 @@ const AddRecipe = () => {
     setAlertBoo(true);
   }
 
-  const fetchGrinders = async () => {
-    const data = await fetch('/getGrinders');
+  const fetchDropDowns = async () => {
+    const data = await fetch('/getDropDowns');
 
     const jsonData = await data.json();
 
-    const tempList = await jsonData.map(el => (
+    const tempCountries = await jsonData.countries.map(el => (
         el.name
-    ));
+    ))
 
-    setGrindersList(tempList);
-  }
-
-  const fetchCountries = async () => {
-    const data = await fetch('/getCountries');
-
-    const jsonData = await data.json();
-
-    const tempList = await jsonData.map(el => (
+    const tempGrinders = await jsonData.grinders.map(el => (
         el.name
-    ));
+    ))
 
-    setCountriesList(tempList);
+    const tempBrewers = await jsonData.brewers.filter(el => (
+        el.brewMethod === 'Immersion'  
+    ))
+    .map(el => el.name)
+
+    setGrindersList(tempGrinders)
+    setCountriesList(tempCountries)
+    setBrewersList(tempBrewers)
   }
 
   useEffect(() => {
-    fetchGrinders();
-    fetchCountries();
+    fetchDropDowns();
   }, []);
   
     return (
@@ -168,13 +167,12 @@ const AddRecipe = () => {
                     transformOrigin: {
                         vertical: 'top',
                         horizontal: 'left'
-                    },
-                    getContentAnchorEl: null
+                    }
                 }}>
             
-                <MenuItem value={'Clever Dripper'}>Clever Dripper</MenuItem>
-                <MenuItem value={'Hario Switch'}>Hario Switch</MenuItem>
-                <MenuItem value={'Cafetiere'}>Cafetiere</MenuItem>
+                {brewersList.map((el, i) => (
+                    <MenuItem key={i} value={el}>{el}</MenuItem>
+                ))}
             </Select>
         </FormControl>
 
@@ -219,12 +217,11 @@ const AddRecipe = () => {
                     transformOrigin: {
                         vertical: 'top',
                         horizontal: 'left'
-                    },
-                    getContentAnchorEl: null
+                    }
                 }}>
             
-                {grindersList.map(el => (
-                    <MenuItem value={el}>{el}</MenuItem>
+                {grindersList.map((el, i) => (
+                    <MenuItem key={i} value={el}>{el}</MenuItem>
                 ))}
             </Select>
         </FormControl>
@@ -259,12 +256,11 @@ const AddRecipe = () => {
                     transformOrigin: {
                         vertical: 'top',
                         horizontal: 'left'
-                    },
-                    getContentAnchorEl: null
+                    }
                 }}>
             
-                {countriesList.map(el => (
-                    <MenuItem value={el}>{el}</MenuItem>
+                {countriesList.map((el, i) => (
+                    <MenuItem key={i} value={el}>{el}</MenuItem>
                 ))}
             </Select>
         </FormControl>

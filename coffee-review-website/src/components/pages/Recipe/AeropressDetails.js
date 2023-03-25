@@ -38,7 +38,7 @@ const AeropressDetails = ({ recipeIn = {} }) => {
           </Link>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-                {`${recipeIn.brewer} | ${recipeIn.inverted === true ? 'Inverted' : 'Standard'} | Ratio: ${(recipeIn.waterWeight / recipeIn.waterWeight).toFixed(2)}`}
+                {`${recipeIn.brewer} | ${recipeIn.inverted === true ? 'Inverted' : 'Standard'} | Ratio: ${(recipeIn.waterWeight / recipeIn.coffeeWeight).toFixed(2)}`}
             </Typography>
           </p>
         </Grid>

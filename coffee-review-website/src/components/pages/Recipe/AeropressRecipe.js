@@ -230,7 +230,7 @@ const AeropressRecipe = () => {
                     />
 
                     <FormControl sx={{ m:1, minWidth: 150 }}>
-                        <InputLabel id='select-label-inverted' style={{ color: textColor }}>Inverted</InputLabel>
+                        <InputLabel id='select-label-inverted' style={{ color: textColor }}>Inverted?</InputLabel>
                         <Select
                             labelId='select-inverted'
                             id='select-inverted'

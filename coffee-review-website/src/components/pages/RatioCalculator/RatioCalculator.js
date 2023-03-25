@@ -17,6 +17,18 @@ const RatioCalculator = () => {
 
   return (
     <>
+    <Box sx={{ maxWidth: '1024px', margin: '0 auto' }}>
+        <div className='about-holder'>
+            <Stack>
+                <h2 style={{ textAlign: 'center' }}>Brew Ratio Calculator</h2>
+                <p style={{ textAlign: 'center' }}>Use these brew ratio calculators to figure the exact amount of coffee or water you would need to use to brew your perfect cup.</p>
+                <p style={{ textAlign: 'center' }}>Do you have a certain amount of beans you want to use but are unsure the amount of water you would need?</p>
+                <p style={{ textAlign: 'center' }}>Do you have a certain amount of water you want to use but are unsure the amount of beans you would need?</p>
+                <p style={{ textAlign: 'center' }}>These calculators will help!</p>
+            </Stack>
+        </div>
+    </Box>
+
     <Box sx={{ width: '100%', height: 600 , justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
     
         <Stack

@@ -603,6 +603,7 @@ export const updateRecipeImmersion = async (req, res) => {
     const grinder = req.body.grinder;
     const grindSize = req.body.grindSize;
     const description = req.body.description;
+    const coarse = req.body.coarse;
     const totalTime = req.body.totalTime;
     const origin = req.body.origin;
     const postId = req.body.postId;
@@ -622,6 +623,7 @@ export const updateRecipeImmersion = async (req, res) => {
         grinder: grinder,
         grindSize: grindSize,
         description: description,
+        grindCoarseness: coarse,
         totalTimeMinutes: totalTime,
         coffeeOrigin: origin
     });

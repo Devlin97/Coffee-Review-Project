@@ -7,8 +7,8 @@ import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import { Link, useParams } from 'react-router-dom'
-import { Skeleton } from '@mui/material'
+import { json, Link, useParams } from 'react-router-dom'
+import { Skeleton, Tooltip, Typography, Slider } from '@mui/material'
 
 const textColor = '#CBCCCD';
 
@@ -23,6 +23,7 @@ const EditRecipe = () => {
   const [grinder, setGrinder] = useState('');
   const [grindSize, setGrindSize] = useState('');
   const [description, setDescription] = useState('');
+  const [coarse, setCoarse] = useState(1);
   const [totalTime, setTotalTime] = useState('');
   const [origin, setOrigin] = useState('');
 
@@ -53,6 +54,7 @@ const EditRecipe = () => {
     setGrinder(jsonData.grinder);
     setGrindSize(jsonData.grindSize);
     setDescription(jsonData.description);
+    setCoarse(jsonData.grindCoarseness);
     setTotalTime(jsonData.totalTimeMinutes);
     setOrigin(jsonData.coffeeOrigin);
   }
@@ -96,6 +98,7 @@ const EditRecipe = () => {
       grinder,
       grindSize,
       description,
+      coarse,
       totalTime,
       origin
     };
@@ -242,6 +245,24 @@ const EditRecipe = () => {
         InputLabelProps= {{ style: { color: textColor } }}
         sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
       />
+
+      <Box>
+        <Tooltip title='1 for powder, 10 for whole bean' placement='top'>
+          <Typography sx={{ color: '#CBCCCD' }}>
+              Coarseness
+          </Typography>
+        </Tooltip>
+        <Slider 
+          value= {coarse}
+          onChange= {(e, n) => setCoarse(n)} 
+          min= {1}
+          max= {10}
+          step= {1}
+          marks
+          valueLabelDisplay='auto'
+          sx= {{ color: '#CBCCCD' }}
+        />
+      </Box>
 
       <FormControl sx={{ m:1, minWidth: 150 }}>
         <InputLabel id='select-label-origin' style={{ color: textColor }}>Coffee Origin</InputLabel>

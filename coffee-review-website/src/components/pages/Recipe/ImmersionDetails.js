@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Typography } from '@mui/material'
+import { Typography, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const ImmersionDetails = ({ recipeIn = {} }) => {
@@ -45,6 +45,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
             </Typography>
           </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Coffee In:</h3>
@@ -62,6 +66,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
                 {`${recipeIn.waterWeight}g`}
             </Typography>
           </p>
+        </Grid>
+
+        <Grid xs={12}>
+          <hr/>
         </Grid>
   
         <Grid xs={6}>
@@ -81,6 +89,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
             </Typography>
           </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Coffee Origin:</h3>
@@ -98,6 +110,10 @@ const ImmersionDetails = ({ recipeIn = {} }) => {
                 {recipeIn.totalTimeMinutes}
             </Typography>
           </p>
+        </Grid>
+
+        <Grid xs={12}>
+          <hr/>
         </Grid>
   
         <Grid xs={12}>

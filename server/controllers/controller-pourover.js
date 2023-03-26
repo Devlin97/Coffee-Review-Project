@@ -9,9 +9,12 @@ export const addPouroverRecipe = async (req, res) => {
     const grindSize = req.body.grindSize;
     const description = req.body.description;
     const totalTime = req.body.totalTime;
+    const coarse = req.body.coarse;
     const coffeeOrigin = req.body.coffeeOrigin;
     const userId = req.body.userId;
     const coffeeWeight = req.body.coffeeWeight;
+
+    console.log(coarse)
 
     const thePours = [];
     
@@ -37,6 +40,7 @@ export const addPouroverRecipe = async (req, res) => {
         grinder: grinder,
         grindSize: grindSize,
         description: description,
+        grindCoarseness: coarse,
         totalTimeMinutes: totalTime,
         pours: thePours,
         coffeeOrigin: coffeeOrigin,

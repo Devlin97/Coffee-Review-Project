@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
-import { Alert, Collapse } from '@mui/material'
+import { Alert, Collapse, Tooltip, Typography, Slider } from '@mui/material'
 import Box from '@mui/material/Box'
 
 const textColor = '#CBCCCD';
@@ -39,6 +39,7 @@ const PouroverRecipe = () => {
     const [pours, setPours] = useState([]);
     const [bloomTime, setBloomTime] = useState('');
     const [bloomWeight, setBloomWeight] = useState('');
+    const [coarse, setCoarse] = useState(1);
 
     const [poursListWater, setPoursListWater] = useState([]);
     const [poursListTime, setPoursListTime] = useState([]);
@@ -61,6 +62,7 @@ const PouroverRecipe = () => {
             grinder,
             grindSize,
             description,
+            coarse,
             totalTime,
             pours,
             bloomTime,
@@ -231,6 +233,24 @@ const PouroverRecipe = () => {
             InputLabelProps= {{ style: { color: textColor } }}
             sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
         />
+
+        <Box>
+            <Tooltip title='1 for powder, 10 for whole bean' placement='top'>
+                <Typography sx={{ color: '#CBCCCD' }}>
+                    Coarseness
+                </Typography>
+            </Tooltip>
+            <Slider 
+                value= {coarse}
+                onChange= {(e, n) => setCoarse(n)} 
+                min= {1}
+                max= {10}
+                step= {1}
+                marks
+                valueLabelDisplay='auto'
+                sx= {{ color: '#CBCCCD' }}
+            />
+        </Box>
 
         <FormControl sx={{ m:1, minWidth: 150 }}>
             <InputLabel id='select-label-origin' style={{ color: textColor }}>Coffee Origin</InputLabel>

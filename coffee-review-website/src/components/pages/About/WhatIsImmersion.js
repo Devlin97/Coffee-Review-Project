@@ -1,5 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const WhatIsImmersion = () => {
   return (
@@ -17,7 +18,11 @@ const WhatIsImmersion = () => {
               <li>Grinder / Grind Size</li>
               <li>Time</li>
             </ul>
-            <p>Coffee weight and water weight tend to be the most important of variables as these determine the overall strength of your cup. Lower ratios will be stronger while higher ratios will be weaker. The standard most common ratio you will see is usually about 1/16. This means for every 1 gram of coffee, you will use 16 grams of water. For example, if you are using 15 grams of coffee, you would use around 240 grams of water. But don't be afraid to try higher or lower ratios depending on your taste!</p>
+            <p>Coffee weight and water weight tend to be the most important of variables as these determine the overall strength of your cup. Lower ratios will be stronger while higher ratios will be weaker. The standard most common ratio you will see is usually about 1/16. This means for every 1 gram of coffee, you will use 16 grams of water. For example, if you are using 15 grams of coffee, you would use around 240 grams of water. Try the<> </> 
+              <Link to='/ratio' style={{ textDecoration: 'underline', color: '#CBCCCD' }}>
+                 brew ratio calculator
+              </Link>
+              <> </>to find what ratios you could use! But don't be afraid to try higher or lower ratios depending on your taste!</p>
             <p>Grind size is the next most important variable as this will determine the overall extraction and flavour of your brew. If the grind is too fine, your coffee may become over extracted and taste astringent or bitter while grinding too coarse could lead to underextraction and taste relatively weak and sour. Immersion brews tend to err on the coarse to very coarse side of grind size.</p>
             <p>Lastly, you have the time you need to wait until you strain your coffee grounds from the coffee. This is what stops the brewing process and prepares it to be drank. This is the most important variable in immersion brews and is what needs to be fine-tuned. If it brews for too long it could over extract the coffee, while too short could under extract it.</p>
         </Stack>

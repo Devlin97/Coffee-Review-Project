@@ -81,7 +81,7 @@ const PouroverDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Grind Size:</h3>
         <p className='create-recipe-h1'>
           <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-            {`${recipeIn.grindSize} Clicks | ${recipeIn.grindCoarseness}/10 Coarse`}
+            {`Clicks: ${recipeIn.grindSize} | Coarse: ${recipeIn.grindCoarseness}/10`}
           </Typography>
         </p>
         </Grid>

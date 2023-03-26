@@ -54,6 +54,7 @@ export const updateAeropress = async (req, res) => {
     const grinder = req.body.grinder;
     const grindSize = req.body.grindSize;
     const description = req.body.description;
+    const coarse = req.body.coarse;
     const totalTime = req.body.totalTime;
     const coffeeOrigin = req.body.coffeeOrigin;
     const coffeeWeight = req.body.coffeeWeight;
@@ -72,6 +73,7 @@ export const updateAeropress = async (req, res) => {
         grinder: grinder,
         grindSize: grindSize,
         description: description,
+        grindCoarseness: coarse,
         totalTimeMinutes: totalTime,
         coffeeOrigin: coffeeOrigin,
         coffeeWeight: coffeeWeight,

@@ -7,6 +7,7 @@ export const addAeropress = async (req, res) => {
     const grinder = req.body.grinder;
     const grindSize = req.body.grindSize;
     const description = req.body.description;
+    const coarse = req.body.coarse;
     const totalTime = req.body.totalTime;
     const inverted = req.body.inverted;
     const origin = req.body.coffeeOrigin;
@@ -20,6 +21,7 @@ export const addAeropress = async (req, res) => {
         brewer: 'Aeropress',
         grinder: grinder,
         grindSize: grindSize,
+        grindCoarseness: coarse,
         coffeeOrigin: origin,
         inverted: inverted === 'Yes' ? true : false,
         description: description,

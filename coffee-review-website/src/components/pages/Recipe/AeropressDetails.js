@@ -74,7 +74,7 @@ const AeropressDetails = ({ recipeIn = {} }) => {
         <h3 className='create-recipe-h1'>Grind Size:</h3>
           <p className='create-recipe-h1'>
             <Typography variant='subtitle2' sx={{ fontSize: 18 }} gutterBottom>
-              {recipeIn.grindSize}
+              {`Clicks: ${recipeIn.grindSize} | Coarse: ${recipeIn.grindCoarseness}`}
             </Typography>
           </p>
         </Grid>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { InputLabel, MenuItem, Select, FormControl, TextField, Stack, Button, Alert, Collapse, Box } from '@mui/material'
+import { InputLabel, MenuItem, Select, FormControl, TextField, Stack, Button, Alert, Collapse, Box, Tooltip, Typography, Slider } from '@mui/material'
 
 const textColor = '#CBCCCD'
 
@@ -29,6 +29,7 @@ const AeropressRecipe = () => {
     const [totalTime, setTotalTime] = useState('');
     const [origin, setOrigin] = useState('');
     const [inverted, setInverted] = useState('');
+    const [coarse, setCoarse] = useState(1);
 
     const [grindersList, setGrindersList] = useState([]);
     const [countriesList, setCountriesList] = useState([]);
@@ -47,6 +48,7 @@ const AeropressRecipe = () => {
             grinder,
             grindSize,
             description,
+            coarse,
             totalTime,
             inverted,
             coffeeOrigin: origin
@@ -188,6 +190,24 @@ const AeropressRecipe = () => {
                         InputLabelProps= {{ style: { color: textColor } }}
                         sx={{ fieldset: { borderColor: textColor }, input: { color: textColor } }} 
                     />
+
+                    <Box>
+                        <Tooltip title='1 for powder, 10 for whole bean' placement='top'>
+                            <Typography sx={{ color: '#CBCCCD' }}>
+                                Coarseness
+                            </Typography>
+                        </Tooltip>
+                        <Slider 
+                            value= {coarse}
+                            onChange= {(e, n) => setCoarse(n)} 
+                            min= {1}
+                            max= {10}
+                            step= {1}
+                            marks
+                            valueLabelDisplay='auto'
+                            sx= {{ color: '#CBCCCD' }}
+                        />
+                    </Box>
 
                     <FormControl sx={{ m:1, minWidth: 150 }}>
                         <InputLabel id='select-label-origin' style={{ color: textColor }}>Coffee Origin</InputLabel>

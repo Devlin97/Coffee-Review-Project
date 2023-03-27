@@ -67,6 +67,10 @@ const PouroverDetails = ({ recipeIn = {} }) => {
             </Typography>
           </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Grinder:</h3>
@@ -85,6 +89,10 @@ const PouroverDetails = ({ recipeIn = {} }) => {
           </Typography>
         </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Coffee Origin:</h3>
@@ -102,6 +110,10 @@ const PouroverDetails = ({ recipeIn = {} }) => {
             {recipeIn.totalTimeMinutes}
           </Typography>
         </p>
+        </Grid>
+
+        <Grid xs={12}>
+          <hr/>
         </Grid>
 
         {/* <Grid xs={12} sx={{ overflowY: 'auto' }}>
@@ -157,6 +169,10 @@ const PouroverDetails = ({ recipeIn = {} }) => {
             </Grid>
           </>
         ))}
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={12} style={{ marginTop: '20px' }}>
         <p className='create-recipe-h1'>

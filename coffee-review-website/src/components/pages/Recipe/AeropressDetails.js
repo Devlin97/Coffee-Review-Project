@@ -42,6 +42,10 @@ const AeropressDetails = ({ recipeIn = {} }) => {
             </Typography>
           </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Coffee In:</h3>
@@ -59,6 +63,10 @@ const AeropressDetails = ({ recipeIn = {} }) => {
               {`${recipeIn.waterWeight}g`}
             </Typography>
           </p>
+        </Grid>
+
+        <Grid xs={12}>
+          <hr/>
         </Grid>
   
         <Grid xs={6}>
@@ -78,6 +86,10 @@ const AeropressDetails = ({ recipeIn = {} }) => {
             </Typography>
           </p>
         </Grid>
+
+        <Grid xs={12}>
+          <hr/>
+        </Grid>
   
         <Grid xs={6}>
         <h3 className='create-recipe-h1'>Coffee Origin:</h3>
@@ -95,6 +107,10 @@ const AeropressDetails = ({ recipeIn = {} }) => {
               {recipeIn.totalTimeMinutes}
             </Typography>
           </p>
+        </Grid>
+
+        <Grid xs={12}>
+          <hr/>
         </Grid>
   
         <Grid xs={12}>
